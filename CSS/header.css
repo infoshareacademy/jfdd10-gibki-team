@@ -1,0 +1,32 @@
+#header {
+    height: 55px;
+    display: flex;
+    background-color: grey;
+    justify-content: space-between;
+    align-content: center;
+    padding: 10px 20px;
+}
+.logo {
+    background: url(https://www.freelogodesign.org/Content/img/logo-ex-5.png);
+    background-size: 250px 50px;
+    height: 50px;
+    width: 250px;
+}
+.menu {
+    display: flex;
+    justify-content: center;
+}
+.menu_item {
+    border: 1px darkslategray solid;
+    background-color: rgba(0, 255, 255, 0.63);
+    width: 100px;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+}
+.menu_item:hover {
+    border: 1px rgb(78, 139, 139) solid;
+    background-color: aqua;
+    width: 100px;
+    height: 45px;
+}
