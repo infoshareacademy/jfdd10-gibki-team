@@ -1,17 +1,20 @@
     #hero_bg {
-        background: url(https://picjumbo.com/wp-content/uploads/marinated-beef-meat-free-photo-DSC08156-2210x1473.jpg);
+        background: url(https://images.unsplash.com/photo-1521800641212-77d98bb90d21?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=85fa1840102dd6e4947f0cfc8bc96994&auto=format&fit=crop&w=967&q=80);
         background-size: 100% 850px;
         width: 100%;
         height: 850px;
         display: flex;
         align-items: center;
+        display: flex;
+        justify-content: flex-end;
+        
     }
     .hero_dscr {
         padding: 100px;
-        background-color: rgba(0, 255, 255, 0.2);
-        width: 300px;
+        background-color: rgba(42, 44, 44, 0.2);
+        width: 400px;
         height: 300px;
-        margin-left: 150px;
+       
     }
     .hero_signup_btn {
         border: 1px darkslategray solid;
