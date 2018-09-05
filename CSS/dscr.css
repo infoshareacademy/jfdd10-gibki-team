@@ -1,27 +1,34 @@
 .dscr {
-    background-color: rgb(78, 139, 139);
+    background-color: white;
     padding: 50px 150px;
 }
-.dscr_top {
+.dscr_top, .dscr_bottom {
     display: flex;
-    justify-content: space-between;
-}
-.dscr_bottom {
-    display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 50px;
+    transition: transform 1s;
 }
 .dscr_item {
-    height: 300px;
-    width: 30%;
-    background-color: rgba(0, 255, 255, 0.2);
-    transition: background-color 1s,transform 2s;
+    height: 150px;
+    width: 20%;
+    border-radius: 25% 10%;
+    padding: 30px 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color 2s, box-shadow 2s, transform 2s;
+    text-align: justify; 
+    box-shadow: inset 0 0 10px #0000003f, 0 8px 6px -6px black;
+    filter: blur(0px);
+}
+.dscr_item {
+    height: 150px;
+    width: 20%;
+    border-radius: 25% 10%;
+    padding: 30px 30px;
 }
 .dscr_item:hover {
-    height: 300px;
-    width: 30%;
-    background-color: rgba(0, 255, 255, 0.7);
-    transform: scale(1.2);
-}
-.dscr_item:hover ~ .dscr_item {
-    transform: scale(0.8);
+    background-color: rgba(255, 255, 255, 0.9);
+    filter: blur(0);
+    transform: scale(1.4);
+
 }
