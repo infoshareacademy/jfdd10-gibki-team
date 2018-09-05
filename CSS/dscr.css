@@ -1,9 +1,14 @@
 .dscr {
-    display: flex;
-    justify-content: space-between;
     background-color: rgb(78, 139, 139);
     padding: 50px 150px;
-
+}
+.dscr_top {
+    display: flex;
+    justify-content: space-between;
+}
+.dscr_bottom {
+    display: flex;
+    justify-content: space-between;
 }
 .dscr_item {
     height: 300px;
