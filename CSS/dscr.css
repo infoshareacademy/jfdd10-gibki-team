@@ -8,27 +8,21 @@
     justify-content: space-around;
     padding-top: 50px;
     transition: transform 1s;
+    text-align: center;
 }
 .dscr_item {
     height: 150px;
-    width: 20%;
+    max-width: 20%;
     border-radius: 25% 10%;
     padding: 30px 30px;
     background-color: rgba(255, 255, 255, 0.5);
     transition: background-color 2s, box-shadow 2s, transform 2s;
-    text-align: justify; 
+    text-align: center;
     box-shadow: inset 0 0 10px #0000003f, 0 8px 6px -6px black;
     filter: blur(0px);
-}
-.dscr_item {
-    height: 150px;
-    width: 20%;
-    border-radius: 25% 10%;
-    padding: 30px 30px;
 }
 .dscr_item:hover {
     background-color: rgba(255, 255, 255, 0.9);
     filter: blur(0);
     transform: scale(1.4);
-
 }
