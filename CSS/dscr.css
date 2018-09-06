@@ -1,3 +1,77 @@
+*,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .dscr {
+      width: 85vw;
+      margin: 1rem auto;
+    }
+
+    .dscr_bg,
+    .dscr_item {
+      text-align: center;
+    }
+
+    img,
+    .dscr_item {
+      transition: .3s all;
+      border-radius: 3px;
+    }
+
+    .dscr_bg {
+      float: left;
+      max-width: 31%;
+      position: relative;
+      margin: .5%;
+    }
+    .dscr_bg img {
+      width: 100%;
+      margin-bottom: -4px;
+    }
+    .dscr_bg .dscr_item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      color: #fff;
+      opacity: 0;
+    }
+    .dscr_bg .dscr_item h2 {
+      padding-top: 20%;
+      font-family: 'Droid Serif', serif;
+    }
+    .dscr_bg .dscr_item p {
+      font-family: 'Julius Sans One', sans-serif;
+    }
+    .dscr_bg:hover .dscr_item {
+      opacity: 1;
+      transform: scale(1.4);
+    }
+    .dscr_bg:hover img {
+      -webkit-filter: blur(2px);
+      filter: blur(2px);
+    }
+
+    @media screen and (max-width: 1148px) {
+      .dscr_bg {
+        max-width: 48%;
+        margin: 1%;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      .dscr_bg {
+        float: none;
+        max-width: 80%;
+        margin: 1% auto;
+      }
+    }
+
 .dscr {
     background-color: white;
     padding: 50px 150px;
@@ -10,7 +84,7 @@
     transition: transform 1s;
     text-align: center;
 }
-.dscr_item {
+.dscr_item2 {
     height: 150px;
     min-height: 150px;
     max-width: 20%;
@@ -18,11 +92,10 @@
     padding: 30px 30px;
     background-color: rgba(255, 255, 255, 0.5);
     transition: background-color 2s, box-shadow 2s, transform 2s;
-    text-align: center;
     box-shadow: inset 0 0 10px #0000003f, 0 8px 6px -6px black;
     filter: blur(0px);
-}
-.dscr_item:hover {
+} 
+.dscr_item2:hover {
     background-color: rgba(255, 255, 255, 0.9);
     filter: blur(0);
     transform: scale(1.4);
