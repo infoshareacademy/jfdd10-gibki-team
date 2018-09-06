@@ -11,20 +11,35 @@
       margin: 1rem auto;
     } */
 
-    .dscr_bg,
-    .dscr_item {
+    .dscr {
+      background-color: white;
+      padding: 50px 150px;
+    }
+    .dscr_name {
+      background-color: white;
+      padding: 0;
       text-align: center;
     }
-
+    .dscr_top, .dscr_bottom {
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding-top: 50px;
+      text-align: center;
+    }
+    .dscr_bottom {
+      padding-top: 150px;
+    }
     img,
     .dscr_item {
       transition: .3s all;
       border-radius: 3px;
     }
-
     .dscr_bg {
-      float: left;
+      /* float: left; */
       max-width: 31%;
+      padding: 40px;
       position: relative;
       margin: .5%;
     }
@@ -37,7 +52,8 @@
       top: 0;
       left: 0;
       bottom: 0;
-      padding: 20px;
+      padding: 70px;
+      box-sizing: border-box;
       width: 100%;
       background: rgba(0, 0, 0, 0.5);
       color: #fff;
@@ -45,10 +61,8 @@
     }
     .dscr_bg .dscr_item h2 {
       padding-top: 20%;
-      font-family: 'Droid Serif', serif;
     }
     .dscr_bg .dscr_item p {
-      font-family: 'Julius Sans One', sans-serif;
     }
     .dscr_bg:hover .dscr_item {
       opacity: 1;
@@ -73,16 +87,3 @@
         margin: 1% auto;
       }
     }
-
-.dscr {
-    background-color: white;
-    padding: 50px 150px;
-}
-.dscr_top, .dscr_bottom {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding-top: 50px;
-    transition: transform 1s;
-    text-align: center;
-}
