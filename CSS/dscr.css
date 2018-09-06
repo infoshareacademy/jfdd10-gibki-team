@@ -62,8 +62,6 @@
     .dscr_bg .dscr_item h2 {
       padding-top: 20%;
     }
-    .dscr_bg .dscr_item p {
-    }
     .dscr_bg:hover .dscr_item {
       opacity: 1;
       transform: scale(1.7);
