@@ -23,6 +23,7 @@
     background-color: red;
     height: 50px;
     width: 50px;
+    cursor: pointer;
 }
 
 @media (min-width: 576px) {
