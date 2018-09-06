@@ -12,6 +12,7 @@
 }
 .dscr_item {
     height: 150px;
+    min-height: 150px;
     max-width: 20%;
     border-radius: 25% 10%;
     padding: 30px 30px;

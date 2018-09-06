@@ -6,109 +6,104 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-$bg: rgba(0, 0, 0, 0.2);
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+    .container {
+      width: 85vw;
+      margin: 1rem auto;
+    }
 
-.container {
-  width: 85vw;
-  margin: 1rem auto;
-}
+    .bg,
+    .overlay {
+      text-align: center;
+    }
 
+    img,
+    .overlay {
+      transition: .3s all;
+      border-radius: 3px;
+    }
 
-.bg,
-.overlay {
-  text-align: center;
-}
-
-img,
-.overlay {
-  transition: .3s all;
-  border-radius: 3px;
-}
-
-.bg {
-  float: left;
-  max-width: 31%;
-  position: relative;
-  margin: .5%;
-  img {
-    width: 100%;
-    margin-bottom: -4px;
-  }
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background: $bg;
-    color: #fff;
-    opacity: 0;
-    h2 {
+    .bg {
+      float: left;
+      max-width: 31%;
+      position: relative;
+      margin: .5%;
+    }
+    .bg img {
+      width: 100%;
+      margin-bottom: -4px;
+    }
+    .bg .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      color: #fff;
+      opacity: 0;
+    }
+    .bg .overlay h2 {
       padding-top: 20%;
       font-family: 'Droid Serif', serif;
     }
-    p {
+    .bg .overlay p {
       font-family: 'Julius Sans One', sans-serif;
     }
-  }
-  &:hover {
-    .overlay {
+    .bg:hover .overlay {
       opacity: 1;
     }
-    img {
+    .bg:hover img {
       -webkit-filter: blur(2px);
       filter: blur(2px);
     }
-  }
-}
 
-@media screen and (max-width: 1148px) {
-  .bg {
-    max-width: 48%;
-    margin: 1%;
-  }
-}
+    @media screen and (max-width: 1148px) {
+      .bg {
+        max-width: 48%;
+        margin: 1%;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      .bg {
+        float: none;
+        max-width: 80%;
+        margin: 1% auto;
+      }
+    }
 
-@media screen and (max-width: 768px) {
-  .bg {
-    float: none;
-    max-width: 80%;
-    margin: 1% auto;
-  }
-}
     </style>
 </head>
 <body>
-        <div class="container">
-                <div class="bg">
-                  <img src="https://unsplash.it/400/200" alt="">
-                  <div class="overlay">
-                    <h2>Check This <span>Out!</span></h2>
-                    <p>this is some text.</p>
-                  </div>
-                </div>
-                <div class="bg">
-                  <img src="https://unsplash.it/400/200" alt="">
-                  <div class="overlay">
-                    <h2>Check This <span>Out!</span></h2>
-                    <p>this is some text.</p>
-                  </div>
-                </div>
-                <div class="bg">
-                  <img src="https://unsplash.it/400/200" alt="">
-                  <div class="overlay">
-                    <h2>Check This Out!</h2>
-                    <p>this is some text.</p>
-                  </div>
-                </div>
-              </div>
+  <div class="container">
+          <div class="bg">
+            <img src="https://unsplash.it/400/200" alt="">
+            <div class="overlay">
+              <h2>Check This <span>Out!</span></h2>
+              <p>this is some text.</p>
+            </div>
+          </div>
+          <div class="bg">
+            <img src="https://unsplash.it/400/200" alt="">
+            <div class="overlay">
+              <h2>Check This <span>Out!</span></h2>
+              <p>this is some text.</p>
+            </div>
+          </div>
+          <div class="bg">
+            <img src="https://unsplash.it/400/200" alt="">
+            <div class="overlay">
+              <h2>Check This Out!</h2>
+              <p>this is some text.</p>
+            </div>
+          </div>
+    </div>
 </body>
 </html>
