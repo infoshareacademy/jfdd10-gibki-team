@@ -1,6 +1,38 @@
 #form {
-
+    display: flex;
+    flex-direction: row;
+    
+    
 }
-.form_item {
 
-}
+    .form1 input button {
+
+        background: #B9DFFF;
+        
+        color: #fff;
+        
+        border: 1px solid #eee;
+        
+        border-radius: 20px;
+        
+        box-shadow: 5px 5px 5px #eee;
+        
+        text-shadow:none;
+        
+        }
+        
+    .form1 input button:hover {
+        
+        background: #016ABC;
+        
+        color: #fff;
+        
+        border: 1px solid #eee;
+        
+        border-radius: 20px;
+        
+        box-shadow: 5px 5px 5px #eee;
+        
+        text-shadow:none;
+        
+        }
