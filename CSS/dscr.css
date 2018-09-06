@@ -25,11 +25,11 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
-      padding-top: 50px;
+      padding-top: 10px;
       text-align: center;
     }
     .dscr_bottom {
-      padding-top: 150px;
+      padding-top: 10px;
     }
     img,
     .dscr_item {
@@ -39,13 +39,15 @@
     .dscr_bg {
       /* float: left; */
       max-width: 31%;
-      padding: 40px;
+      /* padding: 40px; */
       position: relative;
       margin: .5%;
     }
     .dscr_bg img {
       width: 80%;
       margin-bottom: -4px;
+      padding: 20px;
+      box-shadow: inset 0 0 10px #0000003f, 0 8px 6px -6px black;
     }
     .dscr_bg .dscr_item {
       position: absolute;
@@ -57,6 +59,7 @@
       width: 100%;
       background: rgba(0, 0, 0, 0.5);
       color: #fff;
+      font-size: 0.7em;
       opacity: 0;
     }
     .dscr_bg .dscr_item h2 {
@@ -64,11 +67,11 @@
     }
     .dscr_bg:hover .dscr_item {
       opacity: 1;
-      transform: scale(1.7);
+      transform: scale(1.5);
     }
     .dscr_bg:hover img {
-      -webkit-filter: blur(2px);
-      filter: blur(2px);
+      -webkit-filter: blur(10px);
+      filter: blur(10px);
       transform: scale(1.2);
     }
 
