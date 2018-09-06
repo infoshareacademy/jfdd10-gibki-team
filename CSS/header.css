@@ -1,12 +1,29 @@
 
-
-
-
-
-
-
-
-
+#header {
+    /* height: 55px; */
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: grey;
+    justify-content: space-between;
+    /* align-content: center; */
+    padding: 5px 5px;
+}
+.logo {
+    /* background: url(https://www.freelogodesign.org/Content/img/logo-ex-5.png); */
+    background-color: darkgrey;
+    height: 50px;
+    width: 50px;
+}
+.menu_item {
+    display: none;
+}
+.hamb-menu {
+    /* background: url(https://www.freelogodesign.org/Content/img/logo-ex-5.png); */
+    background-color: red;
+    height: 50px;
+    width: 50px;
+}
 
 @media (min-width: 576px) {
     #header {
@@ -28,6 +45,7 @@
         justify-content: space-between;
     }
     .menu_item {
+        display: initial;
         border: 1px darkslategray solid;
         background-color: rgba(0, 255, 255, 0.63);
         width: 100px;
@@ -40,5 +58,12 @@
         background-color: aqua;
         width: 100px;
         height: 50px;
+    }
+    .hamb-menu {
+        /* background: url(https://www.freelogodesign.org/Content/img/logo-ex-5.png); */
+        display: none;
+        background-color: red;
+        height: 50px;
+        width: 50px;
     }
 }
