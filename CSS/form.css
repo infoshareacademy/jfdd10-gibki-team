@@ -1,8 +1,5 @@
 #form {
-    display: flex;
-    flex-direction: row;
-    
-    
+
 }
 
     input.button {
@@ -18,6 +15,8 @@
         box-shadow: 5px 5px 5px #eee;
         
         text-shadow:none;
+
+        text-align: center;
         
         }
         
@@ -36,3 +35,14 @@
         text-shadow:none;
         
         }
+    .cont1 {
+        height: 200px;
+        background-color: gray;
+    }
+
+    .cont2{
+        background-color: rgb(87, 86, 86);
+        display:flex;
+        justify-content: center;
+    }
+  
