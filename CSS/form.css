@@ -5,7 +5,7 @@
     
 }
 
-    .form1 input button {
+    .form1 input {
 
         background: #B9DFFF;
         
@@ -21,7 +21,7 @@
         
         }
         
-    .form1 input button:hover {
+    .form1 input:hover {
         
         background: #016ABC;
         
