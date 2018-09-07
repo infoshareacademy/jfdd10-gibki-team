@@ -26,7 +26,7 @@
 .dscr_bottom {
     padding-top: 10px;
 }
-img,
+.dscr_bg img,
 .dscr_item {
     transition: .3s all;
     border-radius: 3px;
