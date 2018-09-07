@@ -1,17 +1,11 @@
   input.button {
 
         background: #B9DFFF;
-        
         color: #fff;
-        
         border: 1px solid #eee;
-        
         border-radius: 20px;
-        
         box-shadow: 5px 5px 5px #eee;
-        
         text-shadow:none;
-
         text-align: center;
         
         }
@@ -19,26 +13,35 @@
     input.button:hover {
         
         background: #016ABC;
-        
         color: #fff;
-        
         border: 1px solid #eee;
-        
         border-radius: 20px;
-        
         box-shadow: 5px 5px 5px #eee;
-        
         text-shadow:none;
         
         }
     .cont1 {
-        height: 200px;
+        height: 10vh;
         background-color: gray;
+        opacity: 0.5;
     }
 
     .cont2{
         background-color: rgb(87, 86, 86);
         display:flex;
         justify-content: center;
+        height: 5vh;
+    
+    }
+    .title{
+        padding: 20px;
+        text-align: center;
+        opacity: 1;
+    }
+    .lead {
+        text-align: center;
+    }
+    .photo {
+        background-image: url(data:encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsP3-mZp1ldk_AdH8rYK2TNshAJbd3Bjdlw4V5YP5fJAjq1BCnuw); 
     }
   
