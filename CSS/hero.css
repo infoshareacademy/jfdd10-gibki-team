@@ -15,11 +15,9 @@
     .hero_dscr {
         padding: 100px;
         background-color: rgba(42, 44, 44, 0.2);
-        width:35%;
-        margin: 30px;
-        margin-right: 50px;
         animation-duration: 1s;
         animation-name: slidein;
+        margin-bottom: 10px;
     }
     
     @keyframes slidein {
@@ -39,17 +37,24 @@
     .cta{
         display: flex; 
         align-content: center;
+        
        
     }
 
 
-
+.text-box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 35%;
+    margin:30px;
+}
 
     .hero_signup_btn {
         border: 1px darkslategray solid;
         background-color: rgba(0, 255, 255, 0.7);
         text-align: center;
-        margin-right:300px;
+       
         margin-top: 10px;
         transition: font-size 2s;
         line-height: 1.8;
@@ -60,11 +65,5 @@
         background-color: rgba(62, 104, 104, 0.9);
         color: aliceblue;
         font-size: 50px;
-        
-       
-       
-        
-        
-    
     
     }
