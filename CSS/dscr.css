@@ -1,22 +1,252 @@
+/* FUNCTIONS: */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 .dscr {
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(78, 139, 139);
+    background-color: white;
     padding: 50px 150px;
-
 }
+.dscr_name {
+    background-color: white;
+    padding: 0;
+    text-align: center;
+}
+.dscr_top, .dscr_bottom {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 10px;
+    text-align: center;
+}
+.dscr_bottom {
+    padding-top: 10px;
+}
+img,
 .dscr_item {
-    height: 300px;
-    width: 30%;
-    background-color: rgba(0, 255, 255, 0.2);
-    transition: background-color 1s,transform 2s;
+    transition: .3s all;
+    border-radius: 3px;
 }
-.dscr_item:hover {
-    height: 300px;
-    width: 30%;
-    background-color: rgba(0, 255, 255, 0.7);
+.dscr_bg {
+    max-width: 31%;
+    /* padding: 40px; */
+    position: relative;
+    margin: .5%;
+}
+.dscr_bg img {
+    width: 80%;
+    margin-bottom: -4px;
+    padding: 20px;
+    box-shadow: inset 0 0 10px #0000003f, 0 8px 6px -6px black;
+}
+.dscr_bg .dscr_item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 70px;
+    box-sizing: border-box;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 0.7em;
+    opacity: 0;
+}
+.dscr_bg .dscr_item h2 {
+    padding-top: 20%;
+}
+.dscr_bg:hover .dscr_item {
+    opacity: 1;
+    transform: scale(1.5);
+}
+.dscr_bg:hover img {
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
     transform: scale(1.2);
 }
-.dscr_item:hover ~ .dscr_item {
-    transform: scale(0.8);
+
+@media screen and (max-width: 1148px) {
+    .dscr_bg {
+    max-width: 48%;
+    margin: 1%;
+    }
 }
+@media screen and (max-width: 768px) {
+    .dscr_bg {
+    float: none;
+    max-width: 80%;
+    margin: 1% auto;
+    }
+}
+/* SPORTS: */
+.sports_flexbox {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+* {
+    margin:0;
+    padding:0;
+
+}
+
+/* poniżej style parallaxy w części sport */
+/*-----------------------------------------
+lewa parallaxa:
+-----------------------------------------
+
+.parallax-left {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 300px;
+    perspective: 300px;  
+  }
+  .parallax__group {
+    position: relative;
+    height: 50vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+  .parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .parallax__layer--fore {
+    -webkit-transform: translateZ(90px) scale(.7);
+    transform: translateZ(90px) scale(.7);
+    z-index: 1;
+  }
+  .parallax__layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+  }
+  .parallax__layer--back {
+    -webkit-transform: translateZ(-300px) scale(2);
+    transform: translateZ(-300px) scale(2);
+    z-index: 3;
+  }
+  .parallax__layer--deep {
+    -webkit-transform: translateZ(-600px) scale(3);
+    transform: translateZ(-600px) scale(3);
+    z-index: 2;
+  }
+  --------------------------------------------- */
+  /* style the groups
+  --------------------------------------------- */
+
+  /* #group1 {
+    z-index: 5; /* slide over group 2 
+  }
+  .group1_green {
+    position: absolute;
+    top:40%;
+    right:-10%;
+  }
+  #group2 {
+    z-index: 3; /* slide under groups 1 and 3
+  }
+  .group2_orange {
+    position: absolute;
+    left:5%;
+  }
+  .group2_yellow {
+     position: absolute;
+    top:56%;
+    right:26%;  
+  }
+  #group3 {
+    z-index: 4; /* slide over group 2 and 4
+  }
+  .group3_blueSmall {
+    position: absolute;
+    top:45%;
+    left:65%; 
+  }
+  .group3_red {
+    position: absolute;
+    top:80%;
+    left:42%;
+  }
+  #group4 {
+    z-index: 2; /* slide under group 3 and 5
+  }
+  .group4_orange {
+    position: absolute;
+    top:80%;
+    left:48%;
+  }
+  .group4_green {
+    position: absolute;
+    top:55%;
+    left:20%;
+  }
+  -----------------------------------------*/
+/*-----------------------------------------
+prawa parallaxa:
+
+.parallax-right {
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.object-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: none;
+  justify-content: center;
+}
+.speed-1 {
+  transform: translateZ(-1px) scale(2);
+}
+.speed-2 {
+  transform: translateZ(-2px) scale(3);
+}
+.speed-3 {
+  transform: translateZ(-3px) scale(4);
+}
+.speed-4 {
+  transform: translateZ(-4px) scale(5);
+}
+.speed-5 {
+  transform: translateZ(-5px) scale(6);
+}
+.speed-6 {
+  transform: translateZ(-6px) scale(7);
+}
+.object {
+  margin-left: 250px;
+  height: 100px;
+  width: 300px;
+}
+.object-1 {
+  margin-top: 100px;
+}
+.object-2 {
+  margin-top: 200px;
+}
+.object-3 {
+  margin-top: 300px;
+}
+.object-4 {
+  margin-top: 400px;
+}
+.object-5 {
+  margin-top: 500px;
+}
+.object-6 {
+  margin-top: 600px;
+}
+
+-----------------------------------------*/
