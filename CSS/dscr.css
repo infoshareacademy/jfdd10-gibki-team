@@ -96,7 +96,7 @@ img,
 /* poniżej style parallaxy w części sport */
 /*-----------------------------------------
 lewa parallaxa:
------------------------------------------*/
+-----------------------------------------
 
 .parallax-left {
     height: 100vh;
@@ -138,12 +138,12 @@ lewa parallaxa:
     transform: translateZ(-600px) scale(3);
     z-index: 2;
   }
-
+  --------------------------------------------- */
   /* style the groups
   --------------------------------------------- */
 
-  #group1 {
-    z-index: 5; /* slide over group 2 */
+  /* #group1 {
+    z-index: 5; /* slide over group 2 
   }
   .group1_green {
     position: absolute;
@@ -151,7 +151,7 @@ lewa parallaxa:
     right:-10%;
   }
   #group2 {
-    z-index: 3; /* slide under groups 1 and 3 */
+    z-index: 3; /* slide under groups 1 and 3
   }
   .group2_orange {
     position: absolute;
@@ -163,7 +163,7 @@ lewa parallaxa:
     right:26%;  
   }
   #group3 {
-    z-index: 4; /* slide over group 2 and 4 */
+    z-index: 4; /* slide over group 2 and 4
   }
   .group3_blueSmall {
     position: absolute;
@@ -176,7 +176,7 @@ lewa parallaxa:
     left:42%;
   }
   #group4 {
-    z-index: 2; /* slide under group 3 and 5 */
+    z-index: 2; /* slide under group 3 and 5
   }
   .group4_orange {
     position: absolute;
@@ -188,7 +188,7 @@ lewa parallaxa:
     top:55%;
     left:20%;
   }
-
+  -----------------------------------------*/
 /*-----------------------------------------
 prawa parallaxa:
 
