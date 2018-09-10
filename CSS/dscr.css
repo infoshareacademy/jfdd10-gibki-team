@@ -110,8 +110,8 @@ lewa parallaxa:
   .parallax__layer {
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 20%;
+    right: 20%;
     bottom: 0;
     background: none;
     justify-content: center;
@@ -146,7 +146,7 @@ lewa parallaxa:
   .group1_green {
     position: absolute;
     top: 100%;
-    right: 10%;
+    right: 50%;
   }
   #group2 {
     z-index: 3; /* slide under groups 1 and 3 */
