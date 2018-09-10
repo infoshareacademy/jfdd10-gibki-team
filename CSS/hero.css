@@ -1,27 +1,103 @@
     #hero_bg {
-        background: url(https://picjumbo.com/wp-content/uploads/marinated-beef-meat-free-photo-DSC08156-2210x1473.jpg);
-        background-size: 100% 850px;
-        width: 100%;
-        height: 850px;
+        background-color: antiquewhite;
         display: flex;
+        justify-content: space-around;
+        align-content: center;
         align-items: center;
+        flex-direction: column;
+        animation: pulse 5s infinite;
+        font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+        
     }
+
+@keyframes pulse {
+0%{
+    background-color: rgb(227, 224, 228);
+}
+100% {
+    background-color: rgba(247, 233, 235, 0.911);
+}
+}
+
+.image-box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+}
+
     .hero_dscr {
-        padding: 100px;
-        background-color: rgba(0, 255, 255, 0.2);
-        width: 300px;
-        height: 300px;
-        margin-left: 150px;
+        padding: 10px;
+        background-color: rgba(202, 185, 189, 0.2);
+        margin-bottom: 10px;
+
     }
+
+    .cta{
+        display: flex; 
+        align-content: center;
+        
+       
+    }
+
+
+.text-box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 85%;
+    margin:10px;
+}
+
     .hero_signup_btn {
-        border: 1px darkslategray solid;
-        background-color: rgba(0, 255, 255, 0.7);
-        width: 100px;
-        height: 45px;
+        border: 1px rgb(167, 247, 76) solid;
+        background-color: rgba(167, 247, 75);
+        font-size: 30px;
         text-align: center;
-        line-height: 45px;
-        margin-left: 100px;
+        margin-top: 10px;
+        transition: font-size 2s;
+        line-height: 1.8;
+        padding: 10px 30px;
+        text-decoration: none;
     }
     .hero_signup_btn:hover {
-        background-color: rgba(0, 255, 255, 0.9);
+        background-color: rgba(51, 248, 127, 0.9);
+        color:rgb(247, 253, 252);
+        font-size: 50px;
+    
+    }
+
+    /* Medium Screen */
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        #hero_bg {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            align-content: center;
+    }
+    }
+
+     /* Medium Screen */
+
+     @media (min-width: 992px){
+        #hero_bg {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            align-content: center;
+        }  
+        
+        .image-box{
+            height: auto;
+            width: 85%;
+            margin: 30px;
+        }
+
+        .text-box{
+            width: 35%;
+            margin:30px;
+        }
+            
     }

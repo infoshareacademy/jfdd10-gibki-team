@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="CSS/reset.css">
     <link rel="stylesheet" type="text/css" href="CSS/main.css">
     <link rel="stylesheet" type="text/css" href="CSS/header.css">
     <link rel="stylesheet" type="text/css" href="CSS/hero.css">
@@ -14,25 +16,45 @@
     <link rel="stylesheet" type="text/css" href="CSS/footer.css">
     <link href="media.css" rel="stylesheet" media="screen and (max-width: 600px)">    
 </head>
+
 <body>
     <!-- HEADER/nav -->
-    <div id="header">
-        <div class="logo"></div>
-        <div class="menu">
-            <div class="menu_item"><a href="#hero">Start</a></div>
-            <div class="menu_item">Functions</div>
-            <div class="menu_item">Sign up</div>
-            <div class="menu_item">About me</div>
-        </div>
-    </div>
+    <header class="header">
+        <a href="#hero_bg" class="logo"><img src="icons/logo.png"></a>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+          <li><a href="#hero_bg">Start</a></li>
+          <li><a href="#dscr">Features</a></li>
+          <li><a href="#form">Sign up</a></li>
+          <li><a href="#about_us">Team</a></li>
+        </ul>
+    </header>
     <!-- HERO -->
+
+   
     <div id="hero_bg">
+        <div class="image">
+            <img class="image-box" src="images-hero/game-on.jpg" alt="Game on">
+        </div>
+        <div class="text-box">
         <div class="hero_dscr">
-                Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass.
-            <br><br>
-            <div class="hero_signup_btn">Sign up!</div>
+            <h1 class="heading"> Move Your Ass! <br/>Accept The Challenge!
+            </h1>
+            <br/>
+            <p> Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while
+                I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case,
+                it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand
+                it over to your dumb ass.</p>
+        </div>
+        <div class="cta">
+            <a class="hero_signup_btn" href="#">Sign up!</a>
         </div>
     </div>
+    </div>
+
+    
+
     <!-- FUNCTIONS -->
     <div id="dscr" class="dscr">
         <div class="dscr_name">
@@ -67,7 +89,74 @@
             </div>
         </div>
     </div>
+    <!-- CZĘŚĆ INFORMUJĄCA O DOSTĘPNYCH SPORTACH z efektem parallaxy: -->
+
+    <div class="dscr_sports" id="dscr_sports">
+   
+            <div class="sports_flexbox">
+        
+                <div class="parallax-left">
+                    <div id="group1" class="parallax__group">
+                        <div class="parallax__layer parallax__layer--base"><img src="icons/sport/target-4-240.png">
+                            <div class="group1_green"><img src="icons/sport/tennis-2-240.png"></div>
+                        </div>
+                    </div>
+                    <div id="group2" class="parallax__group">
+                        <div class="parallax__layer parallax__layer--base">
+                            <div class="group2_orange"><img src="icons/sport/bicycle-4-240.png"></div>
+                        </div>
+                        <div class="parallax__layer parallax__layer--back">
+                            <div class="group2_blue"><img src="icons/sport/badminton-2-240.png"></div>
+                        </div>
+                        <div class="parallax__layer parallax__layer--deep">
+                            <div class="group2_yellow"><img src="icons/sport/snooker-2-240.png"></div>        
+                        </div>
+                    </div>
+        
+                    <div id="group3" class="parallax__group">
+                        <div class="parallax__layer parallax__layer--fore">
+                            <div class="group3_blueSmall"><img src="icons/sport/bowling-1-240.png"></div>
+                        </div>
+                        <div class="parallax__layer parallax__layer--base">
+                            <div class="group3_red"><img src="icons/sport/gamepad-12-240.png"></div>
+                        </div>
+                    </div>
+                    
+                    <div id="group4" class="parallax__group">
+                        <div class="parallax__layer parallax__layer--base">
+                            <div class="group4_orange"><img src="icons/sport/golf-1-240.png"></div>        
+                        </div>
+                        <div class="parallax__layer parallax__layer--back">
+                            <div class="group4_green"><img src="icons/sport/soccer-1-240.png"></div>      
+                        </div>
+                    </div>
+                </div>
+
+                <div class="parallax-right">
+                    <div class="parallax__layer speed-1">
+                        <div class="object object-1">Darts</div>
+                    </div>
+                    <div class="parallax__layer speed-2">
+                        <div class="object object-2">Snooker</div>
+                    </div>
+                    <div class="parallax__layer speed-3">
+                        <div class="object object-3">Basketball</div>
+                    </div>
+                    <div class="parallax__layer speed-4">
+                        <div class="object object-4">Football</div>
+                    </div>
+                    <div class="parallax__layer speed-5">
+                        <div class="object object-5">Golf</div>
+                    </div>
+                    <div class="parallax__layer speed-6">
+                        <div class="object object-6">Bike ride</div>
+                    </div>
+                </div> 
+            </div>
     
+    </div>
+    
+    <!-- KONIEC PARALAXY -->
     
     <!-- FORM -->
     <div id="form">
@@ -98,4 +187,5 @@
         <div class="foot_social"></div>
     </div>
 </body>
+
 </html>
