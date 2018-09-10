@@ -1,3 +1,7 @@
-#about_us {
+.about_us {
+display: flex;
+justify-content: space-around;
+}
+.team_item {
 
 }
