@@ -7,7 +7,7 @@
         flex-direction: column;
         animation: pulse 5s infinite;
         font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
-        
+        padding-top: 70px;
     }
 
 @keyframes pulse {
