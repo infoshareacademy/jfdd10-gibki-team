@@ -75,6 +75,7 @@ font-size: 20px;
         line-height: 1.8;
         padding: 10px 30px;
         text-decoration: none;
+        border-radius: 15px;
     }
     .hero_signup_btn:hover {
         border: none;
