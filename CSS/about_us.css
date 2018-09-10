@@ -15,14 +15,16 @@
 .member_photo img {
     height: 100%;
     width: 100%;
-    /* margin: 10px auto; */
 }
 .member_name {
-    font-size: 20px;
+    text-align: center;
+    font-size: 22px;
     margin: 10px auto;
 }
 .member_dscr {
-    font-size: 12px;
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
     margin: 10px auto;
 }
 .member_social {
