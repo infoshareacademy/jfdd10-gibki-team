@@ -20,17 +20,23 @@
 .member_name {
     text-align: center;
     font-size: 22px;
-    margin: 10px auto;
+    margin: 20px auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .member_dscr {
     height: 30px;
     text-align: center;
     font-size: 14px;
-    margin: 10px auto;
+    margin: 20px auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .member_social {
     display: flex;
     justify-content: space-around;
-    margin: 10px auto;
+    margin: 20px auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
