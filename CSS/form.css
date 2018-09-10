@@ -1,7 +1,7 @@
   input.button {
 
-        background: #B9DFFF;
-        color: #fff;
+        background: rgb(219, 255, 185);
+        color: rgb(0, 0, 0);
         border: 1px solid #eee;
         border-radius: 20px;
         box-shadow: 5px 5px 5px #eee;
@@ -12,8 +12,8 @@
         
     input.button:hover {
         
-        background: #016ABC;
-        color: #fff;
+        background: rgb(32, 188, 1);
+        color: rgb(0, 0, 0);
         border: 1px solid #eee;
         border-radius: 20px;
         box-shadow: 5px 5px 5px #eee;
@@ -21,20 +21,32 @@
         
         }
     .cont1 {
-        height: 10vh;
-        background-color: gray;
-        opacity: 0.5;
+        height: 150px;
+        padding: 20px;
+         
     }
-
+    h1{
+        text-align: center;
+        font-size: 50px;
+        text-transform: uppercase;
+        color:green;
+        text-shadow: 0 5px 10px rgba(0,0,0,1);
+        box-shadow: 0 5px 10px rgba(0,0,0,1);
+    
+    }
+    
     .cont2{
-        background-color: rgb(87, 86, 86);
+        
         display:flex;
         justify-content: center;
-        height: 5vh;
+        height: 6vh;
+        margin-top: 140px;
+        
     
     }
     .title{
-        padding: 20px;
+        margin-top: 60px;
+        padding: 40px;
         text-align: center;
         opacity: 1;
     }
@@ -42,6 +54,17 @@
         text-align: center;
     }
     .photo {
-        background-image: url(data:encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsP3-mZp1ldk_AdH8rYK2TNshAJbd3Bjdlw4V5YP5fJAjq1BCnuw); 
+        height: 50vh;
+        background: url(https://images.unsplash.com/photo-1521710338287-b65ff0a96e4a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2526bd0cb7dbf1f703d29c6dd0773e7b&auto=format&fit=crop&w=500&q=60); 
+        background-size: cover;
+        
+    }
+    ::-webkit-input-placeholder {
+        text-align: center;
+        
+    }
+
+    :-moz-placeholder {
+        text-align: center;
     }
   
