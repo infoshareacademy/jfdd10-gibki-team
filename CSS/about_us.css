@@ -1,7 +1,14 @@
 .about_us {
-display: flex;
-justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 .team_item {
-
+    height: 300px;
+    width: 200px;
+    margin: 5px; 
+}
+.member_photo {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
 }
