@@ -9,12 +9,6 @@
 .dscr {
     background-color: white;
     padding: 50px 150px;
-
-    height: 100vh;
-    width: 100%;
-    background-color: #FFF;
-    position: relative;
-    margin-bottom: 50vh;
 }
 .dscr_name {
     background-color: white;
