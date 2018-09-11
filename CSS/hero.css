@@ -44,7 +44,7 @@
     font-size: 25px;
 }
 
-h2{
+.hero-h2{
 color: rgb(240, 136, 1);
 line-height: 1.3;
 font-size: 20px;
@@ -130,12 +130,12 @@ font-size: 20px;
             list-style-type: circle;
             padding: 20px;
         }
-        p::first-line{
+        .p-hero::first-line{
             font-weight: bold;
             line-height: 2;
             }   
 
-            h2{
+        .hero-h2{
                 color: rgb(240, 136, 1);
                 line-height: 1.8;
                 font-size: 25px;
