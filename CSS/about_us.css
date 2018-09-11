@@ -2,13 +2,16 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    padding: 30px;
 }
 .team_item {
-    border: 2px solid #e49a22;
-    border-radius: 10px;
-    height: 320px;
+    /* border: 2px solid #e49a22; */
+    /* border-radius: 10px; */
+    box-shadow: 5px 5px 20px #e49a22;
+    height: 340px;
     width: 220px;
-    margin: 5px; 
+    margin: 5px;
+    padding: 10px; 
 }
 .member_photo {
     height: 100px;
