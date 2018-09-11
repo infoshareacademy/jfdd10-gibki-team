@@ -1,3 +1,42 @@
-#about_us {
-
+.about_us {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
+.team_item {
+    height: 100%;
+    width: 200px;
+    margin: 5px; 
+}
+.member_photo {
+    height: 100px;
+    width: 100px;
+    margin: 20px auto;
+}
+.member_photo img {
+    height: 100%;
+    width: 100%;
+}
+.member_name {
+    text-align: center;
+    font-size: 22px;
+    margin: 20px auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.member_dscr {
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+    margin: 20px auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.member_social {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
