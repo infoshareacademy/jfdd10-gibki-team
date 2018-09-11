@@ -1,6 +1,78 @@
-#form {
+   .button {
 
-}
-.form_item {
+        background: rgb(219, 255, 185);
+        color: rgb(0, 0, 0);
+        border: 1px solid #eee;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px #eee;
+        text-shadow:none;
+        text-align: center;
+        width: 150px;
+        }
+    
+    .email {
+        width: 300px;
+    }
+        
+    input.button:hover {
+        
+        background: rgb(32, 188, 1);
+        color: rgb(0, 0, 0);
+        border: 1px solid #eee;
+        border-radius: 20px;
+        box-shadow: 5px 5px 5px #eee;
+        text-shadow:none;
+        
+        }
+    cont1 {
+        height: 150px;
+        
 
-}
+        
+    }
+    h1.title {
+
+        text-align: center;
+        font-size: 50px;
+        text-transform: uppercase;
+        color:green;
+        text-shadow: 0 5px 10px rgba(0,0,0,1);
+        box-shadow: 0 5px 10px rgba(0,0,0,1);
+        opacity: 0.8;
+        padding: 40px;
+        margin-left: 80px;
+        margin-right: 80px;
+        
+    }    
+    form {
+        
+        display: flex;
+        justify-content: center;
+        height: 6vh;
+        margin-top: 120px;
+        
+        
+    
+    }
+    title{
+        
+        text-align: center;
+        
+    }
+    
+    
+    .photo {
+        height: 50vh;
+        background-image: url(https://images.unsplash.com/photo-1521710338287-b65ff0a96e4a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2526bd0cb7dbf1f703d29c6dd0773e7b&auto=format&fit=crop&w=500&q=60); 
+        background-size: cover;
+        
+    }
+    ::-webkit-input-placeholder {
+        text-align: center;
+        
+    }
+
+    :-moz-placeholder {
+        text-align: center;
+    }
+  
