@@ -7,11 +7,18 @@
         box-shadow: 5px 5px 5px #eee;
         text-shadow:none;
         text-align: center;
-        width: 150px;
+        width: 300px;
+        margin-bottom: 15px;
+        margin-top: 5px;
+        
         }
+    .name {
+        width: 300px;
+    }
     
     .email {
         width: 300px;
+        margin-top: 5px;
     }
         
     input.button:hover {
@@ -23,9 +30,10 @@
         box-shadow: 5px 5px 5px #eee;
         text-shadow:none;
         
+        
         }
     cont1 {
-        height: 150px;
+        min-height: 150px;
         
 
         
@@ -33,23 +41,25 @@
     h1.title {
 
         text-align: center;
-        font-size: 50px;
+        font-size: 40px;
         text-transform: uppercase;
         color:green;
         text-shadow: 0 5px 10px rgba(0,0,0,1);
         box-shadow: 0 5px 10px rgba(0,0,0,1);
         opacity: 0.8;
         padding: 40px;
-        margin-left: 80px;
-        margin-right: 80px;
+        margin-left: 2vh;
+        margin-right: 2vh;
         
     }    
     form {
         
         display: flex;
-        justify-content: center;
-        height: 6vh;
-        margin-top: 120px;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        min-height: 10vh;
+        margin-top: 40px;
+        margin-bottom: 20px;
         
         
     
@@ -62,7 +72,7 @@
     
     
     .photo {
-        height: 50vh;
+        min-height: 35vh;
         background-image: url(https://images.unsplash.com/photo-1521710338287-b65ff0a96e4a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2526bd0cb7dbf1f703d29c6dd0773e7b&auto=format&fit=crop&w=500&q=60); 
         background-size: cover;
         
@@ -75,4 +85,43 @@
     :-moz-placeholder {
         text-align: center;
     }
+
+    @media (min-width: 575.98px) {
+      form {
+        flex-wrap: nowrap;
+        min-height: 6vh;
+        justify-content: center;
+        margin-bottom: 30px;
+        margin-top: 40px; 
+        
+      } 
+      .button {
+          margin-top: 0px;
+          margin-bottom: 0px;
+          margin-left: 10px;
+          font-size: 20px;
+      } 
+      .email {
+          margin-top: 0px;
+          margin-left: 10px;
+      }
+      h1.title {
+          font-size: 60px;
+      }
+      .photo {
+        height: 400px;
+      }
+    
+        
+              
+    }
+    @media (min-width: 1312.98px) {
+        .photo {
+            height: 350px;
+
+        }
+
+
+    }
+    
   
