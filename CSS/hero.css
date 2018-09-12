@@ -5,7 +5,12 @@
         align-content: center;
         align-items: center;
         flex-direction: column;
+<<<<<<< HEAD
         font-family: 'Lobster', cursive;
+=======
+        animation: pulse 5s infinite;
+        font-family: "GTWalsheim", "Arial", "sans-serif", monospace;
+>>>>>>> origin/master
         padding-top: 70px;
     }
 

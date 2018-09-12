@@ -2,11 +2,16 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    padding: 30px;
 }
 .team_item {
-    height: 100%;
-    width: 200px;
-    margin: 5px; 
+    /* border: 2px solid #e49a22; */
+    /* border-radius: 10px; */
+    box-shadow: 5px 5px 20px #e49a22;
+    height: 340px;
+    width: 220px;
+    margin: 5px;
+    padding: 10px; 
 }
 .member_photo {
     height: 100px;
@@ -14,28 +19,29 @@
     margin: 20px auto;
 }
 .member_photo img {
+    border-radius: 10px;
     height: 100%;
     width: 100%;
 }
 .member_name {
     text-align: center;
     font-size: 22px;
-    margin: 20px auto;
+    margin: 10px auto;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 .member_dscr {
-    height: 30px;
+    height: 80px;
     text-align: center;
     font-size: 14px;
-    margin: 20px auto;
+    margin: 10px auto;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 .member_social {
     display: flex;
     justify-content: space-around;
-    margin: 20px auto;
+    margin: 10px auto;
     padding-top: 5px;
     padding-bottom: 5px;
 }
