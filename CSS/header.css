@@ -22,13 +22,13 @@
   .header li a {
     display: block;
     padding: 20px 20px;
-    border-right: 1px solid white;
+    border-right: 1px solid rgb(207, 214, 218);
     text-decoration: none;
   }
   
   .header li a:hover,
   .header .menu-btn:hover {
-    background-color: white;
+    background-color: rgb(207, 214, 218);
   }
   
   .header .logo {
