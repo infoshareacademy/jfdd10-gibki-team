@@ -5,7 +5,7 @@
         align-content: center;
         align-items: center;
         flex-direction: column;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Lobster', cursive;
         padding-top: 70px;
     }
 
@@ -84,9 +84,10 @@ font-size: 20px;
 
     @media (min-width: 768px) and (max-width: 991.98px) {
         #hero_bg {
+
             display: flex;
             justify-content: space-around;
-            flex-direction: row;
+            flex-direction: column;
             align-content: center;
     }
     }
@@ -95,31 +96,50 @@ font-size: 20px;
 
      @media (min-width: 992px){
         #hero_bg {
+           
             display: flex;
-            justify-content: space-around;
-            flex-direction: row;
-            align-content: center;
+            flex-direction: column;
+        
         }  
         
         .image-box{
             height: auto;
-            width: 85%;
-            margin: 30px;
+            width: 100%;
+            
         }
 
         .text-box{
-            width: 35%;
-            margin-right: 120px;
             line-height: 1.5;   
         
         }
-
-        .heading{
-            font-size: 30px;
+        .hero_dscr {
+            padding: 10px;
+            align-content: center;
+    
         }
 
+        .heading-top{
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+        }
+        .heading{
+            font-size: 70px;
+            font-weight: bold;
+            text-align: center;
+            
+        }
+
+        .hero-h2{
+            color: rgb(240, 136, 1);
+            line-height: 1.8;
+            font-size: 50px;
+            margin-top: 20px; auto;
+            
+            }
+
         ul{
-            line-height: 28px;
+            line-height: 38px;
             list-style-type: circle;
             padding: 20px;
         }
@@ -128,11 +148,6 @@ font-size: 20px;
             line-height: 2;
             }   
 
-        .hero-h2{
-                color: rgb(240, 136, 1);
-                line-height: 1.8;
-                font-size: 25px;
-                
-                }      
+             
 
     }
