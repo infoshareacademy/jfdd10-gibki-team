@@ -1,51 +1,46 @@
-    #hero_bg {
+ #hero_bg {
         background-color: rgb(207, 214, 218);
         display: flex;
-        justify-content: space-around;
-        align-content: center;
         align-items: center;
+        align-content: center;
         flex-direction: column;
-<<<<<<< HEAD
         font-family: 'Lobster', cursive;
-=======
-        animation: pulse 5s infinite;
-        font-family: "GTWalsheim", "Arial", "sans-serif", monospace;
->>>>>>> origin/master
-        padding-top: 70px;
+        padding-top: 60px;
+        margin: 0px;
     }
 
-.image-box{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: auto;
-    width: 100%;
-}
+
 .text-box{
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 85%;
-    margin:10px;
+    width: 100%;
     line-height: 1.2;
-    background-color: white;
 }
     .hero_dscr {
-        padding: 10px;
-        background-color: rgba(202, 185, 189, 0.2);
-        margin: 20px;
-
+        background-color: rgba(207, 214, 218, 0.863);
     }
 
-    .cta{
-        display: flex; 
-        align-content: center;
-        
-       
-    }
+.heading-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+  
+} 
 .heading{
-    font-size: 25px;
+    font-size: 30px;
 
+}
+
+.image-box{
+    width: 100%;
+    padding: 20px 0;
+}
+
+.hero-text{
+    padding: 12px;
+    
 }
 
 .hero-h2{
@@ -55,13 +50,23 @@ font-size: 20px;
 
 }
 
+.p-hero{
+   font-family: 'Roboto', sans-serif;
+   margin-top: 20px;
+}
 
    ul{
         line-height: 20px;
         list-style-type: circle;
         padding: 20px;
+        font-family: 'Roboto', sans-serif;
     }
-
+    .cta{
+        display: flex; 
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
     .hero_signup_btn {
         border: 1px #e49a22 solid;
         background-color: #e49a22;
@@ -100,57 +105,50 @@ font-size: 20px;
      /* Medium Screen */
 
      @media (min-width: 992px){
-        #hero_bg {
-           
-            display: flex;
-            flex-direction: column;
-        
-        }  
-        
-        .image-box{
-            height: auto;
-            width: 100%;
-            
-        }
 
+     
         .text-box{
             line-height: 1.5;   
+        }
         
-        }
-        .hero_dscr {
-            padding: 10px;
-            align-content: center;
-    
-        }
-
-        .heading-top{
-            display: flex;
-            flex-direction: column;
-            align-content: center;
-        }
         .heading{
-            font-size: 70px;
+            font-size: 65px;
             font-weight: bold;
             text-align: center;
             
+        }
+
+        .image-box{
+            width: 100%;
+        }
+    .hero-text{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        margin-top: -40px;
         }
 
         .hero-h2{
             color: rgb(240, 136, 1);
             line-height: 1.8;
             font-size: 50px;
-            margin-top: 20px; auto;
             
             }
+.p-hero{
+    line-height: 1.8;
+}
 
         ul{
-            line-height: 38px;
+            line-height: 1.8;
             list-style-type: circle;
             padding: 20px;
         }
         .p-hero::first-line{
             font-weight: bold;
-            line-height: 2;
+            line-height: 1.8;
+            font-size: 18px;
             }   
 
              
