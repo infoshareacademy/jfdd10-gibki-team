@@ -92,8 +92,9 @@
         min-height: 6vh;
         justify-content: center;
         margin-bottom: 30px;
-        margin-top: 40px; 
-        
+        margin-top: 50px; 
+        margin-left: 10px;
+        margin-right: 10px;
       } 
       .button {
           margin-top: 0px;
@@ -109,7 +110,7 @@
           font-size: 60px;
       }
       .photo {
-        height: 400px;
+        height: 450px;
       }
     
         

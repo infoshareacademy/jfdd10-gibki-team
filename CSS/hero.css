@@ -6,7 +6,7 @@
         align-items: center;
         flex-direction: column;
         animation: pulse 5s infinite;
-        font-family: "GTWalsheim", "Arial", "sans-serif"; monospace;
+        font-family: "GTWalsheim", "Arial", "sans-serif", monospace;
         padding-top: 70px;
     }
 
