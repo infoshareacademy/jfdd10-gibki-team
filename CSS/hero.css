@@ -1,76 +1,79 @@
-    #hero_bg {
-        background-color: antiquewhite;
+ #hero_bg {
+        background-color: rgb(207, 214, 218);
         display: flex;
-        justify-content: space-around;
-        align-content: center;
         align-items: center;
-        flex-direction: column;
-        animation: pulse 5s infinite;
-        font-family: "GTWalsheim", "Arial", "sans-serif", monospace;
-        padding-top: 70px;
-    }
-
-@keyframes pulse {
-0%{
-    background-color: rgb(227, 224, 228);
-}
-100% {
-    background-color: rgba(247, 233, 235, 0.911);
-}
-}
-
-.image-box{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: auto;
-    width: 100%;
-}
-
-    .hero_dscr {
-        padding: 10px;
-        background-color: rgba(202, 185, 189, 0.2);
-        margin-bottom: 10px;
-
-    }
-
-    .cta{
-        display: flex; 
         align-content: center;
-        
-       
+        flex-direction: column;
+        font-family: 'Lobster', cursive;
+        padding-top: 60px;
+        margin: 0px;
     }
-.heading{
-    font-size: 25px;
-}
 
-.hero-h2{
-color: rgb(240, 136, 1);
-line-height: 1.3;
-font-size: 20px;
 
-}
 .text-box{
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 85%;
-    margin:10px;
+    width: 100%;
     line-height: 1.2;
+}
+    .hero_dscr {
+        background-color: rgba(207, 214, 218, 0.863);
+    }
+
+.heading-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+  
+} 
+.heading{
+    font-size: 30px;
+
+}
+
+.image-box{
+    width: 100%;
+    padding: 20px 0;
+}
+
+.hero-text{
+    padding: 12px;
+    
+}
+
+.hero-h2{
+color: #e49a22;
+line-height: 1.3;
+font-size: 20px;
+
+}
+
+.p-hero{
+   font-family: 'Roboto', sans-serif;
+   margin-top: 20px;
 }
 
    ul{
         line-height: 20px;
         list-style-type: circle;
         padding: 20px;
+        font-family: 'Roboto', sans-serif;
     }
-
+    .cta{
+        display: flex; 
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
     .hero_signup_btn {
-        border: 1px rgb(243, 125, 29) solid;
-        background-color: rgba(240, 136, 1);
+        border: 1px #e49a22 solid;
+        background-color: #e49a22;
         font-size: 30px;
         text-align: center;
         margin-top: 10px;
+        margin-bottom: 10px;
         transition: font-size 2s;
         line-height: 1.8;
         padding: 10px 30px;
@@ -79,9 +82,9 @@ font-size: 20px;
     }
     .hero_signup_btn:hover {
         border: none;
-        background-color: rgba(255, 57, 7, 0.9);
+        background-color: #e49a22;
         color:rgb(247, 253, 252);
-        font-size: 50px;
+        font-size: 30px;
     
     }
 
@@ -91,9 +94,10 @@ font-size: 20px;
 
     @media (min-width: 768px) and (max-width: 991.98px) {
         #hero_bg {
+
             display: flex;
             justify-content: space-around;
-            flex-direction: row;
+            flex-direction: column;
             align-content: center;
     }
     }
@@ -101,45 +105,52 @@ font-size: 20px;
      /* Medium Screen */
 
      @media (min-width: 992px){
-        #hero_bg {
-            display: flex;
-            justify-content: space-around;
-            flex-direction: row;
-            align-content: center;
-        }  
-        
-        .image-box{
-            height: auto;
-            width: 85%;
-            margin: 30px;
-        }
 
+     
         .text-box{
-            width: 35%;
-            margin-right: 120px;
             line-height: 1.5;   
+        }
         
+        .heading{
+            font-size: 65px;
+            font-weight: bold;
+            text-align: center;
+            
         }
 
-        .heading{
-            font-size: 30px;
+        .image-box{
+            width: 100%;
         }
+    .hero-text{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        margin-top: -40px;
+        }
+
+        .hero-h2{
+            color: rgb(240, 136, 1);
+            line-height: 1.8;
+            font-size: 50px;
+            
+            }
+.p-hero{
+    line-height: 1.8;
+}
 
         ul{
-            line-height: 28px;
+            line-height: 1.8;
             list-style-type: circle;
             padding: 20px;
         }
         .p-hero::first-line{
             font-weight: bold;
-            line-height: 2;
+            line-height: 1.8;
+            font-size: 18px;
             }   
 
-        .hero-h2{
-                color: rgb(240, 136, 1);
-                line-height: 1.8;
-                font-size: 25px;
-                
-                }      
+             
 
     }
