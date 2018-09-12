@@ -1,4 +1,32 @@
+
+/*
 body {
     width: 100%;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(226, 223, 223);
+
 }
+
+
+h1 {
+    font-size: 25px;
+    line-height: 1.5;
+    letter-spacing: 3px;
+    color: #51cda0;
+}
+
+h2 {
+    line-height: 1.3;
+    font-size: 20px;
+
+}
+
+.hero_signup_btn{
+    background-color: #51cda0
+}
+
+button colors rgb(243, 125, 29) or #ff3366 #51cda0
+nav menu and  color #c7c7c7 - the same as image background in hero *//*/
+
+
