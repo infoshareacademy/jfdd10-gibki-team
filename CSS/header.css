@@ -5,7 +5,7 @@
   /* header */
 
   .header {
-    background-color: rgb(226, 223, 223);
+    background-color: rgb(162, 168, 172);
     position: fixed;
     width: 100%;
     z-index: 3;
@@ -16,19 +16,19 @@
     padding: 0;
     list-style: none;
     overflow: hidden;
-    background-color: rgb(226, 223, 223);
+    background-color: rgb(162, 168, 172);
   }
   
   .header li a {
     display: block;
     padding: 20px 20px;
-    border-right: 1px solid #f4f4f4;
+    border-right: 1px solid white;
     text-decoration: none;
   }
   
   .header li a:hover,
   .header .menu-btn:hover {
-    background-color: #f4f4f4;
+    background-color: white;
   }
   
   .header .logo {
@@ -55,7 +55,7 @@
   }
   
   .header .menu-icon .navicon {
-    background: rgb(110, 109, 109);
+    background: black;
     display: block;
     height: 2px;
     position: relative;
@@ -64,7 +64,7 @@
   
   .header .menu-icon .navicon:before,
   .header .menu-icon .navicon:after {
-    background: rgb(110, 109, 109);
+    background: black;
     content: '';
     display: block;
     height: 100%;
