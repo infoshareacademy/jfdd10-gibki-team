@@ -3,6 +3,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 30px;
+    /* background-color: rgb(207, 214, 218); */
 }
 .team_item {
     /* border: 2px solid #e49a22; */
@@ -12,7 +13,8 @@
     height: 340px;
     width: 220px;
     margin: 5px;
-    padding: 10px; 
+    padding: 10px;
+    background-color: rgb(207, 214, 218); 
 }
 .member_photo {
     height: 100px;
@@ -30,6 +32,7 @@
     margin: 10px auto;
     padding-top: 5px;
     padding-bottom: 5px;
+    font-family: 'Lobster', cursive;
 }
 .member_dscr {
     height: 80px;
@@ -38,6 +41,7 @@
     margin: 10px auto;
     padding-top: 5px;
     padding-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
 }
 .member_social {
     display: flex;
