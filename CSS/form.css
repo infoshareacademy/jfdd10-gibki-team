@@ -1,17 +1,29 @@
    .button {
 
-        background: rgb(219, 255, 185);
-        color: rgb(0, 0, 0);
-        border: 1px solid #eee;
-        border-radius: 10px;
-        box-shadow: 5px 5px 5px #eee;
-        text-shadow:none;
+        
         text-align: center;
         width: 300px;
         margin-bottom: 15px;
         margin-top: 5px;
+        font-family: 'Lobster', cursive;
+        border: 1px #e49a22 solid;
+        background-color: #e49a22;
+        text-align: center;
+        
+        line-height: 1.8;
+        padding: 10px 30px;
+        text-decoration: none;
+        border-radius: 15px;
         
         }
+        
+    input.button:hover {
+        border: none;
+        background-color: #e49a22;
+        color:rgb(247, 253, 252);
+        
+    }
+
     .name {
         width: 300px;
     }
@@ -19,19 +31,12 @@
     .email {
         width: 300px;
         margin-top: 5px;
+        
     }
         
-    input.button:hover {
-        
-        background: rgb(32, 188, 1);
-        color: rgb(0, 0, 0);
-        border: 1px solid #eee;
-        border-radius: 20px;
-        box-shadow: 5px 5px 5px #eee;
-        text-shadow:none;
+    
         
         
-        }
     cont1 {
         min-height: 150px;
         
@@ -40,10 +45,11 @@
     }
     h1.title {
 
+        font-family: 'Lobster', cursive;
         text-align: center;
         font-size: 40px;
         text-transform: uppercase;
-        color:green;
+        color: #e49a22;
         text-shadow: 0 5px 10px rgba(0,0,0,1);
         box-shadow: 0 5px 10px rgba(0,0,0,1);
         opacity: 0.8;
@@ -73,7 +79,7 @@
     
     .photo {
         min-height: 35vh;
-        background-image: url(https://images.unsplash.com/photo-1521710338287-b65ff0a96e4a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2526bd0cb7dbf1f703d29c6dd0773e7b&auto=format&fit=crop&w=500&q=60); 
+        background-image: url(https://files.slack.com/files-pri/TCJQZ9UGL-FCSPHUNTD/untitled_design__2_.png); 
         background-size: cover;
         
     }
