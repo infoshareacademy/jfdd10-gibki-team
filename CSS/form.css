@@ -1,6 +1,5 @@
    .button {
 
-        
         text-align: center;
         width: 300px;
         margin-bottom: 15px;
@@ -18,7 +17,7 @@
         }
         
     input.button:hover {
-        border: none;
+
         background-color: #e49a22;
         color:rgb(247, 253, 252);
         
@@ -70,6 +69,10 @@
         
     
     }
+    .infomail {
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+    }
     title{
         
         text-align: center;
@@ -106,7 +109,7 @@
           margin-top: 0px;
           margin-bottom: 0px;
           margin-left: 10px;
-          font-size: 20px;
+          font-size: 30px;
       } 
       .email {
           margin-top: 0px;
