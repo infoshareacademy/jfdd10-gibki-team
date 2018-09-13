@@ -1,6 +1,5 @@
    .button {
 
-        
         text-align: center;
         width: 300px;
         margin-bottom: 15px;
@@ -18,7 +17,7 @@
         }
         
     input.button:hover {
-        border: none;
+
         background-color: #e49a22;
         color:rgb(247, 253, 252);
         
@@ -50,7 +49,7 @@
         font-size: 40px;
         text-transform: uppercase;
         color: #e49a22;
-        text-shadow: 0 5px 10px rgba(0,0,0,1);
+        
         box-shadow: 0 5px 10px rgba(0,0,0,1);
         opacity: 0.8;
         padding: 40px;
@@ -70,6 +69,14 @@
         
     
     }
+    .infomail {
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        color: #e49a22;
+        font-size: 20px;
+        
+        
+    }
     title{
         
         text-align: center;
@@ -79,8 +86,14 @@
     
     .photo {
         min-height: 35vh;
-        background-image: url(https://files.slack.com/files-pri/TCJQZ9UGL-FCSPHUNTD/untitled_design__2_.png); 
-        background-size: cover;
+        
+       
+        background: url(https://images.unsplash.com/photo-1524474925134-3e49833a7a08?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=70d29e467247907b73e320b4a9183a1f&auto=format&fit=crop&w=500&q=60) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+
         
     }
     ::-webkit-input-placeholder {
@@ -106,7 +119,7 @@
           margin-top: 0px;
           margin-bottom: 0px;
           margin-left: 10px;
-          font-size: 20px;
+          font-size: 30px;
       } 
       .email {
           margin-top: 0px;
