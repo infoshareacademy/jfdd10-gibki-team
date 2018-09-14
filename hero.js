@@ -1,11 +1,22 @@
-var hero = document.querySelector ('.image-hand-left')
-var hero = document.querySelector ('.image-hand-left')
+var left = document.querySelector ('.image-hand-left')
+var left = document.querySelector ('.image-hand-left')
 
 
 window.addEventListener('scroll',function(){
     var screenOffset = window.scrollY;
-    var heroOffset = screenOffset *0.5; //predkosc przesuwania
+    var heroOffset = screenOffset *0.3; //predkosc przesuwania
 
-    hero.style.marginLeft = '-'+(heroOffset) + 'px';
-    hero.style.bottom = (0 - heroOffset) + 'px';
+    left.style.marginLeft = '-'+(heroOffset) + 'px';
+    left.style.bottom = (0 - heroOffset) + 'px';
+})
+
+var right = document.querySelector ('.image-hand-right');
+var right = document.querySelector ('.image-hand-right');
+
+window.addEventListener('scroll',function(){
+    var screenOffset = window.scrollY;
+    var heroOffset = screenOffset *0.3; //predkosc przesuwania
+
+    right.style.marginRight = '-' + (heroOffset) + 'px';
+    right.style.bottom = (0 - heroOffset) + 'px';
 })
