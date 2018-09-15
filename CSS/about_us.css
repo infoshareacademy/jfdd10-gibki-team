@@ -59,6 +59,11 @@
     letter-spacing: 20px;
     /* margin: 2px; */
 }
+.team-slider {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 .team-next-button,
 .team-prev-button {
     width: 0; 
