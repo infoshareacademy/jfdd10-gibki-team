@@ -1,6 +1,3 @@
-//WARUNEK ŻEBY ODPALAŁ SIĘ TYLKO JEŻELI SCREEN WIDTH < 576
-//ALBO NA SZEROKIM NIECH SIĘ BARDZO WOLNO SLIDUJE
-
 var previousButton = document.querySelector('.team-prev-button');
 var nextButton = document.querySelector('.team-next-button');
 var navigation = document.querySelector('.team-slider-nav');
