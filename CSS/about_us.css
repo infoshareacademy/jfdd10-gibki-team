@@ -50,7 +50,15 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
-
+.team-slider-nav {
+    display: flex;
+    justify-content: center;
+}
+.team-slider-nav span {
+    font-size: 50px;
+    letter-spacing: 20px;
+    /* margin: 2px; */
+}
 .team-next-button,
 .team-prev-button {
     width: 0; 
