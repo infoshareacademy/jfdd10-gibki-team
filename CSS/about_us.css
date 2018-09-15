@@ -1,7 +1,7 @@
 .about_us {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    /* display: flex; */
+    /* justify-content: space-around; */
+    /* flex-wrap: wrap; */
     padding: 30px;
     /* background-color: rgb(207, 214, 218); */
 }
@@ -51,3 +51,28 @@
     padding-bottom: 5px;
 }
 
+.team-next-button,
+.team-prev-button {
+    width: 0; 
+    height: 0; 
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+  .team-next-button {
+    border-left: 15px solid #e49a22;
+}
+  .team-prev-button {
+    border-right:15px solid #e49a22; 
+}
+
+/* 576px */
+
+@media (min-width: 576px) {
+
+.team-slider-nav,
+.team-next-button,
+.team-prev-button {
+    display: none;
+}
+
+}
