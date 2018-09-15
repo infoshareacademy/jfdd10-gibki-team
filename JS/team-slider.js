@@ -1,3 +1,6 @@
+//WARUNEK ŻEBY ODPALAŁ SIĘ TYLKO JEŻELI SCREEN WIDTH < 576
+//ALBO NA SZEROKIM NIECH SIĘ BARDZO WOLNO SLIDUJE
+
 var previousButton = document.querySelector('.team-prev-button');
 var nextButton = document.querySelector('.team-next-button');
 var navigation = document.querySelector('.team-slider-nav');
@@ -13,10 +16,10 @@ previousButton.addEventListener('click', function () {
 
 var intervalId = setInterval(function () {
    activateNextSlide()
-}, 2000);
+}, 2500);
 
 function activateNextSlide() {
-   var element = document.querySelector('.team-items div:first-child');
+   var element = document.querySelector('.team-items section:first-child');
    element.parentElement.appendChild(element);
 
    var current = navigation.querySelector('.active');
@@ -27,7 +30,7 @@ function activateNextSlide() {
 }
 
 function activatePreviousSlide() {
-  var element = document.querySelector('.team-items div:last-child');
+  var element = document.querySelector('.team-items section:last-child');
   element.parentElement.prepend(element);
 
   var current = navigation.querySelector('.active');

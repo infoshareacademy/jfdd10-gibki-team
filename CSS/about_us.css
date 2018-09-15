@@ -67,14 +67,14 @@
     justify-content: space-around;
     align-items: center;
 }
-.team-items div {
+.team-items section {
     display: none;
 }
-.team-items div:first-child {
+.team-items section:first-child {
     display: block;
     /* opacity: 1; */
     /* animation: show 3s; */
-  }
+}
 /* @keyframes show {
     0% {
       opacity: 0;
