@@ -67,6 +67,24 @@
     justify-content: space-around;
     align-items: center;
 }
+.team-items div {
+    display: none;
+}
+.team-items div:first-child {
+    display: block;
+    /* opacity: 1; */
+    /* animation: show 3s; */
+  }
+/* @keyframes show {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+} */
+
 .team-next-button,
 .team-prev-button {
     cursor: pointer;
