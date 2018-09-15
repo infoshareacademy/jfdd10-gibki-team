@@ -54,6 +54,9 @@
     display: flex;
     justify-content: center;
 }
+.team-slider-nav .active {
+    color: #e49a22;
+}
 .team-slider-nav span {
     font-size: 50px;
     letter-spacing: 20px;
@@ -66,6 +69,7 @@
 }
 .team-next-button,
 .team-prev-button {
+    cursor: pointer;
     width: 0; 
     height: 0; 
     border-top: 15px solid transparent;
