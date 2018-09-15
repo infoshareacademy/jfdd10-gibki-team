@@ -74,5 +74,10 @@
 .team-prev-button {
     display: none;
 }
+.team-items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
 
 }
