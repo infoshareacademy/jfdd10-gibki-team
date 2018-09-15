@@ -114,5 +114,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
-
+.team-items section {
+    display: block;
+}
 }
