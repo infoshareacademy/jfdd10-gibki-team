@@ -1,0 +1,1 @@
+var boardContainer = document.querySelector('#board-wrapper');
