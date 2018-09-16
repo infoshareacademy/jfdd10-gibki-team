@@ -58,31 +58,44 @@ var hugoRect = hugo.getBoundingClientRect();
 console.log(hugoRect);
 var hugoYBottomStart = hugoRect.bottom;
 var hugoXCenterStart = hugoRect.x + hugoRect.width/2;
+var positionX = hugoXCenterStart;
 console.log(hugoYBottomStart);
 console.log(hugoXCenterStart);
 
 //Ruch Huga
 // var positionX = 0;
-var velocity = 0.05;
+var velocity = 0;
 var isLeftArrowPressed = false;
 var isUpArrowPressed = false;
 var isRightArrowPressed = false;
 var dTime = 16;
 
-// Listening for user input ; left arrow code: 37, up arrow: 38, right arrow: 39
+// Listening for user input
 window.addEventListener('keydown', function (event) {
-    if (event.code === '37') {
+    if (event.code === 'ArrowLeft') {
       isLeftArrowPressed = true;
     }
-    // if (event.code === '38') {
-    //     isUpArrowPressed = true;
-    // }
-    // if (event.code === '39') {
-    //     isRightArrowPressed = true;
-    // }
-  })
-
-// Updating situation on screen
+})
+window.addEventListener('keyup', function () {
+    if (event.code === 'ArrowLeft') {
+      isLeftArrowPressed = false;
+    }
+})
+//Updating situation on screen
+// setInterval(function () {
+//     if (isLeftArrowPressed) {
+//         velocity = 0.05;
+//     }
+//     hugoRect.x = hugoXCenterStart - velocity * dTime - hugoRect.width/2;
+//     console.log(hugoRect.x);
+// }, dTime)
 setInterval(function () {
-    hugoRect.x = hugoXCenterStart - velocity * dTime - hugoRect.width/2;
+    if (isLeftArrowPressed) {
+        velocity = 0.05;
+    } else {
+        velocity = 0;
+    }
+    positionX = positionX - velocity * dTime;
+    console.log(positionX);
+    hugo.style.marginRight = hugoXCenterStart - positionX + 'px'
 }, dTime)
