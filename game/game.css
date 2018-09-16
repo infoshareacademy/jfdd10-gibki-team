@@ -1,0 +1,10 @@
+#board-wrapper {
+    height: 400px;
+    width: 400px;
+    background-color: gray;
+}
+#board-wrapper > div {
+    height: 100px;
+    width: 400px;
+    background-color: lightgray;
+}
