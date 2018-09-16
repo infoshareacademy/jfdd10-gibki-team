@@ -50,5 +50,5 @@ for (var j = 0; j < boardData.length; j += 1) {
 //wygenrowanie Huga i ustawienie na pozycji startowej
 var hugo = document.createElement('div');
 hugo.classList.add('hugoFront');
-var startDoors = document.querySelector('startDoors');
+var startDoors = document.querySelector('.startDoors');
 startDoors.appendChild(hugo);
