@@ -1,7 +1,7 @@
 //WYGENEROWANIE PLANSZY
 
 //główny kontener planszy
-var boardContainer = document.querySelector('#board-wrapper');
+var boardContainer = document.querySelector('#boardWrapper');
 
 //przykładowa plansza: _-empty cell,s-startDoors,e-endDoors,l-drabina,d-diamond 
 var boardData = [
@@ -32,10 +32,10 @@ for (var j = 0; j < boardData.length; j += 1) {
         var cell = document.createElement('div');
         cell.classList.add('emptyCell'); //nadanie komórce (cell) klasy domyślnej .emptyCell
         if (rowData[i] === 's') {
-            cell.classList.add('start-doors');
+            cell.classList.add('startDoors');
         }
         if (rowData[i] === 'e') {
-            cell.classList.add('end-doors');
+            cell.classList.add('endDoors');
         }
         if (rowData[i] === 'l') {
             cell.classList.add('ladder');
@@ -50,3 +50,5 @@ for (var j = 0; j < boardData.length; j += 1) {
 //wygenrowanie Huga i ustawienie na pozycji startowej
 var hugo = document.createElement('div');
 hugo.classList.add('hugoFront');
+var startDoors = document.querySelector('startDoors');
+startDoors.appendChild(hugo);
