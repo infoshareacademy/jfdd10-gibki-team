@@ -39,3 +39,18 @@
     background: yellow;
     height: 40px;
 }
+.hugoFront, .hugoLeft, .hugoRight, .hugoBack {
+    height: 60px;
+  }
+.hugoFront {
+    background: orange;
+}
+.hugoLeft {
+    background: pink;
+}
+.hugoRight {
+    background: purple;
+}
+.hugoBack {
+    background: black;
+}

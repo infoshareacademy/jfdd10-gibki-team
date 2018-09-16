@@ -1,3 +1,5 @@
+//WYGENEROWANIE PLANSZY
+
 //główny kontener planszy
 var boardContainer = document.querySelector('#board-wrapper');
 
@@ -6,7 +8,7 @@ var boardData = [
     '_e__d___d_',
     '_d____l_d_',
     'd__l____d_',
-    '_d____l__s',
+    '_d____l__s',//hugo startuje z pozycji s
 ]
 
 //wygenerowanie grida na elementy plaszy, nadanie mu klasy .grid i przypięcie do boardContainera
@@ -44,3 +46,7 @@ for (var j = 0; j < boardData.length; j += 1) {
         row.appendChild(cell); //przypięcie pojedynczej komórki (cell) do wiersza (row)
     }
 }
+
+//wygenrowanie Huga i ustawienie na pozycji startowej
+var hugo = document.createElement('div');
+hugo.classList.add('hugoFront');
