@@ -2,17 +2,17 @@
 var boardContainer = document.querySelector('#board-wrapper');
 
 //cztery poziomy planszy, poziom floor-0 - najniższy
-var floor3 = document.querySelector('.floor-3');
-var floor2 = document.querySelector('.floor-2');
-var floor1 = document.querySelector('.floor-1');
-var floor0 = document.querySelector('.floor-0');
+// var floor3 = document.querySelector('.floor-3');
+// var floor2 = document.querySelector('.floor-2');
+// var floor1 = document.querySelector('.floor-1');
+// var floor0 = document.querySelector('.floor-0');
 
 //drzwi wejściowe (punkt startowy - poziom floor-1) i drzwi wyjściowe (punkt końcowy - poziom floor-3)
-var startDoors = document.querySelector('.start-doors');
-var endDoors = document.querySelector('.end-doors');
+// var startDoors = document.querySelector('.start-doors');
+// var endDoors = document.querySelector('.end-doors');
 
 //podział poziomów na części
-var floorDivision = 10; //każdy poziom dzielimy na tyle mniejszych
+// var floorDivision = 10; //każdy poziom dzielimy na tyle mniejszych
 
 //przykładowa plansza: _-empty cell,s-startDoors,e-endDoors,l-drabina,d-diamond 
 var boardData = [
@@ -24,8 +24,7 @@ var boardData = [
 
 var grid = document.createElement('div');
 grid.classList.add('grid');
-
-appContainer.appendChild(grid);
+boardContainer.appendChild(grid);
 
 for (var j = 0; j < boardData.length; j += 1) {
     var row = document.createElement('div');
@@ -38,12 +37,18 @@ for (var j = 0; j < boardData.length; j += 1) {
 
     for (var i = 0; i < size; i += 1) {
         var cell = document.createElement('div');
-        cell.classList.add('gridCell');
-        if (rowData[i] === '#') {
-            cell.classList.add('wall');
+        cell.classList.add('emptyCell');
+        if (rowData[i] === 's') {
+            cell.classList.add('start-doors');
         }
-        if (rowData[i] === 'c') {
-            cell.classList.add('pacman');
+        if (rowData[i] === 'e') {
+            cell.classList.add('end-doors');
+        }
+        if (rowData[i] === 'l') {
+            cell.classList.add('ladder');
+        }
+        if (rowData[i] === 'd') {
+            cell.classList.add('diamond');
         }
         row.appendChild(cell);
     }

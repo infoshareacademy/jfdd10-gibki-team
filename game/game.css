@@ -1,10 +1,40 @@
 #board-wrapper {
     height: 400px;
     width: 400px;
-    background-color: gray;
+    background: gray;
 }
-#board-wrapper > div {
-    height: 100px;
+.grid {
+    display: flex;
+    flex-direction: column;
     width: 400px;
-    background-color: lightgray;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.gridRow {
+    display: flex;
+    justify-content: space-around;
+    align-items:flex-end;
+    border: 1px solid black;
+}
+.emptyCell {
+    height: 100px;
+    flex-grow: 1;
+    background: gray;
+    box-sizing: border-box;
+    /* border: 2px solid white; */
+}
+.start-doors {
+    background: red;
+    height: 60px;
+  }
+.end-doors {
+    background: green;
+    height: 60px;
+}
+.ladder {
+    background: blue;
+}
+.diamond {
+    background: yellow;
+    height: 40px;
 }
