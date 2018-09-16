@@ -62,8 +62,8 @@ console.log(hugoYBottomStart);
 console.log(hugoXCenterStart);
 
 //Ruch Huga
-var position = 0;
-var velocity = 0;
+// var positionX = 0;
+var velocity = 0.05;
 var isLeftArrowPressed = false;
 var isUpArrowPressed = false;
 var isRightArrowPressed = false;
@@ -74,20 +74,15 @@ window.addEventListener('keydown', function (event) {
     if (event.code === '37') {
       isLeftArrowPressed = true;
     }
-    if (event.code === '38') {
-        isUpArrowPressed = true;
-    }
-    if (event.code === '39') {
-        isRightArrowPressed = true;
-    }
+    // if (event.code === '38') {
+    //     isUpArrowPressed = true;
+    // }
+    // if (event.code === '39') {
+    //     isRightArrowPressed = true;
+    // }
   })
 
 // Updating situation on screen
-// setInterval(function () {
-    // Make calculations
-    // velocity = 0.5;
-    // position = position + velocity * dTime;
-
-    // Render new car position
-    // car.style.transform = 'rotate(' + position + 'deg)';
-//   }, dTime)
+setInterval(function () {
+    hugoRect.x = hugoXCenterStart - velocity * dTime - hugoRect.width/2;
+}, dTime)
