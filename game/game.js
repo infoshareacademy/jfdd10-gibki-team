@@ -52,3 +52,42 @@ var hugo = document.createElement('div');
 hugo.classList.add('hugoFront');
 var startDoors = document.querySelector('.startDoors');
 startDoors.appendChild(hugo);
+
+//Startowa pozycja Huga
+var hugoRect = hugo.getBoundingClientRect();
+console.log(hugoRect);
+var hugoYBottomStart = hugoRect.bottom;
+var hugoXCenterStart = hugoRect.x + hugoRect.width/2;
+console.log(hugoYBottomStart);
+console.log(hugoXCenterStart);
+
+//Ruch Huga
+var position = 0;
+var velocity = 0;
+var isLeftArrowPressed = false;
+var isUpArrowPressed = false;
+var isRightArrowPressed = false;
+var dTime = 16;
+
+// Listening for user input ; left arrow code: 37, up arrow: 38, right arrow: 39
+window.addEventListener('keydown', function (event) {
+    if (event.code === '37') {
+      isLeftArrowPressed = true;
+    }
+    if (event.code === '38') {
+        isUpArrowPressed = true;
+    }
+    if (event.code === '39') {
+        isRightArrowPressed = true;
+    }
+  })
+
+// Updating situation on screen
+// setInterval(function () {
+    // Make calculations
+    // velocity = 0.5;
+    // position = position + velocity * dTime;
+
+    // Render new car position
+    // car.style.transform = 'rotate(' + position + 'deg)';
+//   }, dTime)
