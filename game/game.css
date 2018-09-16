@@ -1,7 +1,10 @@
 #board-wrapper {
     height: 400px;
     width: 400px;
-    background: gray;
+    background: lightgray;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
 }
 .grid {
     display: flex;
@@ -14,14 +17,12 @@
     display: flex;
     justify-content: space-around;
     align-items:flex-end;
-    border: 1px solid black;
 }
 .emptyCell {
     height: 100px;
     flex-grow: 1;
-    background: gray;
+    background: lightgray;
     box-sizing: border-box;
-    /* border: 2px solid white; */
 }
 .start-doors {
     background: red;
