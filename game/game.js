@@ -94,12 +94,12 @@ window.addEventListener('keyup', function () {
 
 //Ruch Huga - obliczenia
 setInterval(function () {
-    if (isLeftArrowPressed) {
+    if (isLeftArrowPressed && rightOffset <= 360) {
         velocity = 0.05;
         rightOffset = rightOffset + velocity * dTime;
         hugo.style.right = rightOffset + 'px';
     } else {
-        if (isRightArrowPressed) {
+        if (isRightArrowPressed && rightOffset >= 0) {
             velocity = 0.05;
             rightOffset = rightOffset - velocity * dTime;
             hugo.style.right = rightOffset + 'px';
