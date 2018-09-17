@@ -20,9 +20,8 @@ boardContainer.appendChild(grid);
 for (var j = 0; j < boardData.length; j += 1) {
     var row = document.createElement('div');
     row.classList.add('gridRow');
-    row.style.borderBottom = '1px solid black'; //hack na nakładanie się borderów
 
-    grid.appendChild(row); //przypięcie wygenerowanego wiersza do grida
+    grid.appendChild(row); //przypięcie wygenerowanego wiersza z pętli poniżej do grida
 
     var rowData = boardData[j];
     var size = rowData.length;
@@ -43,11 +42,11 @@ for (var j = 0; j < boardData.length; j += 1) {
         if (rowData[i] === 'd') {
             cell.classList.add('diamond');
         }
-        row.appendChild(cell); //przypięcie pojedynczej komórki (cell) do wiersza (row)
+        row.appendChild(cell); //przypięcie pojedynczej komórki (cell) do wiersza (row) - cała pętla tworzy pojedynczy wiersz
     }
 }
 
-//wygenrowanie Huga i ustawienie na pozycji startowej
+//wygenrowanie Huga (pozycja przodem) i ustawienie na pozycji startowej
 var hugo = document.createElement('div');
 hugo.classList.add('hugoFront');
 var startDoors = document.querySelector('.startDoors');
@@ -56,14 +55,15 @@ startDoors.appendChild(hugo);
 //Startowa pozycja Huga
 var hugoRect = hugo.getBoundingClientRect();
 console.log(hugoRect);
-var hugoYBottomStart = hugoRect.bottom;
-var hugoXCenterStart = hugoRect.x + hugoRect.width/2;
-var positionX = hugoXCenterStart;
+var hugoYBottomStart = hugoRect.bottom; //404
+var hugoXCenterStart = hugoRect.x + hugoRect.width/2; //381
+// var positionX = hugoXCenterStart;
 console.log(hugoYBottomStart);
 console.log(hugoXCenterStart);
 
 //Ruch Huga
 // var positionX = 0;
+var rightOffset = 0;
 var velocity = 0;
 var isLeftArrowPressed = false;
 var isUpArrowPressed = false;
@@ -81,21 +81,14 @@ window.addEventListener('keyup', function () {
       isLeftArrowPressed = false;
     }
 })
-//Updating situation on screen
-// setInterval(function () {
-//     if (isLeftArrowPressed) {
-//         velocity = 0.05;
-//     }
-//     hugoRect.x = hugoXCenterStart - velocity * dTime - hugoRect.width/2;
-//     console.log(hugoRect.x);
-// }, dTime)
+
+//Ruch Huga - obliczenia
 setInterval(function () {
     if (isLeftArrowPressed) {
         velocity = 0.05;
     } else {
         velocity = 0;
     }
-    positionX = positionX - velocity * dTime;
-    console.log(positionX);
-    hugo.style.marginRight = hugoXCenterStart - positionX + 'px'
+    rightOffset = rightOffset + velocity * dTime;
+    hugo.style.right = rightOffset + 'px';
 }, dTime)
