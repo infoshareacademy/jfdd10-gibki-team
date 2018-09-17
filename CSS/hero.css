@@ -7,6 +7,8 @@
     font-family: 'Lobster', cursive;
     padding-top: 60px;
     margin: 0px;
+
+
 }
 
 
@@ -19,6 +21,7 @@ line-height: 1.2;
 }
 .hero_dscr {
     background-color: rgba(207, 214, 218, 0.863);
+    overflow: hidden;
 }
 
 .heading-top{
