@@ -9,13 +9,12 @@
     <link rel="stylesheet" type="text/css" href="CSS/reset.css">
     <link rel="stylesheet" type="text/css" href="CSS/main.css">
     <link rel="stylesheet" type="text/css" href="CSS/header.css">
-    <link rel="stylesheet" type="text/css" href="CSS/hero.css">
+    <link rel="stylesheet" type="text/css" href="CSS/hero.css?v=14.09.16.36"> <!-- ustawienia daty i godziny, info dla przegladarki o nowej wersji pliku, wiec przegladarka pobiera ja, zamiast korzystac z cache -->
     <link rel="stylesheet" type="text/css" href="CSS/dscr.css">
     <link rel="stylesheet" type="text/css" href="CSS/form.css">
     <link rel="stylesheet" type="text/css" href="CSS/about_us.css">
     <link rel="stylesheet" type="text/css" href="CSS/footer.css">
     <link rel="icon" href="icons/logo.png" type="image/x-icon">
-    <link href="media.css" rel="stylesheet" media="screen and (max-width: 600px)">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
@@ -44,13 +43,14 @@
                     <h1 class="heading"> Move Your Ass! <br />Accept The Challenge!
                     </h1>
                 </div>
-                <div class="image">
-                    <img class="image-box" src="images-hero/hero-hands-narrow.png" alt="Game on">
+                <div class="image-container">
+                    <img class="image-hand-left" src="images-hero/left-hand.png" alt="Left Hand">
+                    <img class="image-hand-right" src="images-hero/right-hand.png" alt="Right Hand">
                 </div>
                 <div class="hero-text">
-                    <h2 class="hero-h2">Too much work? Not enough time?</h2>
+                    <h2 class="hero-h2">Too much work? Brain Overload?</h2>
                     <p class="p-hero">Take a break! Enter the ClimbApp World and have some FUN!<br> With this great App
-                        you can enter other tournaments or create your challenge. </p>
+                        you can create tournaments with your co-workers. </p>
                     <ul>
                         <li>Unforgetable experience guaranteed</li>
                         <li>Create your own team or join other players</li>
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="cta">
-                    <a class="hero_signup_btn" href="#form">Try ClimbApp!</a>
+                    <a class="hero_signup_btn" href="#form1">Try ClimbApp!</a>
                 </div>
             </div>
         </div>
@@ -98,8 +98,6 @@
                         killed the world once and got a taste for murder.</p>
                 </div>
             </div>
-        </div>
-        <div class="dscr_bottom">
             <div class="dscr_bg">
                 <img src="icons/medal-14-240.png" alt="">
                 <div class="dscr_item">
@@ -171,9 +169,9 @@
                 <p>Junior Front-end developer ready to help with your projects.</p>
             </div>
             <div class="member_social">
-                <a href="" target="_blank" class="social_logo"><img src="icons/GitHub-Mark-32px.png"></a>
-                <a href="" target="_blank" class="social_logo"><img src="icons/Logo-2C-28px-TM.png"></a>
-                <a href="" target="_blank" class="social_logo"><img src="icons/homepage_32.png"></a>
+                <a href="https://github.com/EmilP1" target="_blank" class="social_logo"><img src="icons/GitHub-Mark-32px.png"></a>
+                <a href="https://www.linkedin.com/feed/?trk=onboarding-landing" target="_blank" class="social_logo"><img src="icons/Logo-2C-28px-TM.png"></a>
+                <a href="https://EmilP1.github.io/" target="_blank" class="social_logo"><img src="icons/homepage_32.png"></a>
             </div>
         </div>
         <!-- JACEK -->
@@ -212,17 +210,18 @@
     <!-- FOOTER -->
     <div id="footer" class="footer">
         <div class="foot_nav">
-            <h4>More info</h4>
-            <p class="foot_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, mollitia eaque
-                assumenda temporibus distinctio earum, optio nesciunt sequi beatae molestias quam rem fugit quia
-                architecto magnam id odit consequatur incidunt! Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Sed praesentium labore, reiciendis totam, sequi sunt quae ab saepe non nemo soluta corrupti
-                repudiandae minima aut. Mollitia cum esse non eveniet? Lorem ipsum, dolor sit amet consectetur
-                adipisicing elit. Consequatur ipsam ipsa quia dolore quis eum, asperiores, eos molestias illo sit
-                mollitia quod at. At eligendi quis earum delectus perferendis suscipit.
+            <h4>MORE INFO</h4>
+            <p class="foot_info">
+                <a href="">Regulations</a>
+                <br>
+                <a href="">Regulations</a>
+                <br>
+                <a href="">Regulations</a>
                 <br>
                 <a href="">Regulations</a>
             </p>
+            <br/>
+           <p>copyright © all rights reserved 2018 GIBKI TEAM </p>
         </div>
         <div class="foot_right">FOLLOW
             <div class="foot_social">
@@ -233,6 +232,7 @@
             </div>
         </div>
     </div>
+    <script src="hero.js"></script>
 </body>
 
 </html>
