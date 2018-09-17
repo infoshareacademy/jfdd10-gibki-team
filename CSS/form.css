@@ -51,8 +51,8 @@
         font-family: 'Lobster', cursive;
         text-align: center;
         font-size: 40px;
-        text-transform: uppercase;
-        color: #e49a22;
+        /* text-transform: uppercase; */
+        color: white;
         box-shadow: 0 5px 10px rgba(0,0,0,1);
         padding: 40px;
         margin-left: 2vh;
@@ -74,7 +74,8 @@
     .infomail {
         font-family: 'Roboto', sans-serif;
         text-align: center;
-        color: #e49a22;
+        color: white;
+        font-weight: 700;
         font-size: 20px;
         
         

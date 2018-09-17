@@ -51,6 +51,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    cursor: default;
 }
 .foot_ico1 {
     background: rgba(255, 255, 255, 0.5);
