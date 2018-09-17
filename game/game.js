@@ -56,7 +56,7 @@ startDoors.appendChild(hugo);
 var hugoRect = hugo.getBoundingClientRect();
 console.log(hugoRect);
 var hugoYBottomStart = hugoRect.bottom; //404
-var hugoXCenterStart = hugoRect.x + hugoRect.width/2; //381
+var hugoXCenterStart = hugoRect.x + hugoRect.width / 2; //381
 // var positionX = hugoXCenterStart;
 console.log(hugoYBottomStart);
 console.log(hugoXCenterStart);
@@ -73,12 +73,22 @@ var dTime = 16;
 // Listening for user input
 window.addEventListener('keydown', function (event) {
     if (event.code === 'ArrowLeft') {
-      isLeftArrowPressed = true;
+        isLeftArrowPressed = true;
     }
 })
 window.addEventListener('keyup', function () {
     if (event.code === 'ArrowLeft') {
-      isLeftArrowPressed = false;
+        isLeftArrowPressed = false;
+    }
+})
+window.addEventListener('keydown', function (event) {
+    if (event.code === 'ArrowRight') {
+        isRightArrowPressed = true;
+    }
+})
+window.addEventListener('keyup', function () {
+    if (event.code === 'ArrowRight') {
+        isRightArrowPressed = false;
     }
 })
 
@@ -86,9 +96,15 @@ window.addEventListener('keyup', function () {
 setInterval(function () {
     if (isLeftArrowPressed) {
         velocity = 0.05;
+        rightOffset = rightOffset + velocity * dTime;
+        hugo.style.right = rightOffset + 'px';
     } else {
-        velocity = 0;
+        if (isRightArrowPressed) {
+            velocity = 0.05;
+            rightOffset = rightOffset - velocity * dTime;
+            hugo.style.right = rightOffset + 'px';
+        } else {
+            velocity = 0;
+        }
     }
-    rightOffset = rightOffset + velocity * dTime;
-    hugo.style.right = rightOffset + 'px';
 }, dTime)
