@@ -67,11 +67,12 @@ var rightOffset = 0;
 var bottomOffset = 0;
 var velocity = 0;
 var isLeftArrowPressed = false;
-var isUpArrowPressed = false;
 var isRightArrowPressed = false;
+var isUpArrowPressed = false;
+var isDownArrowPressed = false;
 var dTime = 10;
 
-// Listening for user input
+// Listening for user input - move: left, right, up, bottom
 window.addEventListener('keydown', function (event) {
     if (event.code === 'ArrowLeft') {
         isLeftArrowPressed = true;
@@ -102,6 +103,16 @@ window.addEventListener('keyup', function () {
         isUpArrowPressed = false;
     }
 })
+window.addEventListener('keydown', function (event) {
+    if (event.code === 'ArrowDown') {
+        isDownArrowPressed = true;
+    }
+})
+window.addEventListener('keyup', function () {
+    if (event.code === 'ArrowDown') {
+        isDownArrowPressed = false;
+    }
+})
 
 //Ruch Huga - obliczenia
 setInterval(function () {
@@ -120,8 +131,16 @@ setInterval(function () {
                 bottomOffset = bottomOffset + velocity * dTime;
                 hugo.style.bottom = bottomOffset + 'px';
             } else {
-                velocity = 0;
+                if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 303) {
+                    velocity = 0.1;
+                    bottomOffset = bottomOffset - velocity * dTime;
+                    hugo.style.bottom = bottomOffset + 'px';
+                } else {
+                    velocity = 0;
+            }
         }
     }
 }
+console.log(rightOffset);
+console.log(bottomOffset);
 }, dTime)
