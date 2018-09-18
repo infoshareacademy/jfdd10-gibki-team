@@ -116,12 +116,12 @@ window.addEventListener('keyup', function () {
 
 //Ruch Huga - obliczenia
 setInterval(function () {
-    if (isLeftArrowPressed && rightOffset <= 359) {
+    if (isLeftArrowPressed && rightOffset <= 359 && (bottomOffset === 0 || bottomOffset === 101 || bottomOffset === 202 || bottomOffset === 303)) {
         velocity = 0.1;
         rightOffset = rightOffset + velocity * dTime;
         hugo.style.right = rightOffset + 'px';
     } else {
-        if (isRightArrowPressed && rightOffset >= 1) {
+        if (isRightArrowPressed && rightOffset >= 1 && (bottomOffset === 0 || bottomOffset === 101 || bottomOffset === 202 || bottomOffset === 303)) {
             velocity = 0.1;
             rightOffset = rightOffset - velocity * dTime;
             hugo.style.right = rightOffset + 'px';
