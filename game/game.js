@@ -64,11 +64,12 @@ console.log(hugoXCenterStart);
 //Ruch Huga
 // var positionX = 0;
 var rightOffset = 0;
+var bottomOffset = 0;
 var velocity = 0;
 var isLeftArrowPressed = false;
 var isUpArrowPressed = false;
 var isRightArrowPressed = false;
-var dTime = 16;
+var dTime = 10;
 
 // Listening for user input
 window.addEventListener('keydown', function (event) {
@@ -91,20 +92,36 @@ window.addEventListener('keyup', function () {
         isRightArrowPressed = false;
     }
 })
+window.addEventListener('keydown', function (event) {
+    if (event.code === 'ArrowUp') {
+        isUpArrowPressed = true;
+    }
+})
+window.addEventListener('keyup', function () {
+    if (event.code === 'ArrowUp') {
+        isUpArrowPressed = false;
+    }
+})
 
 //Ruch Huga - obliczenia
 setInterval(function () {
-    if (isLeftArrowPressed && rightOffset <= 360) {
-        velocity = 0.05;
+    if (isLeftArrowPressed && rightOffset <= 359) {
+        velocity = 0.1;
         rightOffset = rightOffset + velocity * dTime;
         hugo.style.right = rightOffset + 'px';
     } else {
-        if (isRightArrowPressed && rightOffset >= 0) {
-            velocity = 0.05;
+        if (isRightArrowPressed && rightOffset >= 1) {
+            velocity = 0.1;
             rightOffset = rightOffset - velocity * dTime;
             hugo.style.right = rightOffset + 'px';
         } else {
-            velocity = 0;
+            if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 302) {
+                velocity = 0.1;
+                bottomOffset = bottomOffset + velocity * dTime;
+                hugo.style.bottom = bottomOffset + 'px';
+            } else {
+                velocity = 0;
         }
     }
+}
 }, dTime)
