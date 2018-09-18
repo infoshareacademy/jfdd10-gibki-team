@@ -51,6 +51,16 @@ var hugo = document.createElement('div');
 hugo.classList.add('hugoFront');
 var startDoors = document.querySelector('.startDoors');
 startDoors.appendChild(hugo);
+var ladders = document.querySelectorAll('.ladder');
+var ladderFloor2XCenter = ladders[0].offsetLeft+ladders[0].offsetWidth;
+var ladderFloor1XCenter = ladders[1].offsetLeft+ladders[1].offsetWidth;
+var ladderFloor0XCenter = ladders[2].offsetLeft+ladders[2].offsetWidth;
+
+console.log(ladderFloor2XCenter)
+console.log(ladderFloor1XCenter)
+console.log(ladderFloor0XCenter)
+console.log(ladders[0].offsetHeight)
+console.log(ladders);
 
 //Startowa pozycja Huga
 var hugoRect = hugo.getBoundingClientRect();
@@ -115,32 +125,32 @@ window.addEventListener('keyup', function () {
 })
 
 //Ruch Huga - obliczenia
-setInterval(function () {
-    if (isLeftArrowPressed && rightOffset <= 359 && (bottomOffset === 0 || bottomOffset === 101 || bottomOffset === 202 || bottomOffset === 303)) {
-        velocity = 0.1;
-        rightOffset = rightOffset + velocity * dTime;
-        hugo.style.right = rightOffset + 'px';
-    } else {
-        if (isRightArrowPressed && rightOffset >= 1 && (bottomOffset === 0 || bottomOffset === 101 || bottomOffset === 202 || bottomOffset === 303)) {
-            velocity = 0.1;
-            rightOffset = rightOffset - velocity * dTime;
-            hugo.style.right = rightOffset + 'px';
-        } else {
-            if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 302) {
-                velocity = 0.1;
-                bottomOffset = bottomOffset + velocity * dTime;
-                hugo.style.bottom = bottomOffset + 'px';
-            } else {
-                if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 303) {
-                    velocity = 0.1;
-                    bottomOffset = bottomOffset - velocity * dTime;
-                    hugo.style.bottom = bottomOffset + 'px';
-                } else {
-                    velocity = 0;
-            }
-        }
-    }
-}
-console.log(rightOffset);
-console.log(bottomOffset);
-}, dTime)
+// setInterval(function () {
+//     if (isLeftArrowPressed && rightOffset <= 359 && (bottomOffset === 0 || bottomOffset === 101 || bottomOffset === 202 || bottomOffset === 303)) {
+//         velocity = 0.1;
+//         rightOffset = rightOffset + velocity * dTime;
+//         hugo.style.right = rightOffset + 'px';
+//     } else {
+//         if (isRightArrowPressed && rightOffset >= 1 && (bottomOffset === 0 || bottomOffset === 101 || bottomOffset === 202 || bottomOffset === 303)) {
+//             velocity = 0.1;
+//             rightOffset = rightOffset - velocity * dTime;
+//             hugo.style.right = rightOffset + 'px';
+//         } else {
+//             if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 302) {
+//                 velocity = 0.1;
+//                 bottomOffset = bottomOffset + velocity * dTime;
+//                 hugo.style.bottom = bottomOffset + 'px';
+//             } else {
+//                 if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 303) {
+//                     velocity = 0.1;
+//                     bottomOffset = bottomOffset - velocity * dTime;
+//                     hugo.style.bottom = bottomOffset + 'px';
+//                 } else {
+//                     velocity = 0;
+//             }
+//         }
+//     }
+// }
+// console.log(rightOffset);
+// console.log(bottomOffset);
+// }, dTime)
