@@ -13,16 +13,13 @@
     width: 500px;
     margin: 50px auto;
     flex-wrap: wrap;
-    /* border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black; */
 }
 .gridRow {
     display: flex;
     justify-content: space-around;
     align-items:flex-end;
     height:100px;
-    /* border-bottom: 1px solid black; */
+    outline: 1px solid black;
 }
 .emptyCell {
     height: 100px;
@@ -49,6 +46,7 @@
     width: 25px;
     height: 60px;
     position: absolute;
+    z-index: 10000;
   }
 .hugoFront {
     background: orange;
