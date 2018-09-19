@@ -1,12 +1,12 @@
 #boardWrapper {
-    display:inline-block;
-    background: lightgray;
+    display:block;
 }
 .grid {
+    background: lightgray;
     display: flex;
     flex-direction: column;
     width: 400px;
-    margin: 0 auto;
+    margin: 200px auto;
     flex-wrap: wrap;
     border-top: 1px solid black;
     border-left: 1px solid black;
