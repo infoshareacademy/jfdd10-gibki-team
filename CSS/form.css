@@ -25,11 +25,15 @@
 
     .name {
         width: 300px;
+        font-size: 20px;
+        text-align: center;
+        
     }
     
     .email {
         width: 300px;
-        margin-top: 5px;
+        font-size: 20px;
+        text-align: center;
         
     }
         
@@ -47,11 +51,9 @@
         font-family: 'Lobster', cursive;
         text-align: center;
         font-size: 40px;
-        text-transform: uppercase;
-        color: #e49a22;
-        
+        /* text-transform: uppercase; */
+        color: white;
         box-shadow: 0 5px 10px rgba(0,0,0,1);
-        opacity: 0.8;
         padding: 40px;
         margin-left: 2vh;
         margin-right: 2vh;
@@ -72,7 +74,8 @@
     .infomail {
         font-family: 'Roboto', sans-serif;
         text-align: center;
-        color: #e49a22;
+        color: white;
+        font-weight: 700;
         font-size: 20px;
         
         
@@ -131,6 +134,18 @@
       .photo {
         height: 450px;
       }
+    @media (max-width: 840px) {
+        .email {
+            margin-left: 0px;
+            font-size: 12px;
+        }
+        .name{
+            font-size: 12px;
+        }
+        .button {
+            margin-left: 0px;
+        }
+    }
     
         
               

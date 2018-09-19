@@ -1,12 +1,25 @@
 .footer {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgb(162, 168, 172);
     border-top: 5px solid black;
     display: flex;
     justify-content: space-between;
-    padding: 20px 100px;
+    padding: 2vh 5vh;
 }
 .foot_nav {
     flex-grow: 3;
+}
+.foot_nav h4 {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+}
+.foot_nav p {
+    font-size: .8em;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    line-height: 1.8;
 }
 .foot_info {
     padding-top: 20px;
@@ -17,14 +30,16 @@
     padding-left: 20px;
     font-size: 1em;
     color: rgba(255, 255, 255, 0.5);
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
 }
 .foot_social {
     display: grid;
     align-items: center;
     justify-content: start;
     padding-top: 20px;
-    grid-template-columns: 100px 100px;
-    grid-template-rows: 80px 80px;
+    grid-template-columns: 10vh 10vh;
+    grid-template-rows: 8vh 8vh;
 }
 .foot_ico1,
 .foot_ico2,
@@ -36,6 +51,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    cursor: default;
 }
 .foot_ico1 {
     background: rgba(255, 255, 255, 0.5);
@@ -48,4 +64,7 @@
 }
 .foot_ico4 {
     background: rgba(0, 0, 0, 0.5);
+}
+.foot_social img {
+    width: 55%;
 }
