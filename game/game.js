@@ -5,10 +5,11 @@ var boardContainer = document.querySelector('#boardWrapper');
 
 //przykładowa plansza: _-empty cell,s-startDoors,e-endDoors,l-drabina,d-diamond 
 var boardData = [
-    '_e__d___d_',
-    '_d____l_d_',
-    'd__l____d_',
-    '_d____l__s',//hugo startuje z pozycji s
+    'e___d___d_____d_____',
+    '_d____l_d________l__',
+    'd___l_________d_____',
+    'd_l_____d________l__',
+    '_d____l___d___l____s',//hugo startuje z pozycji s
 ]
 
 //wygenerowanie grida na elementy plaszy, nadanie mu klasy .grid i przypięcie do boardContainera
