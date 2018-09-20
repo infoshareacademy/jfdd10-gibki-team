@@ -57,6 +57,7 @@ var level = document.getElementById ('level');
 // document.onkeydown = anim;
 
 var hugoLeft = 0;
+var hugoTop = 0;
 
 
 function anim(e){
@@ -71,6 +72,16 @@ function anim(e){
     if(e.keyCode== 37){
         hugoLeft-=2;
         hugo.style.left = hugoLeft + 'px';
+    }
+
+    if(e.keyCode== 40){
+        hugoTop +=2;
+        hugo.style.top = hugoTop + 'px';
+    }
+
+    if(e.keyCode== 38){
+        hugoTop -=2;
+        hugo.style.top = hugoTop + 'px';
     }
 }
 
