@@ -1,0 +1,59 @@
+#boardWrapper {
+    display:inline-block;
+    background: lightgray;
+}
+.grid {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+.gridRow {
+    display: flex;
+    justify-content: space-around;
+    align-items:flex-end;
+    height:100px;
+    border-bottom: 1px solid black;
+}
+.emptyCell {
+    height: 100px;
+    flex-grow: 1;
+    background: lightgray;
+}
+.startDoors {
+    position: relative;
+    background: red;
+    height: 60px;
+  }
+.endDoors {
+    background: green;
+    height: 60px;
+}
+.ladder {
+    background: blue;
+}
+.diamond {
+    background: yellow;
+    height: 40px;
+}
+.hugoFront, .hugoLeft, .hugoRight, .hugoBack {
+    width: 40px;
+    height: 60px;
+    position: absolute;
+  }
+.hugoFront {
+    background: orange;
+}
+.hugoLeft {
+    background: pink;
+}
+.hugoRight {
+    background: purple;
+}
+.hugoBack {
+    background: black;
+}
