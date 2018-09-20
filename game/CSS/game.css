@@ -3,7 +3,7 @@
     width: 800px;
     height: 600px;
     margin: 100px auto;
-    background-color: aqua;
+    background-image: url(../Graphics/water.jpg);
     border: 5px solid black;
 }
 .grid {
