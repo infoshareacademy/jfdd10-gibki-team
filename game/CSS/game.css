@@ -29,8 +29,9 @@
 .startDoors {
     position: relative;
     background: red;
+    border-top: 40px solid lightgray;
     height: 60px;
-  }
+}
 .endDoors {
     background: green;
     height: 60px;
@@ -40,13 +41,14 @@
 }
 .diamond {
     background: yellow;
-    height: 40px;
+    height: 25px;
+    border-top: 75px solid lightgray;
 }
 .hugoFront, .hugoLeft, .hugoRight, .hugoBack {
     width: 25px;
     height: 60px;
     position: absolute;
-    z-index: 10000;
+    z-index: 100;
   }
 .hugoFront {
     background: orange;
