@@ -88,3 +88,34 @@ var seconds;
 function timer() {
 
 };
+
+
+
+
+function createTimer(seconds) {
+    intervalVar = setInterval(function () {
+        if (seconds === 0) {
+            clearInterval();
+            window.removeEventListener("keydown", FUNKCJA_DO_USUNIECIA, true);
+            // NADAJ_KLASĘ-timeIsUp i wyświetl tekst GAME OVER
+            return;
+        }
+        if (seconds <= 10 && seconds > 5) {
+            // NADAJ_KLASĘ-stayFocus
+        }
+        else if (seconds <= 5) {
+            // NADAJ_KLASĘ-warning
+        }
+        else {
+            KLASA-normal
+        }
+
+        var minutes = Math.floor(seconds / 60);
+        var secondsToShow = (seconds - minutes * 60).toString();
+        if (secondsToShow.length === 1) {
+            secondsToShow = "0" + secondsToShow; // if the number of seconds is '5' for example, make sure that it is shown as '05'
+        }
+        context.fillText(minutes.toString() + ":" + secondsToShow, mazeWidth + 30, canvas.height / 2);
+        seconds--;
+    }, 1000);
+}
