@@ -1,23 +1,25 @@
 #boardWrapper {
-    display:inline-block;
-    background: lightgray;
+    display:block;
+    width: 800px;
+    height: 600px;
+    margin: 100px auto;
+    background-color: aqua;
+    border: 5px solid black;
 }
 .grid {
+    background: lightgray;
     display: flex;
     flex-direction: column;
-    width: 400px;
-    margin: 0 auto;
+    width: 500px;
+    margin: 50px auto;
     flex-wrap: wrap;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
 }
 .gridRow {
     display: flex;
     justify-content: space-around;
     align-items:flex-end;
     height:100px;
-    border-bottom: 1px solid black;
+    outline: 1px solid black;
 }
 .emptyCell {
     height: 100px;
@@ -27,8 +29,9 @@
 .startDoors {
     position: relative;
     background: red;
+    border-top: 40px solid lightgray;
     height: 60px;
-  }
+}
 .endDoors {
     background: green;
     height: 60px;
@@ -38,12 +41,14 @@
 }
 .diamond {
     background: yellow;
-    height: 40px;
+    height: 25px;
+    border-top: 75px solid lightgray;
 }
 .hugoFront, .hugoLeft, .hugoRight, .hugoBack {
-    width: 40px;
+    width: 25px;
     height: 60px;
     position: absolute;
+    z-index: 100;
   }
 .hugoFront {
     background: orange;
