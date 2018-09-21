@@ -1,5 +1,3 @@
-var level = document.getElementById('level');
-
 // level.appendChild(makeLevel(500, 500));
 
 // function makeLevel(width, height) {
@@ -70,6 +68,40 @@ var level = document.getElementById('level');
 
 // Moving with POSITION
 
+var level = document.getElementById('level');
+
+var levels = [];
+for(i=0; i < 5; i += 1){
+    var floor = document.createElement('div');
+    floor.classList.add('floor');
+    level.appendChild(floor);
+
+    levels.push({
+        element: floor,
+        bottomPosition: level.offsetTop + floor.offsetTop + floor.clientHeight
+    })
+}
+
+console.log(levels)
+
+function createLadder(){
+    for(i=0; i<levels.length; i+=1){
+
+        var ladder = document.createElement('div')
+        ladder.classList.add('ladder');
+        levels[i].element.appendChild(ladder);
+    }
+   
+   
+}
+
+createLadder();
+
+var bottomPosition = level.offsetTop + floor.offsetTop + floor.clientHeight;
+
+
+
+
 var hugo = document.getElementById('hugo');
 
 
@@ -122,6 +154,7 @@ function anim(e) {
         hugo.style.top = hugoTop + 'px';
     }
 }
+
 
 // document.onkeydown = anim; //skortowy zapis przypisania f-cji do eventu keydown - to samo moze zrobic addevent listener?
 document.addEventListener('keydown', anim);
