@@ -1,4 +1,4 @@
-   .button {
+  .button {
 
         text-align: center;
         width: 300px;
@@ -8,11 +8,12 @@
         border: 1px #e49a22 solid;
         background-color: #e49a22;
         text-align: center;
-        
         line-height: 1.8;
         padding: 10px 30px;
         text-decoration: none;
         border-radius: 15px;
+        font-size: 20px;
+        
         
         }
         
@@ -27,6 +28,7 @@
         width: 300px;
         font-size: 20px;
         text-align: center;
+        margin-bottom: 5px;
         
     }
     
@@ -77,6 +79,7 @@
         color: white;
         font-weight: 700;
         font-size: 20px;
+        padding: 10px;
         
         
     }
@@ -134,6 +137,9 @@
       .photo {
         height: 450px;
       }
+      .name {
+          margin-bottom: 0px;
+      }
     @media (max-width: 840px) {
         .email {
             margin-left: 0px;
@@ -141,6 +147,7 @@
         }
         .name{
             font-size: 12px;
+            margin-bottom: 0px;
         }
         .button {
             margin-left: 0px;
@@ -152,7 +159,7 @@
     }
     @media (min-width: 1312.98px) {
         .photo {
-            height: 350px;
+            height: 400px;
 
         }
 
