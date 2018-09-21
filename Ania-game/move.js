@@ -65,8 +65,8 @@ hugo.style.top =  hugoTop +'px';
 function anim(e){
     if(e.keyCode==39){
         hugoLeft+= 2;
-        if (hugoLeft < 0){
-            hugoLeft = 0;
+        if (hugoLeft > level.clientWidth-hugo.clientWidth){
+            hugoLeft = level.clientWidth-hugo.clientWidth;
         }
         hugo.style.left = hugoLeft + 'px';
 
