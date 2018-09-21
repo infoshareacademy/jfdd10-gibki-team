@@ -3,11 +3,13 @@
     width: 800px;
     height: 600px;
     margin: 100px auto;
-    background-color: aqua;
+    background-image: url(../Graphics/water.jpg);
     border: 5px solid black;
 }
 .grid {
-    background: lightgray;
+    background: url(../Graphics/jungle.jpg) no-repeat center center fixed;
+    opacity: 0.65;
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -24,12 +26,10 @@
 .emptyCell {
     height: 100px;
     flex-grow: 1;
-    background: lightgray;
 }
 .startDoors {
     position: relative;
     background: red;
-    border-top: 40px solid lightgray;
     height: 60px;
 }
 .endDoors {
@@ -42,7 +42,6 @@
 .diamond {
     background: yellow;
     height: 25px;
-    border-top: 75px solid lightgray;
 }
 .hugoFront, .hugoLeft, .hugoRight, .hugoBack {
     width: 25px;
