@@ -127,7 +127,7 @@ hugo.style.left = hugoLeft + 'px'; //tu dodajemy px do stringa bo wartosc musi b
 hugo.style.top = hugoTop + 'px';
 
 function anim(e) {
-    if (e.keyCode === CONTROLS.RIGHT && !isNextToLadder() && isOnFloorBottom()) {
+    if (e.keyCode === CONTROLS.RIGHT && isOnFloorBottom()) {
         hugoLeft += 2;
         if (hugoLeft > level.clientWidth - hugo.clientWidth) {
             hugoLeft = level.clientWidth - hugo.clientWidth;
@@ -136,7 +136,7 @@ function anim(e) {
 
 
     }
-    if (e.keyCode == CONTROLS.LEFT && !isNextToLadder() && isOnFloorBottom()) {
+    if (e.keyCode == CONTROLS.LEFT && isOnFloorBottom()) {
         hugoLeft -= 2;
         if (hugoLeft < 0) {
             hugoLeft = 0;
