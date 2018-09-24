@@ -13,8 +13,7 @@ function timeCounter() {
     return intervalId;
 };
 
-function pauseTimer() {
-    var remainingTime = remainingTime + time;
+function pauseTime() {
     clearInterval(timerId);
 }
 
@@ -38,7 +37,7 @@ function timer() {
             case "Space":
                 pauseCounter += 1;
                 if (pauseCounter % 2 !== 0) {
-                    pauseTimer();
+                    pauseTime();
                 } else {
                     timerId = timeCounter();
                     pauseCounter = 0;
@@ -52,8 +51,11 @@ timer();
 
 function endGame(reason) {
     var boardWrapper = document.querySelector('#boardWrapper');
-    var endWindow = boardWrapper.createElement('div');
+    var endWindow = document.createElement('div');
     boardWrapper.appendChild(endWindow);
     endWindow.classList.add('endGame');
-    endWindow.innerText = reason;
+    var endMessage = document.createElement('p');
+    endWindow.appendChild(endMessage);
+    endMessage.classList.add('timeIsUp');
+    endMessage.innerText = reason;
 }
