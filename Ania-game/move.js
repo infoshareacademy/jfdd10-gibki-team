@@ -1,3 +1,10 @@
+var CONTROLS = {
+    LEFT: 37,
+    UP: 38,
+    RIGHT: 39,
+    DOWN: 40
+}
+
 // level.appendChild(makeLevel(500, 500));
 
 // function makeLevel(width, height) {
@@ -73,7 +80,7 @@ var level = document.getElementById('level');
 var levels = [];
 for(i=0; i < 5; i += 1){
     var floor = document.createElement('div');
-    floor.classList.add('floor');
+    floor.classList.add('floor-' + (i + 1));
     level.appendChild(floor);
 
     levels.push({
@@ -120,7 +127,7 @@ hugo.style.left = hugoLeft + 'px'; //tu dodajemy px do stringa bo wartosc musi b
 hugo.style.top = hugoTop + 'px';
 
 function anim(e) {
-    if (e.keyCode == 39) {
+    if (e.keyCode === CONTROLS.RIGHT && !isNextToLadder() && isOnFloorBottom()) {
         hugoLeft += 2;
         if (hugoLeft > level.clientWidth - hugo.clientWidth) {
             hugoLeft = level.clientWidth - hugo.clientWidth;
@@ -129,7 +136,7 @@ function anim(e) {
 
 
     }
-    if (e.keyCode == 37) {
+    if (e.keyCode == CONTROLS.LEFT && !isNextToLadder() && isOnFloorBottom()) {
         hugoLeft -= 2;
         if (hugoLeft < 0) {
             hugoLeft = 0;
@@ -137,7 +144,7 @@ function anim(e) {
         hugo.style.left = hugoLeft + 'px';
     }
 
-    if (e.keyCode == 40) {
+    if (e.keyCode == CONTROLS.DOWN && isNextToLadder()) {
         hugoTop += 2;
         if (hugoTop > level.clientHeight - hugo.clientHeight) {
             hugoTop = level.clientHeight - hugo.clientHeight;
@@ -145,7 +152,7 @@ function anim(e) {
         hugo.style.top = hugoTop + 'px';
     }
 
-    if (e.keyCode == 38) {
+    if (e.keyCode == CONTROLS.UP && isNextToLadder()) {
         hugoTop -= 2;
 
         if (hugoTop < 0) {
@@ -155,6 +162,25 @@ function anim(e) {
     }
 }
 
+function isNextToLadder() {
+    var ladder = document.querySelector('.ladder');
+    var ladderEdge = ladder.clientWidth + ladder.offsetLeft + 'px'; 
+    
+    console.log(ladderEdge);
+
+    return hugo.style.left === ladderEdge;
+}
+function isOnFloorBottom() {
+    // array.some na tablicy wezlow mozesz sprwadzic 
+    var floor5 = document.querySelector('.floor-5');
+    var floor5Bottom = floor5.clientHeight + floor5.offsetTop + 1 + 'px';
+
+    console.log(hugo.style.top, hugo.clientHeight,floor5Bottom)
+    
+    
+    return ((parseInt(hugo.style.top) + hugo.clientHeight) + 'px') === floor5Bottom;
+
+}
 
 // document.onkeydown = anim; //skortowy zapis przypisania f-cji do eventu keydown - to samo moze zrobic addevent listener?
 document.addEventListener('keydown', anim);
