@@ -21,8 +21,7 @@ boardContainer.appendChild(grid);
 for (var j = 0; j < boardData.length; j += 1) {
     var row = document.createElement('div');
     row.classList.add('gridRow');
-    // row.style.zIndex = boardData.length - j;
-
+    
     grid.appendChild(row); //przypięcie wygenerowanego wiersza z pętli poniżej do grida
 
     var rowData = boardData[j];
