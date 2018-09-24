@@ -173,16 +173,61 @@ function isNextToLadder() {
 function isOnFloorBottom() {
     // array.some na tablicy wezlow mozesz sprwadzic 
     var floor5 = document.querySelector('.floor-5');
-    var floor5Bottom = floor5.clientHeight + floor5.offsetTop + 1 + 'px';
+    var floor5Bottom = floor5.clientHeight + floor5.offsetTop + 1;
 
-    console.log(hugo.style.top, hugo.clientHeight,floor5Bottom)
+    console.log(hugo.style.top, hugo.clientHeight, floor5Bottom)
     
     
-    return ((parseInt(hugo.style.top) + hugo.clientHeight) + 'px') === floor5Bottom;
+    return (hugo.offsetTop + hugo.clientHeight) === floor5Bottom;
 
 }
 
-// document.onkeydown = anim; //skortowy zapis przypisania f-cji do eventu keydown - to samo moze zrobic addevent listener?
+// function isOnFloor4() {
+    
+//     var floor4 = document.querySelector('.floor-4');
+//     var floor4Bottom = floor4.clientHeight + floor4.offsetTop + 1;
+
+
+//     return ((parseInt(hugo.style.top) + hugo.clientHeight) + 'px') === floor4Bottom;
+
+// }
+
+// function isOnFloor3() {
+//     // array.some na tablicy wezlow mozesz sprwadzic 
+//     var floor3 = document.querySelector('.floor-3');
+//     var floor3Bottom = floor3.clientHeight + floor3.offsetTop + 1 + 'px';
+
+
+//     return ((parseInt(hugo.style.top) + hugo.clientHeight) + 'px') === floor3Bottom;
+
+// }
+
+// function isOnFloor2() {
+//     // array.some na tablicy wezlow mozesz sprwadzic 
+//     var floor2 = document.querySelector('.floor-2');
+//     var floor2Bottom = floor2.clientHeight + floor2.offsetTop + 1 + 'px';
+
+
+//     return ((parseInt(hugo.style.top) + hugo.clientHeight) + 'px') === floor2Bottom;
+
+// }
+
+// function isOnFloor1() {
+//     // array.some na tablicy wezlow mozesz sprwadzic 
+//     var floor1 = document.querySelector('.floor-1');
+//     var floor1Bottom = floor1.clientHeight + floor1.offsetTop + 1 + 'px';
+
+
+//     return ((parseInt(hugo.style.top) + hugo.clientHeight) + 'px') === floor1Bottom;
+
+// }
+// function checkFloor(){
+//     if (isOnFloor5() || isOnFloor4() || isOnFloor3() || isOnFloor2() || isOnFloor1())  
+    
+    
+//     return true;
+
+// // document.onkeydown = anim; //skortowy zapis przypisania f-cji do eventu keydown - to samo moze zrobic addevent listener?
 document.addEventListener('keydown', anim);
 
 
