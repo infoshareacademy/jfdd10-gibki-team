@@ -3,13 +3,13 @@
 //główny kontener planszy
 var boardContainer = document.querySelector('#boardWrapper');
 
-//przykładowa plansza: _-empty cell,s-startDoors,e-endDoors,l-drabina,d-diamond 
+//przykładowa plansza: _-empty cell,s-startDoors,e-endDoors,l-drabina,b-banana 
 var boardData = [
-    'e___d___d_____d_____',
-    '_d____l_d________l__',
-    'd___l_________d_____',
-    'd_l_____d________l__',
-    '_d____l___d___l____s',//hugo startuje z pozycji s
+    'e___b___b_____b_____',
+    '_b____l_b________l__',
+    'b___l_________b_____',
+    'b_l_____b________l__',
+    '_b____l___b___l____s',//hugo startuje z pozycji s
 ]
 
 //wygenerowanie grida na elementy plaszy, nadanie mu klasy .grid i przypięcie do boardContainera
@@ -40,8 +40,8 @@ for (var j = 0; j < boardData.length; j += 1) {
         if (rowData[i] === 'l') {
             cell.classList.add('ladder');
         }
-        if (rowData[i] === 'd') {
-            cell.classList.add('diamond');
+        if (rowData[i] === 'b') {
+            cell.classList.add('banana');
         }
         row.appendChild(cell); //przypięcie pojedynczej komórki (cell) do wiersza (row) - cała pętla tworzy pojedynczy wiersz
     }
