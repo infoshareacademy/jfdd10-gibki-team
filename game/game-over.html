@@ -1,34 +1,24 @@
-<style>
-    .normal {
-        font-size: 20px;
-        font-family: Arial;
-        text-align: center;
-        color: green;
-    }
-    .stayFocus {
-        color: orangered;
-    }
-    .warning {
-        color: red;
-    }
-    .timeIsUp {
-        color: red;
-        font-size: 40px;
-        content: "GAME OVER - Time is up!";
-    }
-    .endGame {
-        width: 500px;
-        height: 500px;
-        background: rgba(0, 0, 0, 0.6);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ClimbApp Game!</title>
+    <link rel="stylesheet" type="text/css" href="CSS/game-reset.css">
+    <link rel="stylesheet" type="text/css" href="CSS/game-over.css">
+    <link rel="stylesheet" type="text/css" href="CSS/game.css">
+</head>
 
 <body>
-    <div id="boardWrapper"></div>
-    <button>Play!</button>
     <div>Game ends in <span id="time"></span> second!</div>
-    <script src="game-over.js"></script>
+    <!-- <button>Play!</button> -->
+
+    <div id="boardWrapper"></div>
+    
+    <script src="JS/game-over.js"></script>
+    <script src="JS/game.js"></script>
 </body>
+
+</html>
