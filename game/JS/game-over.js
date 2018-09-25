@@ -125,3 +125,15 @@ function showTime() {
     showTime.appendChild(suffix);
 }
 // --------/\-------- WYŚWIETLANIE CZASU --------/\-------- //
+
+
+// --------\/-------- ODPALANIE GRY --------\/-------- //
+function startGame () {
+    
+}
+// --------/\-------- ODPALANIE GRY --------/\-------- //
+
+
+// --------\/-------- WYŁĄCZANIE GRY --------\/-------- //
+
+// --------/\-------- WYŁĄCZANIE GRY --------/\-------- //
