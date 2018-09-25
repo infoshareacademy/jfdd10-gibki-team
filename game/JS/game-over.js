@@ -1,5 +1,5 @@
 var time = 6000;  // <-- ustawienie czasu trwania gry!
-var seconds = Math.floor((time/1000));
+var seconds = Math.floor((time / 1000));
 var timerId;
 
 function timeCounter(id) {
@@ -70,7 +70,7 @@ function endGame(reason) {
     endMessage.innerText = reason;
 
     // chcemy schować grida z grą:
-    document.querySelector('.grid').style.display = 'none';
+    // document.querySelector('.grid').style.display = 'none';           // <------ DO ODKOMENTOWANIA gdy używamy game.js
 }
 
 // wyświetlanie czasu:
@@ -79,22 +79,21 @@ function showTime() {
     var showTime = document.createElement('div');
     body.appendChild(showTime);
     showTime.classList.add('showTime');
-    showTime.innerText = 'Game ends in ' + clock + ' seconds';
+
+
     // wyświetlanie w ostylowany sposób sekund...
-    var clock = document.createElement('span');
-    showTime.appendChild(clock);
-    clock.innerText = seconds;
+    var clockStyler = document.createElement('span');
+    showTime.appendChild(clockStyler);
+    clockStyler.innerText = seconds;
     // w zależności ile czasu zostało:
-    for (seconds < 20) {
-        clock.classList.add('stayFocus');
+    if (seconds < 20) {
+        clockStyler.classList.add('stayFocus');
     }
-    for (seconds <=10) {
-        clock.classList.add('warning');
+    if (seconds <= 10) {
+        clockStyler.classList.add('warning');
     }
     // wyświetlanie pozostałych sekund i kolorowanie w zależności od pozostałego czasu:
 
-    
- 
-
+    showTime.innerText = 'Game ends in ' + clockStyler + ' seconds';
 
 }
