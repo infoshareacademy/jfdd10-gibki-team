@@ -12,10 +12,3 @@ screenCheck();
 
 var previousButton = document.querySelector('.team-prev-button');
 var nextButton = document.querySelector('.team-next-button');
-
-nextButton.addEventListener('click', function () {
-   screenCheck();
-}, {once : true});
-// previousButton.addEventListener('click', function () {
-//    screenCheck();
-// }, {once : true});

@@ -1,34 +1,35 @@
 #boardWrapper {
-    display:inline-block;
-    background: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 600px;
+    margin: 50px auto;
+    background-image: url(../Graphics/water_with_ropes.png);
 }
 .grid {
+    background: url(../Graphics/jungle_with_ropes.png);
+    opacity: 0.75;
     display: flex;
     flex-direction: column;
-    width: 400px;
-    margin: 0 auto;
+    width: 500px;
     flex-wrap: wrap;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
 }
 .gridRow {
     display: flex;
     justify-content: space-around;
     align-items:flex-end;
     height:100px;
-    border-bottom: 1px solid black;
 }
 .emptyCell {
     height: 100px;
     flex-grow: 1;
-    background: lightgray;
 }
 .startDoors {
     position: relative;
     background: red;
     height: 60px;
-  }
+}
 .endDoors {
     background: green;
     height: 60px;
@@ -38,12 +39,13 @@
 }
 .diamond {
     background: yellow;
-    height: 40px;
+    height: 25px;
 }
 .hugoFront, .hugoLeft, .hugoRight, .hugoBack {
-    width: 40px;
+    width: 25px;
     height: 60px;
     position: absolute;
+    z-index: 10000;
   }
 .hugoFront {
     background: orange;
