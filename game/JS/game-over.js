@@ -1,7 +1,7 @@
-var time = 6000;  // <-- ustawienie czasu trwania gry!
-var seconds = Math.floor((time / 1000));
+var time = 32000;  // <-- ustawienie czasu trwania gry w milisekundach!
 var timerId;
 
+// --------\/-------- LICZENIE CZASU --------\/-------- //
 function timeCounter(id) {
     // zabezpieczenie, żeby timer nie odpalał się kilka razy:
     if (id) {
@@ -9,23 +9,36 @@ function timeCounter(id) {
     }
     var intervalId = setInterval(function () {
         time = time - 1000;
-        // jeżeli skończy się czas wyskakuje okienko Time is up z wynikiem:
+        // jeżeli skończy się czas wyświetlaj okienko z wynikiem:
         if (time <= 0) {
             clearInterval(intervalId);
             endGame('Time is up');
         }
-        console.log(seconds);
+        console.log(time);
+        showTime();
     }, 1000);
     return intervalId;
 };
+// --------/\-------- LICZENIE CZASU --------/\-------- //
 
+// --------\/-------- PAUZOWANIE --------\/-------- //
 function pauseTime() {
     clearInterval(timerId);
-    // TODO wyskakuje okienko z informacją PAUZA:
+    // wyśietlaj okienko z informacją o pauzie:
+    endGame('Paused. Press <space> to play.');
+}
+
+function unPause() {
+    //usuwaj oknienka z informacją o pauzie:
+    document.querySelectorAll('.endGame').forEach(function (node) {
+        node.remove();
+    });
 }
 
 var pauseCounter = 0;
+// --------/\-------- PAUZOWANIE --------/\-------- //
 
+// --------\/-------- AKCJE DLA KLAWISZY --------\/-------- //
 function timer() {
     window.addEventListener('keydown', function (event) {
         switch (event.code) {
@@ -47,15 +60,17 @@ function timer() {
                     pauseTime();
                 } else {
                     timerId = timeCounter();
+                    unPause();
                     pauseCounter = 0;
                 }
                 break;
         };
     });
 };
-showTime();
 timer();
+// --------/\-------- AKCJE DLA KLAWISZY --------/\-------- //
 
+// --------\/-------- OKNO ZAKRYWAJĄCE GRĘ --------\/-------- //
 function endGame(reason) {
     // tworzymy wyskakujące okienko na koniec gry:
     var boardWrapper = document.querySelector('#boardWrapper');
@@ -72,28 +87,41 @@ function endGame(reason) {
     // chcemy schować grida z grą:
     // document.querySelector('.grid').style.display = 'none';           // <------ DO ODKOMENTOWANIA gdy używamy game.js
 }
+// --------/\-------- OKNO ZAKRYWAJĄCE GRĘ --------/\-------- //
 
-// wyświetlanie czasu:
+// --------\/-------- WYŚWIETLANIE CZASU --------\/-------- //
 function showTime() {
+    // czyszczenie starej informacji po zmianie czasu:
+    document.querySelectorAll('.showTime').forEach(function (node) {
+        node.remove();
+    });
+    // utworzenie <div class="showTime"></div>:
     var body = document.querySelector('body');
     var showTime = document.createElement('div');
     body.appendChild(showTime);
     showTime.classList.add('showTime');
-
-
-    // wyświetlanie w ostylowany sposób sekund...
+    // utworzenie <span></span> i ostylowanie sekund...
     var clockStyler = document.createElement('span');
     showTime.appendChild(clockStyler);
+    var seconds = Math.floor((time / 1000));
     clockStyler.innerText = seconds;
+    clockStyler.classList.add('normal');
     // w zależności ile czasu zostało:
-    if (seconds < 20) {
+    if (seconds <= 30) {
+        clockStyler.classList.add('halfTime');
+    }
+    if (seconds <= 20) {
         clockStyler.classList.add('stayFocus');
     }
     if (seconds <= 10) {
         clockStyler.classList.add('warning');
     }
     // wyświetlanie pozostałych sekund i kolorowanie w zależności od pozostałego czasu:
+    var prefix = document.createTextNode('Game ends in ');
+    var suffix = document.createTextNode(' seconds');
 
-    showTime.innerText = 'Game ends in ' + clockStyler + ' seconds';
-
+    showTime.appendChild(prefix);
+    showTime.appendChild(clockStyler);
+    showTime.appendChild(suffix);
 }
+// --------/\-------- WYŚWIETLANIE CZASU --------/\-------- //
