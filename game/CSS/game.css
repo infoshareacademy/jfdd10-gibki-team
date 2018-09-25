@@ -42,7 +42,7 @@
     background-size: 25px 25px;
     height: 25px;
 }
-.hugoFront, .hugoLeft, .hugoRight, .hugoBack {
+.hugo {
     width: 25px;
     height: 60px;
     position: absolute;
