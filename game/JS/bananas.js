@@ -8,6 +8,7 @@ function eatBanana(hero) {
         if ((Math.abs(heroPositionX - bananas[i].getBoundingClientRect().x - bananas[i].getBoundingClientRect().width/2) < 10) && (heroPositionY === bananas[i].getBoundingClientRect().bottom)) {
             bananas[i].classList.remove('banana');
             eatenBananasCounter += 1;
+            document.querySelector('.bananasCounter').innerText = eatenBananasCounter;
         }
     }
 }   
