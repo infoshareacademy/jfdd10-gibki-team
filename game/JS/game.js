@@ -54,16 +54,6 @@ hugo.classList.add('hugoFront');
 var startDoors = document.querySelector('.startDoors');
 startDoors.appendChild(hugo);
 var ladders = document.querySelectorAll('.ladder');
-var ladderFloor2XCenter = ladders[0].offsetLeft+ladders[0].offsetWidth;
-var ladderFloor1XCenter = ladders[1].offsetLeft+ladders[1].offsetWidth;
-var ladderFloor0XCenter = ladders[2].offsetLeft+ladders[2].offsetWidth;
-
-console.log(ladderFloor2XCenter)
-console.log(ladderFloor1XCenter)
-console.log(ladderFloor0XCenter)
-console.log(ladders[0].offsetHeight)
-console.log(ladders);
-
 //Startowa pozycja Huga
 var hugoRect = hugo.getBoundingClientRect();
 console.log(hugoRect);
@@ -83,6 +73,7 @@ var isRightArrowPressed = false;
 var isUpArrowPressed = false;
 var isDownArrowPressed = false;
 var dTime = 10;
+
 
 // Listening for user input - move: left, right, up, bottom
 window.addEventListener('keydown', function (event) {
@@ -128,22 +119,22 @@ window.addEventListener('keyup', function () {
 
 //Ruch Huga - obliczenia
 setInterval(function () {
-    if (isLeftArrowPressed && rightOffset <= 359 && (bottomOffset === 0 || bottomOffset === 101 || bottomOffset === 202 || bottomOffset === 303)) {
+    if (isLeftArrowPressed && rightOffset <= 360 && (bottomOffset === 0 || bottomOffset === 100 || bottomOffset === 200 || bottomOffset === 300)) {
         velocity = 0.1;
         rightOffset = rightOffset + velocity * dTime;
         hugo.style.right = rightOffset + 'px';
     } else {
-        if (isRightArrowPressed && rightOffset >= 1 && (bottomOffset === 0 || bottomOffset === 101 || bottomOffset === 202 || bottomOffset === 303)) {
+        if (isRightArrowPressed && rightOffset >= 1 && (bottomOffset === 0 || bottomOffset === 100 || bottomOffset === 200 || bottomOffset === 300)) {
             velocity = 0.1;
             rightOffset = rightOffset - velocity * dTime;
             hugo.style.right = rightOffset + 'px';
         } else {
-            if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 302) {
+            if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 300) {
                 velocity = 0.1;
                 bottomOffset = bottomOffset + velocity * dTime;
                 hugo.style.bottom = bottomOffset + 'px';
             } else {
-                if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 303) {
+                if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 300) {
                     velocity = 0.1;
                     bottomOffset = bottomOffset - velocity * dTime;
                     hugo.style.bottom = bottomOffset + 'px';
@@ -153,6 +144,7 @@ setInterval(function () {
         }
     }
 }
+hugovsladders(hugo)
 console.log(rightOffset);
 console.log(bottomOffset);
 }, dTime)
