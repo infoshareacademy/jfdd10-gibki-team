@@ -145,4 +145,3 @@ setInterval(function () {
 }
 eatBanana(hugo)
 }, dTime)
-console.log(eatenBananasCounter);
