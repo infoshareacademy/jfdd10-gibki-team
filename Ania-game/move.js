@@ -5,76 +5,6 @@ var CONTROLS = {
     DOWN: 40
 }
 
-// level.appendChild(makeLevel(500, 500));
-
-// function makeLevel(width, height) {
-//     var table = document.createElement('table');
-//     var tbody = document.createElement('tbody');
-//     var tr, i;
-
-//     for (i = 0; i < height; i += 1) {
-//         tr = document.createElement('tr');
-//         if (i % 2 === 0) {
-//             tr.classList.add('blueLevel')
-//         }
-//         tbody.appendChild(tr);
-//     }
-//     table.appendChild(tbody);
-
-//     return table;
-
-
-// }
-
-
-
-// var position = 0;
-// var velocity = 0;
-
-// *moving with MARGIN
-// window.addEventListener ('keydown', function (event){
-//     if (event.code === 'ArrowRight'){
-//         velocity = 1;
-//     }
-
-// })
-
-// window.addEventListener ('keyup', function (event){
-//     if (event.code === 'ArrowRight'){
-//         velocity = 0;
-//     }
-
-// })
-
-
-// setInterval(function (){
-// position += velocity;
-// hugo.style.marginLeft = position + 'px'
-
-// }, 15)
-
-
-// window.addEventListener ('keydown', function (event){
-//     if (event.code === 'ArrowLeft'){
-//         velocity = -1;
-//     }
-
-// })
-
-// window.addEventListener ('keyup', function (event){
-//     if (event.code === 'ArrowLeft'){
-//         velocity = 0;
-//     }
-
-// })
-
-// setInterval(function (){
-//     position += velocity;
-//     hugo.style.marginLeft = position + 'px'
-//     }, 15)
-
-// Moving with POSITION
-
 var level = document.getElementById('level');
 
 var levels = [];
@@ -91,15 +21,18 @@ for(i=0; i < 5; i += 1){
 
 console.log(levels)
 
+function randomFromRange(min, max) {
+    return Math.random() * (max - min) + min
+}
+
 function createLadder(){
     for(i=0; i<levels.length; i+=1){
 
         var ladder = document.createElement('div')
         ladder.classList.add('ladder');
+        ladder.style.marginLeft = randomFromRange(0, 100) + '%';
         levels[i].element.appendChild(ladder);
     }
-   
-   
 }
 
 createLadder();
@@ -112,48 +45,42 @@ var bottomPosition = level.offsetTop + floor.offsetTop + floor.clientHeight;
 var hugo = document.getElementById('hugo');
 
 
-// funkcja ponizej sprawdza kod klawiszy - live preview - wcisnij przyiski i poznaj kod
-// function anim(e){
-//     alert(e.keyCode);
-// }
-
-// document.onkeydown = anim;
-
-//wyznaczamy pozycje poczatkowe hugo wzgledem rozmiarow planszy
 var hugoLeft = level.clientWidth - hugo.clientWidth;
 var hugoTop = level.clientHeight - hugo.clientHeight;
 
+
 hugo.style.left = hugoLeft + 'px'; //tu dodajemy px do stringa bo wartosc musi byc w pixelach
 hugo.style.top = hugoTop + 'px';
+hugo.style.bottom = hugoTop + 40 + 'px';
 
 function anim(e) {
-    if (e.keyCode === CONTROLS.RIGHT && isOnFloorBottom()) {
-        hugoLeft += 2;
+    var moveFactor = 1;
+    var isOnLadder = isOnLadderAnyLadder();
+    if (e.keyCode === CONTROLS.RIGHT && !isOnLadder) {
+        hugoLeft += moveFactor;
         if (hugoLeft > level.clientWidth - hugo.clientWidth) {
             hugoLeft = level.clientWidth - hugo.clientWidth;
         }
         hugo.style.left = hugoLeft + 'px';
-
-
     }
-    if (e.keyCode == CONTROLS.LEFT && isOnFloorBottom()) {
-        hugoLeft -= 2;
+    if (e.keyCode == CONTROLS.LEFT && !isOnLadder) {
+        hugoLeft -= moveFactor;
         if (hugoLeft < 0) {
             hugoLeft = 0;
         }
         hugo.style.left = hugoLeft + 'px';
     }
 
-    if (e.keyCode == CONTROLS.DOWN && isNextToLadder()) {
-        hugoTop += 2;
+    if (e.keyCode == CONTROLS.DOWN && isOnLadder) {
+        hugoTop += moveFactor;
         if (hugoTop > level.clientHeight - hugo.clientHeight) {
             hugoTop = level.clientHeight - hugo.clientHeight;
         }
         hugo.style.top = hugoTop + 'px';
     }
 
-    if (e.keyCode == CONTROLS.UP && isNextToLadder()) {
-        hugoTop -= 2;
+    if (e.keyCode == CONTROLS.UP && isOnLadder) {
+        hugoTop -= moveFactor;
 
         if (hugoTop < 0) {
             hugoTop = 0;
@@ -165,17 +92,62 @@ function anim(e) {
 function isNextToLadder() {
     var ladder = document.querySelector('.ladder');
     var ladderEdge = ladder.clientWidth + ladder.offsetLeft + 'px'; 
-    
+    // napisz fcje z if czy jest na ddrabinie czy obok
     console.log(ladderEdge);
 
     return hugo.style.left === ladderEdge;
 }
+
+
+function isOnLadderAnyLadder(){
+    var ladders = document.querySelectorAll('.ladder'); 
+    var isOn = false;
+
+    function isOnLeft(ladder) {
+        return hugo.offsetLeft + hugo.clientWidth <  ladder.offsetLeft;
+    }
+    function isOnRight(ladder) {
+        return hugo.offsetLeft > ladder.offsetLeft + ladder.clientWidth;
+    }
+    function isOnLadder(ladder) {
+
+        var hugoBottom = hugo.offsetTop + hugo.clientHeight;
+        var ladderBottom = ladder.offsetTop + ladder.clientHeight;
+        console.log(hugoBottom, ladderBottom)
+        return (hugoBottom <= ladderBottom && hugoBottom > ladder.offsetTop)
+       
+    }
+    ladders.forEach(function(ladder) {
+
+        // if (hugo.offsetTop + hugo.clientHeight !== ladder.offsetTop + ladder.clientHeight) {
+        //     return;
+        // }
+        if (isOnRight(ladder) || isOnLeft(ladder) || !isOnLadder(ladder)) {
+            return;
+        }
+
+        isOn = true;
+    })
+    return isOn;
+}
+
+function hugoOnTopLadder (){
+    if((hugo.clientTop - hugo.clientHeight) === ladder.clientTop)
+    
+    // ((hugoClientHeight - 100) || (hugoClientHeight - 200) || (hugoClientHeight - 300) || (hugoClientHeight - 300))){
+    //     console.log(hugoClientHeight, hugoBottom)
+        return;
+    }
+
+
+    
+
 function isOnFloorBottom() {
     // array.some na tablicy wezlow mozesz sprwadzic 
     var floor5 = document.querySelector('.floor-5');
     var floor5Bottom = floor5.clientHeight + floor5.offsetTop + 1;
 
-    console.log(hugo.style.top, hugo.clientHeight, floor5Bottom)
+    // console.log(hugo.style.top, hugo.clientHeight, hugo.style.bottom)
     
     
     return (hugo.offsetTop + hugo.clientHeight) === floor5Bottom;
