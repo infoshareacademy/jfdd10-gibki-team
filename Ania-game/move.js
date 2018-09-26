@@ -180,24 +180,24 @@ function anim(e) {
     console.log(avMoves);
 
     if (e.keyCode === CONTROLS.RIGHT && isAvailableMove(CONTROLS.RIGHT)) {
-        hugoLeft += moveSpeed;
+        hugoLeft += moveSpeed*3.5;
         hugo.style.left = hugoLeft + 'px';
         state = 'floor';
     }
     if (e.keyCode == CONTROLS.LEFT && isAvailableMove(CONTROLS.LEFT)) {
-        hugoLeft -= moveSpeed;
+        hugoLeft -= moveSpeed*3.5;
         hugo.style.left = hugoLeft + 'px';
         state = 'floor';
     }
 
     if (e.keyCode == CONTROLS.DOWN && isAvailableMove(CONTROLS.DOWN)) {
-        hugoTop += moveSpeed;
+        hugoTop += moveSpeed*1.7;
         hugo.style.top = hugoTop + 'px';
         state = 'ladder';
     }
 
     if (e.keyCode == CONTROLS.UP && isAvailableMove(CONTROLS.UP)) {
-        hugoTop -= moveSpeed;
+        hugoTop -= moveSpeed*1.7;
         hugo.style.top = hugoTop + 'px';
         state = 'ladder';
     }
