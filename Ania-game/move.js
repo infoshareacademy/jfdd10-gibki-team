@@ -1,3 +1,4 @@
+//okreslenie w zmiennej kodu strzalek ruchu
 var CONTROLS = {
     LEFT: 37,
     UP: 38,
@@ -21,10 +22,12 @@ for(i=0; i < 5; i += 1){
 
 console.log(levels)
 
+// randomowe tworzenie drabin na planszy
 function randomFromRange(min, max) {
     return Math.random() * (max - min) + min
 }
 
+// tworzenie drabin
 function createLadder(){
     for(i=0; i<levels.length; i+=1){
 
@@ -40,7 +43,7 @@ createLadder();
 var bottomPosition = level.offsetTop + floor.offsetTop + floor.clientHeight;
 
 
-
+// pozycja startowa hugo
 
 var hugo = document.getElementById('hugo');
 
@@ -53,6 +56,8 @@ hugo.style.left = hugoLeft + 'px'; //tu dodajemy px do stringa bo wartosc musi b
 hugo.style.top = hugoTop + 'px';
 hugo.style.bottom = hugoTop + 40 + 'px';
 
+
+// hugo porusza sie w 2 stanach - on floor i on ladder
 var state = 'floor'
 
 
@@ -63,7 +68,7 @@ function isStateFloor() {
     return state === 'floor';
 }
 
-
+// funckje odpowiadajace za ruch hugo wzgl darbin i brzegow planszy
 function isOnLeft(ladder) {
     return hugo.offsetLeft + hugo.clientWidth <  ladder.offsetLeft;
 }
@@ -97,6 +102,8 @@ function isAboveLadders(ladders) {
     return isAbove;
     // stoi nad drabina
 }
+
+// kiedy hugo moze sie poruszac
 function canMoveLeft() {
     return hugo.offsetLeft > 0;
 }
@@ -113,7 +120,7 @@ function staysOnFloor(ladders) {
     return stays;
 }
 
-
+// okreslenie ruchow Hugo gora, dol, prawo, lewo wzgl floor i drabin
 function availableMoves() {
     var moves = [];
     var ladders = document.querySelectorAll('.ladder'); 
@@ -160,6 +167,7 @@ function availableMoves() {
     return moves;
 }
 
+// poruszanie hugo
 function anim(e) {
     var moveSpeed = 1;
     var avMoves = availableMoves();
