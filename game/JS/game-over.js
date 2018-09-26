@@ -131,8 +131,8 @@ function startGame() {
 
     // dodajemy event:
     button.addEventListener('click', function () {
-        alert('letsPlay');
-        // letsPlay ();
+        // alert('letsPlay');
+        letsPlay ();
         document.querySelectorAll('.popup').forEach(function (node) {
             node.remove();
         });
