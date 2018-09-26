@@ -26,12 +26,14 @@ function pauseOn() {
     clearInterval(timerId);
     // wyśietlaj okienko z informacją o pauzie:
     endGame('Paused. Press <space> to play.');
+    document.querySelector('.grid').style.display = 'none';
 }
 
 function pauseOff() {
     //usuwaj oknienka z informacją o pauzie:
     document.querySelectorAll('.popup').forEach(function (node) {
         node.remove();
+        document.querySelector('.grid').style.display = 'flex';
     });
 }
 
@@ -69,9 +71,6 @@ function endGame(reason) {
     // w przypadku gdy gra kończy się przegraną (skończył się czas):
     endMessage.classList.add('timeIsUp');
     endMessage.innerText = reason;
-
-    // chcemy schować grida z grą:
-    // document.querySelector('.grid').style.display = 'none';           // <------ DO ODKOMENTOWANIA gdy używamy game.js
 }
 // --------/\-------- OKNO ZAKRYWAJĄCE GRĘ --------/\-------- //
 
@@ -116,6 +115,7 @@ function showTime() {
 function startGame() {
     // tworzymy okienko startowe:
     var boardWrapper = document.querySelector('#boardWrapper');
+    document.querySelector('.infoPanel').style.display = 'none';
     var introWindow = document.createElement('div');
     boardWrapper.appendChild(introWindow);
     introWindow.classList.add('popup');
@@ -131,8 +131,8 @@ function startGame() {
 
     // dodajemy event:
     button.addEventListener('click', function () {
-        alert('letsPlay');
-        // letsPlay ();
+        document.querySelector('.infoPanel').style.display = 'flex';
+        letsPlay ();
         document.querySelectorAll('.popup').forEach(function (node) {
             node.remove();
         });
