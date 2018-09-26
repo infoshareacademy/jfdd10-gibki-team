@@ -128,12 +128,12 @@ setInterval(function () {
             rightOffset = rightOffset - velocity * dTime;
             hugo.style.right = rightOffset + 'px';
         } else {
-            if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 440) {
+            if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 440/*&& hugovsladders(hugo)*/) {
                 velocity = 0.1;
                 bottomOffset = bottomOffset + velocity * dTime;
                 hugo.style.bottom = bottomOffset + 'px';
             } else {
-                if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 403) {
+                if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 403 /*&& hugovsladders(hugo)*/) {
                     velocity = 0.1;
                     bottomOffset = bottomOffset - velocity * dTime;
                     hugo.style.bottom = bottomOffset + 'px';
@@ -143,8 +143,7 @@ setInterval(function () {
         }
     }
 }
-hugovsladders(hugo)
-console.log(rightOffset);
-console.log(bottomOffset);
 eatBanana(hugo)
+hugovsladders(hugo)
+
 }, dTime)
