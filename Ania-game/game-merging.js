@@ -1,206 +1,272 @@
-//okreslenie w zmiennej kodu strzalek ruchu
-var CONTROLS = {
-    LEFT: ArrowLeft,
-    UP: ArrowUp,
-    RIGHT: ArrowRight,
-    DOWN: ArrowDown
-}
+function letsPlay() {
 
-// var grid = document.getElementById('grid');
+    //WYGENEROWANIE PLANSZY
 
-// var grids = [];
-// for(i=0; i < 5; i += 1){
-//     var row = document.createElement('div');
-//     row.classList.add('row-' + (i + 1));
-//     grid.appendChild(row);
+    //główny kontener planszy
+    var boardContainer = document.querySelector('#boardWrapper');
 
-//     grids.push({
-//         element: row,
-//         bottomPosition: grid.offsetTop + row.offsetTop + row.clientHeight
-//     })
-// }
+    //przykładowa plansza: _-empty cell,s-startDoors,e-endDoors,l-drabina,b-banana 
+    var boardData = [
+        'e___b___b_____b_____',
+        '_b____l_b________l__',
+        'b___l_________b_____',
+        'b_l_____b________l__',
+        '_b____l___b___l____s',//hugo startuje z pozycji s
+    ]
 
-// console.log(grids)
+    //wygenerowanie grida na elementy plaszy, nadanie mu klasy .grid i przypięcie do boardContainera
+    var grid = document.createElement('div');
+    grid.classList.add('grid');
+    boardContainer.appendChild(grid);
 
-// // // randomowe tworzenie drabin na planszy
-// // function randomFromRange(min, max) {
-// //     return Math.random() * (max - min) + min
-// // }
+    //wygenerowanie i przypięcie do grida wierszy wg schematu planszy
+    for (var j = 0; j < boardData.length; j += 1) {
+        var row = document.createElement('div');
+        row.classList.add('gridRow');
 
-// // tworzenie drabin
-// function createLadder(){
-//     for(i=0; i<grids.length; i+=1){
+        grid.appendChild(row); //przypięcie wygenerowanego wiersza z pętli poniżej do grida
 
-//         var ladder = document.createElement('div')
-//         ladder.classList.add('ladder');
-//         ladder.style.marginLeft = randomFromRange(0, 100) + '%';
-//         grids[i].element.appendChild(ladder);
-//     }
-// }
+        var rowData = boardData[j];
+        var size = rowData.length;
 
-// createLadder();
+        //stworzenie komórek (cells) w obrębie wiersza (row) wg schematu planszy
+        for (var i = 0; i < size; i += 1) {
+            var cell = document.createElement('div');
+            cell.classList.add('emptyCell'); //nadanie komórce (cell) klasy domyślnej .emptyCell
+            if (rowData[i] === 's') {
+                cell.classList.add('startDoors');
+            }
+            if (rowData[i] === 'e') {
+                cell.classList.add('endDoors');
+            }
+            if (rowData[i] === 'l') {
+                cell.classList.add('ladder');
+            }
+            if (rowData[i] === 'b') {
+                cell.classList.add('banana');
+            }
+            row.appendChild(cell); //przypięcie pojedynczej komórki (cell) do wiersza (row) - cała pętla tworzy pojedynczy wiersz
+        }
+    }
 
-// var bottomPosition = grid.offsetTop + row.offsetTop + row.clientHeight;
+    //wygenrowanie Huga (pozycja przodem) i ustawienie na pozycji startowej
+    var hugo = document.createElement('div');
+    hugo.classList.add('hugo');
+    hugo.classList.add('hugoFront');
+    var startDoors = document.querySelector('.startDoors');
+    startDoors.appendChild(hugo);
 
+    //Ruch Huga
+    var rightOffset = 0;
+    var bottomOffset = 0;
+    var velocity = 0;
+    var isLeftArrowPressed = false;
+    var isRightArrowPressed = false;
+    var isUpArrowPressed = false;
+    var isDownArrowPressed = false;
+    var dTime = 10;
 
-// pozycja startowa hugo
-
-var hugo = document.getElementById('hugo');
-
-
-var hugoLeft = grid.clientWidth - hugo.clientWidth;
-var hugoTop = grid.clientHeight - hugo.clientHeight;
-var row = document.querySelector('.row');
-var ladder = document.querySelector('ladder');
-
-hugo.style.left = hugoLeft + 'px'; //tu dodajemy px do stringa bo wartosc musi byc w pixelach
-hugo.style.top = hugoTop + 'px';
-hugo.style.bottom = hugoTop + 40 + 'px';
-
-// hugo porusza sie w 2 stanach - on row i on ladder
-var state = 'row'
-
-
-function isStateLadder() {
-    return state === 'ladder';
-}
-function isStaterow() {
-    return state === 'row';
-}
-
-// funckje odpowiadajace za ruch hugo wzgl darbin i brzegow planszy
-function isOnLeft(ladder) {
-    return hugo.offsetLeft + hugo.clientWidth <  ladder.offsetLeft;
-}
-function isOnRight(ladder) {
-    return hugo.offsetLeft > ladder.offsetLeft + ladder.clientWidth;
-}
-function isOnSamegrid(ladder) {
-    var hugoBottom = hugo.offsetTop + hugo.clientHeight;
-    var ladderBottom = ladder.offsetTop + ladder.clientHeight;
-    return hugoBottom === ladderBottom;
-}
-function isInCollisionWithLadders(ladders) {
-    var inCollision = false
-    ladders.forEach(function(ladder) {
-        if (isOnSamegrid(ladder) && !isOnRight(ladder) && !isOnLeft(ladder)) {
-            inCollision = true;
-        } 
+    // Listening for user input - move: left, right, up, bottom
+    window.addEventListener('keydown', function (event) {
+        if (event.code === 'ArrowLeft') {
+            isLeftArrowPressed = true;
+        }
     })
-    return inCollision;
+    window.addEventListener('keyup', function () {
+        if (event.code === 'ArrowLeft') {
+            isLeftArrowPressed = false;
+        }
+    })
+    window.addEventListener('keydown', function (event) {
+        if (event.code === 'ArrowRight') {
+            isRightArrowPressed = true;
+        }
+    })
+    window.addEventListener('keyup', function () {
+        if (event.code === 'ArrowRight') {
+            isRightArrowPressed = false;
+        }
+    })
+    window.addEventListener('keydown', function (event) {
+        if (event.code === 'ArrowUp') {
+            isUpArrowPressed = true;
+        }
+    })
+    window.addEventListener('keyup', function () {
+        if (event.code === 'ArrowUp') {
+            isUpArrowPressed = false;
+        }
+    })
+    window.addEventListener('keydown', function (event) {
+        if (event.code === 'ArrowDown') {
+            isDownArrowPressed = true;
+        }
+    })
+    window.addEventListener('keyup', function () {
+        if (event.code === 'ArrowDown') {
+            isDownArrowPressed = false;
+        }
+    })
 
-}
-function isAboveLadders(ladders) {
-    var isAbove = false;
-    ladders.forEach(function(ladder) {
+
+    var ladder = document.querySelectorAll('.ladder')
+    var hugoLeft = grid.clientWidth - hugo.clientWidth;
+    var hugoTop = grid.clientHeight - hugo.clientHeight;
+    var floor = row;
+
+    hugo.style.left = hugoLeft + 'px'; //tu dodajemy px do stringa bo wartosc musi byc w pixelach
+    hugo.style.top = hugoTop + 'px';
+    hugo.style.bottom = hugoTop + hugo.clientHeight + 'px';
+
+
+    var state = 'floor'
+
+
+    function isStateLadder() {
+        return state === 'ladder';
+    }
+    function isStateFloor() {
+        return state === 'floor';
+    }
+
+    // funckje odpowiadajace za ruch hugo wzgl darbin i brzegow planszy
+    function isOnLeft(ladder) {
+        return hugo.offsetLeft + hugo.clientWidth < ladder.offsetLeft;
+    }
+    function isOnRight(ladder) {
+        return hugo.offsetLeft > ladder.offsetLeft + ladder.clientWidth;
+    }
+    function isOnSameLevel(ladder) {
         var hugoBottom = hugo.offsetTop + hugo.clientHeight;
-        var ladderTop = ladder.offsetTop; // ladder.offsetTop + ladder.clientHeight;
-        if (hugoBottom === ladderTop) {
-            isAbove = true;
-        }
-    })
-    return isAbove;
-    // stoi nad drabina
-}
-
-// kiedy hugo moze sie poruszac
-function canMoveLeft() {
-    return hugo.offsetLeft > 0;
-}
-function canMoveRight() {
-    return hugo.offsetLeft + hugo.clientWidth < grid.clientWidth;
-}
-function staysOnrow(ladders) {
-    var stays = false;
-    ladders.forEach(function(ladder) {
-        if (isOnSamegrid(ladder)){
-            stays = true;
-        }
-    });
-    return stays;
-}
-
-// okreslenie ruchow Hugo gora, dol, prawo, lewo wzgl row i drabin
-function availableMoves() {
-    var moves = [];
-    var ladders = document.querySelectorAll('.ladder'); 
-
-    if (isStaterow()) {
-        console.log('row');
-        if (canMoveLeft()) {
-            moves.push(CONTROLS.LEFT);
-            // L
-        }
-        if (canMoveRight()) {
-            moves.push(CONTROLS.RIGHT);
-            // R
-        }
-        if (isAboveLadders(ladders)) {
-            moves.push(CONTROLS.DOWN);
-            // D
-        }
-        if (isInCollisionWithLadders(ladders)) {
-            moves.push(CONTROLS.UP);
-            // U
-        }
+        var ladderBottom = ladder.offsetTop + ladder.clientHeight;
+        return hugoBottom === ladderBottom;
     }
-    if (isStateLadder()) {
-        console.log('ladder');
-        if (!staysOnrow(ladders)) {
-            moves.push(CONTROLS.UP);
-            moves.push(CONTROLS.DOWN);
-            // U D
-        } 
-        if (staysOnrow(ladders) && !isAboveLadders(ladders)) {
-            moves.push(CONTROLS.UP);
-            moves.push(CONTROLS.LEFT);
-            moves.push(CONTROLS.RIGHT);
-            // U R L 
-        }
-        if (staysOnrow(ladders) && isAboveLadders(ladders)) {
-            moves.push(CONTROLS.DOWN);
-            moves.push(CONTROLS.LEFT);
-            moves.push(CONTROLS.RIGHT);
-            // D L R
-        }
-    }
-    return moves;
-}
-
-// poruszanie hugo
-function anim(e) {
-    var moveSpeed = 1;
-    var avMoves = availableMoves();
-    function isAvailableMove(move){ 
-        // return true;
-        return avMoves.find(function(m) {
-            return m === move;
+    function isInCollisionWithLadders(ladders) {
+        var inCollision = false
+        ladders.forEach(function (ladder) {
+            if (isOnSameLevel(ladder) && !isOnRight(ladder) && !isOnLeft(ladder)) {
+                inCollision = true;
+            }
         })
-    }
-    console.log(avMoves);
+        return inCollision;
 
-    if (evenet.code === CONTROLS.RIGHT && isAvailableMove(CONTROLS.RIGHT)) {
-        hugoLeft += moveSpeed;
-        hugo.style.left = hugoLeft + 'px';
-        state = 'row';
     }
-    if (evenet.code == CONTROLS.LEFT && isAvailableMove(CONTROLS.LEFT)) {
-        hugoLeft -= moveSpeed;
-        hugo.style.left = hugoLeft + 'px';
-        state = 'row';
-    }
-
-    if (evenet.code == CONTROLS.DOWN && isAvailableMove(CONTROLS.DOWN)) {
-        hugoTop += moveSpeed;
-        hugo.style.top = hugoTop + 'px';
-        state = 'ladder';
+    function isAboveLadders(ladders) {
+        var isAbove = false;
+        ladders.forEach(function (ladder) {
+            var hugoBottom = hugo.offsetTop + hugo.clientHeight;
+            var ladderTop = ladder.offsetTop; // ladder.offsetTop + ladder.clientHeight;
+            if (hugoBottom === ladderTop) {
+                isAbove = true;
+            }
+        })
+        return isAbove;
+        // stoi nad drabina
     }
 
-    if (evenet.code == CONTROLS.UP && isAvailableMove(CONTROLS.UP)) {
-        hugoTop -= moveSpeed;
-        hugo.style.top = hugoTop + 'px';
-        state = 'ladder';
+    // kiedy hugo moze sie poruszac
+    function canMoveLeft() {
+        return hugo.offsetLeft > 0;
     }
+    function canMoveRight() {
+        return hugo.offsetLeft + hugo.clientWidth < level.clientWidth;
+    }
+    function staysOnFloor(ladders) {
+        var stays = false;
+        ladders.forEach(function (ladder) {
+            if (isOnSameLevel(ladder)) {
+                stays = true;
+            }
+        });
+        return stays;
+    }
+
+    // okreslenie ruchow Hugo gora, dol, prawo, lewo wzgl floor i drabin
+    function availableMoves() {
+        var moves = [];
+        var ladders = document.querySelectorAll('.ladder');
+
+        if (isStateFloor()) {
+            console.log('floor');
+            if (canMoveLeft()) {
+                moves.push(CONTROLS.LEFT);
+                // L
+            }
+            if (canMoveRight()) {
+                moves.push(CONTROLS.RIGHT);
+                // R
+            }
+            // if (isAboveLadders(ladders)) {
+            //     // moves.push(CONTROLS.DOWN);
+            //     // D
+            // }
+            if (isInCollisionWithLadders(ladders)) {
+                moves.push(CONTROLS.UP);
+                // U
+            }
+        }
+        if (isStateLadder()) {
+            console.log('ladder');
+            if (!staysOnFloor(ladders)) {
+                moves.push(CONTROLS.UP);
+                moves.push(CONTROLS.DOWN);
+                // U D
+            }
+            if (staysOnFloor(ladders) && !isAboveLadders(ladders)) {
+                moves.push(CONTROLS.UP);
+                moves.push(CONTROLS.LEFT);
+                moves.push(CONTROLS.RIGHT);
+                // U R L 
+            }
+            if (staysOnFloor(ladders) && isAboveLadders(ladders)) {
+                // moves.push(CONTROLS.DOWN);
+                moves.push(CONTROLS.LEFT);
+                moves.push(CONTROLS.RIGHT);
+                // D L R
+            }
+        }
+        return moves;
+    }
+
+
+    // Ruch Huga - obliczenia
+    setInterval(function () {
+        var moveSpeed = 1;
+        var avMoves = availableMoves();
+        function isAvailableMove(move) {
+            // return true;
+            return avMoves.find(function (m) {
+                return m === move;
+            })
+
+
+            if (isLeftArrowPressed && CONTROLS.LEFT && isAvailableMove(CONTROLS.LEFT)) {
+                hugoLeft -= moveSpeed * 3.5;
+                hugo.style.left = hugoLeft + 'px';
+                state = 'floor';
+            } else {
+                if (isRightArrowPressed && isAvailableMove(CONTROLS.RIGHT)) {
+                    hugoLeft += moveSpeed * 3.5;
+                    hugo.style.left = hugoLeft + 'px';
+                    state = 'floor';
+                } else {
+                    if (isUpArrowPressed && isAvailableMove(CONTROLS.UP)) {
+                        hugoTop -= moveSpeed * 1.7;
+                        hugo.style.top = hugoTop + 'px';
+                        state = 'ladder';
+                    } else {
+                        if (isDownArrowPressed && isAvailableMove(CONTROLS.DOWN)) {
+                            hugoTop += moveSpeed * 1.7;
+                            hugo.style.top = hugoTop + 'px';
+                            state = 'ladder';
+                        } else {
+                            velocity = 0;
+                        }
+                    }
+                }
+            }
+            eatBanana(hugo)
+        }, dTime)
+
 }
 
-document.addEventListener('keydown', anim);
