@@ -3,13 +3,13 @@
 //główny kontener planszy
 var boardContainer = document.querySelector('#boardWrapper');
 
-//przykładowa plansza: _-empty cell,s-startDoors,e-endDoors,l-drabina,d-diamond 
+//przykładowa plansza: _-empty cell,s-startDoors,e-endDoors,l-drabina,b-banana 
 var boardData = [
-    'e___d___d_____d_____',
-    '_d____l_d________l__',
-    'd___l_________d_____',
-    'd_l_____d________l__',
-    '_d____l___d___l____s',//hugo startuje z pozycji s
+    'e___b___b_____b_____',
+    '_b____l_b________l__',
+    'b___l_________b_____',
+    'b_l_____b________l__',
+    '_b____l___b___l____s',//hugo startuje z pozycji s
 ]
 
 //wygenerowanie grida na elementy plaszy, nadanie mu klasy .grid i przypięcie do boardContainera
@@ -40,8 +40,8 @@ for (var j = 0; j < boardData.length; j += 1) {
         if (rowData[i] === 'l') {
             cell.classList.add('ladder');
         }
-        if (rowData[i] === 'd') {
-            cell.classList.add('diamond');
+        if (rowData[i] === 'b') {
+            cell.classList.add('banana');
         }
         row.appendChild(cell); //przypięcie pojedynczej komórki (cell) do wiersza (row) - cała pętla tworzy pojedynczy wiersz
     }
@@ -49,28 +49,19 @@ for (var j = 0; j < boardData.length; j += 1) {
 
 //wygenrowanie Huga (pozycja przodem) i ustawienie na pozycji startowej
 var hugo = document.createElement('div');
+hugo.classList.add('hugo');
 hugo.classList.add('hugoFront');
 var startDoors = document.querySelector('.startDoors');
 startDoors.appendChild(hugo);
-var ladders = document.querySelectorAll('.ladder');
-var ladderFloor2XCenter = ladders[0].offsetLeft+ladders[0].offsetWidth;
-var ladderFloor1XCenter = ladders[1].offsetLeft+ladders[1].offsetWidth;
-var ladderFloor0XCenter = ladders[2].offsetLeft+ladders[2].offsetWidth;
-
-console.log(ladderFloor2XCenter)
-console.log(ladderFloor1XCenter)
-console.log(ladderFloor0XCenter)
-console.log(ladders[0].offsetHeight)
-console.log(ladders);
 
 //Startowa pozycja Huga
-var hugoRect = hugo.getBoundingClientRect();
-console.log(hugoRect);
-var hugoYBottomStart = hugoRect.bottom; //404
-var hugoXCenterStart = hugoRect.x + hugoRect.width / 2; //381
+// var hugoRect = hugo.getBoundingClientRect();
+// console.log(hugoRect);
+// var hugoYBottomStart = hugoRect.bottom; //404
+// var hugoXCenterStart = hugoRect.x + hugoRect.width / 2; //381
 // var positionX = hugoXCenterStart;
-console.log(hugoYBottomStart);
-console.log(hugoXCenterStart);
+// console.log(hugoYBottomStart);
+// console.log(hugoXCenterStart);
 
 //Ruch Huga
 // var positionX = 0;
@@ -125,24 +116,24 @@ window.addEventListener('keyup', function () {
     }
 })
 
-//Ruch Huga - obliczenia
+// Ruch Huga - obliczenia
 setInterval(function () {
-    if (isLeftArrowPressed && rightOffset <= 359 && (bottomOffset === 0 || bottomOffset === 101 || bottomOffset === 202 || bottomOffset === 303)) {
+    if (isLeftArrowPressed && rightOffset <= 474 && (bottomOffset === 0 || bottomOffset === 100 || bottomOffset === 200 || bottomOffset === 300 || bottomOffset === 400)) {
         velocity = 0.1;
         rightOffset = rightOffset + velocity * dTime;
         hugo.style.right = rightOffset + 'px';
     } else {
-        if (isRightArrowPressed && rightOffset >= 1 && (bottomOffset === 0 || bottomOffset === 101 || bottomOffset === 202 || bottomOffset === 303)) {
+        if (isRightArrowPressed && rightOffset >= 1 && (bottomOffset === 0 || bottomOffset === 100 || bottomOffset === 200 || bottomOffset === 300 || bottomOffset === 400)) {
             velocity = 0.1;
             rightOffset = rightOffset - velocity * dTime;
             hugo.style.right = rightOffset + 'px';
         } else {
-            if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 302) {
+            if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 440) {
                 velocity = 0.1;
                 bottomOffset = bottomOffset + velocity * dTime;
                 hugo.style.bottom = bottomOffset + 'px';
             } else {
-                if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 303) {
+                if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 403) {
                     velocity = 0.1;
                     bottomOffset = bottomOffset - velocity * dTime;
                     hugo.style.bottom = bottomOffset + 'px';
@@ -152,6 +143,5 @@ setInterval(function () {
         }
     }
 }
-console.log(rightOffset);
-console.log(bottomOffset);
+eatBanana(hugo)
 }, dTime)
