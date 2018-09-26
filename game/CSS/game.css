@@ -1,48 +1,17 @@
 #boardWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display:block;
     width: 800px;
     height: 600px;
-    margin: 50px auto;
-    background-image: url(../Graphics/water_with_ropes.png);
-    background-size: 800px 600px;
-}
-.infoPanel{
-    display: flex;
-    width: 150px;
-    height: 500px;
-    margin-right: 50px;
-    border: 1px solid black;
-}
-.bananasCounterWrapper {
-    border: 1px solid black;
-    display: flex;
-    width: 100px;
-    height: 50px;
-    margin: 25px;
-}
-.bananasCounterIcon {
-    background: url(../Graphics/banana-small.png) no-repeat center;
-    background-size: 40px 40px;
-    width: 50px;
-    border-right: 1px solid black;
-}
-.bananasCounter {
-    flex-grow: 1;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    font-family: 'Roboto', sans-serif;
+    margin: 100px auto;
+    background-color: aqua;
+    border: 5px solid black;
 }
 .grid {
-    background: url(../Graphics/jungle_with_ropes.png);
-    opacity: 0.9;
+    background: lightgray;
     display: flex;
     flex-direction: column;
     width: 500px;
+    margin: 50px auto;
     flex-wrap: wrap;
 }
 .gridRow {
@@ -50,14 +19,17 @@
     justify-content: space-around;
     align-items:flex-end;
     height:100px;
+    outline: 1px solid black;
 }
 .emptyCell {
     height: 100px;
     flex-grow: 1;
+    background: lightgray;
 }
 .startDoors {
     position: relative;
     background: red;
+    border-top: 40px solid lightgray;
     height: 60px;
 }
 .endDoors {
@@ -65,20 +37,18 @@
     height: 60px;
 }
 .ladder {
-    background: url(../Graphics/ladder.png);
-    background-size: 25px 100px;
-    height: 100px;
+    background: blue;
 }
-.banana {
-    background: url(../Graphics/banana-small.png);
-    background-size: 25px 25px;
+.diamond {
+    background: yellow;
     height: 25px;
+    border-top: 75px solid lightgray;
 }
-.hugo {
+.hugoFront, .hugoLeft, .hugoRight, .hugoBack {
     width: 25px;
     height: 60px;
     position: absolute;
-    z-index: 10000;
+    z-index: 100;
   }
 .hugoFront {
     background: orange;
