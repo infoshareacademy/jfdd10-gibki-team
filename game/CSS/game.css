@@ -65,7 +65,9 @@
     height: 60px;
 }
 .ladder {
-    background: blue;
+    background: url(../Graphics/ladder.png);
+    background-size: 25px 100px;
+    height: 100px;
 }
 .banana {
     background: url(../Graphics/banana-small.png);
