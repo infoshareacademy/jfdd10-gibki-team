@@ -1,46 +1,46 @@
 //okreslenie w zmiennej kodu strzalek ruchu
 var CONTROLS = {
-    LEFT: 37,
-    UP: 38,
-    RIGHT: 39,
-    DOWN: 40
+    LEFT: ArrowLeft,
+    UP: ArrowUp,
+    RIGHT: ArrowRight,
+    DOWN: ArrowDown
 }
 
-var level = document.getElementById('level');
+// var grid = document.getElementById('grid');
 
-var levels = [];
-for(i=0; i < 5; i += 1){
-    var floor = document.createElement('div');
-    floor.classList.add('floor-' + (i + 1));
-    level.appendChild(floor);
+// var grids = [];
+// for(i=0; i < 5; i += 1){
+//     var row = document.createElement('div');
+//     row.classList.add('row-' + (i + 1));
+//     grid.appendChild(row);
 
-    levels.push({
-        element: floor,
-        bottomPosition: level.offsetTop + floor.offsetTop + floor.clientHeight
-    })
-}
+//     grids.push({
+//         element: row,
+//         bottomPosition: grid.offsetTop + row.offsetTop + row.clientHeight
+//     })
+// }
 
-console.log(levels)
+// console.log(grids)
 
-// randomowe tworzenie drabin na planszy
-function randomFromRange(min, max) {
-    return Math.random() * (max - min) + min
-}
+// // // randomowe tworzenie drabin na planszy
+// // function randomFromRange(min, max) {
+// //     return Math.random() * (max - min) + min
+// // }
 
-// tworzenie drabin
-function createLadder(){
-    for(i=0; i<levels.length; i+=1){
+// // tworzenie drabin
+// function createLadder(){
+//     for(i=0; i<grids.length; i+=1){
 
-        var ladder = document.createElement('div')
-        ladder.classList.add('ladder');
-        ladder.style.marginLeft = randomFromRange(0, 100) + '%';
-        levels[i].element.appendChild(ladder);
-    }
-}
+//         var ladder = document.createElement('div')
+//         ladder.classList.add('ladder');
+//         ladder.style.marginLeft = randomFromRange(0, 100) + '%';
+//         grids[i].element.appendChild(ladder);
+//     }
+// }
 
-createLadder();
+// createLadder();
 
-var bottomPosition = level.offsetTop + floor.offsetTop + floor.clientHeight;
+// var bottomPosition = grid.offsetTop + row.offsetTop + row.clientHeight;
 
 
 // pozycja startowa hugo
@@ -48,24 +48,24 @@ var bottomPosition = level.offsetTop + floor.offsetTop + floor.clientHeight;
 var hugo = document.getElementById('hugo');
 
 
-var hugoLeft = level.clientWidth - hugo.clientWidth;
-var hugoTop = level.clientHeight - hugo.clientHeight;
-
+var hugoLeft = grid.clientWidth - hugo.clientWidth;
+var hugoTop = grid.clientHeight - hugo.clientHeight;
+var row = document.querySelector('.row');
+var ladder = document.querySelector('ladder');
 
 hugo.style.left = hugoLeft + 'px'; //tu dodajemy px do stringa bo wartosc musi byc w pixelach
 hugo.style.top = hugoTop + 'px';
 hugo.style.bottom = hugoTop + 40 + 'px';
 
-
-// hugo porusza sie w 2 stanach - on floor i on ladder
-var state = 'floor'
+// hugo porusza sie w 2 stanach - on row i on ladder
+var state = 'row'
 
 
 function isStateLadder() {
     return state === 'ladder';
 }
-function isStateFloor() {
-    return state === 'floor';
+function isStaterow() {
+    return state === 'row';
 }
 
 // funckje odpowiadajace za ruch hugo wzgl darbin i brzegow planszy
@@ -75,7 +75,7 @@ function isOnLeft(ladder) {
 function isOnRight(ladder) {
     return hugo.offsetLeft > ladder.offsetLeft + ladder.clientWidth;
 }
-function isOnSameLevel(ladder) {
+function isOnSamegrid(ladder) {
     var hugoBottom = hugo.offsetTop + hugo.clientHeight;
     var ladderBottom = ladder.offsetTop + ladder.clientHeight;
     return hugoBottom === ladderBottom;
@@ -83,7 +83,7 @@ function isOnSameLevel(ladder) {
 function isInCollisionWithLadders(ladders) {
     var inCollision = false
     ladders.forEach(function(ladder) {
-        if (isOnSameLevel(ladder) && !isOnRight(ladder) && !isOnLeft(ladder)) {
+        if (isOnSamegrid(ladder) && !isOnRight(ladder) && !isOnLeft(ladder)) {
             inCollision = true;
         } 
     })
@@ -108,25 +108,25 @@ function canMoveLeft() {
     return hugo.offsetLeft > 0;
 }
 function canMoveRight() {
-    return hugo.offsetLeft + hugo.clientWidth < level.clientWidth;
+    return hugo.offsetLeft + hugo.clientWidth < grid.clientWidth;
 }
-function staysOnFloor(ladders) {
+function staysOnrow(ladders) {
     var stays = false;
     ladders.forEach(function(ladder) {
-        if (isOnSameLevel(ladder)){
+        if (isOnSamegrid(ladder)){
             stays = true;
         }
     });
     return stays;
 }
 
-// okreslenie ruchow Hugo gora, dol, prawo, lewo wzgl floor i drabin
+// okreslenie ruchow Hugo gora, dol, prawo, lewo wzgl row i drabin
 function availableMoves() {
     var moves = [];
     var ladders = document.querySelectorAll('.ladder'); 
 
-    if (isStateFloor()) {
-        console.log('floor');
+    if (isStaterow()) {
+        console.log('row');
         if (canMoveLeft()) {
             moves.push(CONTROLS.LEFT);
             // L
@@ -135,10 +135,10 @@ function availableMoves() {
             moves.push(CONTROLS.RIGHT);
             // R
         }
-        // if (isAboveLadders(ladders)) {
-        //     // moves.push(CONTROLS.DOWN);
-        //     // D
-        // }
+        if (isAboveLadders(ladders)) {
+            moves.push(CONTROLS.DOWN);
+            // D
+        }
         if (isInCollisionWithLadders(ladders)) {
             moves.push(CONTROLS.UP);
             // U
@@ -146,19 +146,19 @@ function availableMoves() {
     }
     if (isStateLadder()) {
         console.log('ladder');
-        if (!staysOnFloor(ladders)) {
+        if (!staysOnrow(ladders)) {
             moves.push(CONTROLS.UP);
             moves.push(CONTROLS.DOWN);
             // U D
         } 
-        if (staysOnFloor(ladders) && !isAboveLadders(ladders)) {
+        if (staysOnrow(ladders) && !isAboveLadders(ladders)) {
             moves.push(CONTROLS.UP);
             moves.push(CONTROLS.LEFT);
             moves.push(CONTROLS.RIGHT);
             // U R L 
         }
-        if (staysOnFloor(ladders) && isAboveLadders(ladders)) {
-            // moves.push(CONTROLS.DOWN);
+        if (staysOnrow(ladders) && isAboveLadders(ladders)) {
+            moves.push(CONTROLS.DOWN);
             moves.push(CONTROLS.LEFT);
             moves.push(CONTROLS.RIGHT);
             // D L R
@@ -179,24 +179,24 @@ function anim(e) {
     }
     console.log(avMoves);
 
-    if (e.keyCode === CONTROLS.RIGHT && isAvailableMove(CONTROLS.RIGHT)) {
+    if (evenet.code === CONTROLS.RIGHT && isAvailableMove(CONTROLS.RIGHT)) {
         hugoLeft += moveSpeed;
         hugo.style.left = hugoLeft + 'px';
-        state = 'floor';
+        state = 'row';
     }
-    if (e.keyCode == CONTROLS.LEFT && isAvailableMove(CONTROLS.LEFT)) {
+    if (evenet.code == CONTROLS.LEFT && isAvailableMove(CONTROLS.LEFT)) {
         hugoLeft -= moveSpeed;
         hugo.style.left = hugoLeft + 'px';
-        state = 'floor';
+        state = 'row';
     }
 
-    if (e.keyCode == CONTROLS.DOWN && isAvailableMove(CONTROLS.DOWN)) {
+    if (evenet.code == CONTROLS.DOWN && isAvailableMove(CONTROLS.DOWN)) {
         hugoTop += moveSpeed;
         hugo.style.top = hugoTop + 'px';
         state = 'ladder';
     }
 
-    if (e.keyCode == CONTROLS.UP && isAvailableMove(CONTROLS.UP)) {
+    if (evenet.code == CONTROLS.UP && isAvailableMove(CONTROLS.UP)) {
         hugoTop -= moveSpeed;
         hugo.style.top = hugoTop + 'px';
         state = 'ladder';
