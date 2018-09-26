@@ -53,155 +53,146 @@ hugo.style.left = hugoLeft + 'px'; //tu dodajemy px do stringa bo wartosc musi b
 hugo.style.top = hugoTop + 'px';
 hugo.style.bottom = hugoTop + 40 + 'px';
 
-function anim(e) {
-    var moveFactor = 1;
-    var isOnLadder = isOnLadderAnyLadder();
-    if (e.keyCode === CONTROLS.RIGHT && !isOnLadder) {
-        hugoLeft += moveFactor;
-        if (hugoLeft > level.clientWidth - hugo.clientWidth) {
-            hugoLeft = level.clientWidth - hugo.clientWidth;
-        }
-        hugo.style.left = hugoLeft + 'px';
-    }
-    if (e.keyCode == CONTROLS.LEFT && !isOnLadder) {
-        hugoLeft -= moveFactor;
-        if (hugoLeft < 0) {
-            hugoLeft = 0;
-        }
-        hugo.style.left = hugoLeft + 'px';
-    }
+var state = 'floor'
 
-    if (e.keyCode == CONTROLS.DOWN && isOnLadder) {
-        hugoTop += moveFactor;
-        if (hugoTop > level.clientHeight - hugo.clientHeight) {
-            hugoTop = level.clientHeight - hugo.clientHeight;
-        }
-        hugo.style.top = hugoTop + 'px';
-    }
 
-    if (e.keyCode == CONTROLS.UP && isOnLadder) {
-        hugoTop -= moveFactor;
-
-        if (hugoTop < 0) {
-            hugoTop = 0;
-        }
-        hugo.style.top = hugoTop + 'px';
-    }
+function isStateLadder() {
+    return state === 'ladder';
 }
-
-function isNextToLadder() {
-    var ladder = document.querySelector('.ladder');
-    var ladderEdge = ladder.clientWidth + ladder.offsetLeft + 'px'; 
-    // napisz fcje z if czy jest na ddrabinie czy obok
-    console.log(ladderEdge);
-
-    return hugo.style.left === ladderEdge;
+function isStateFloor() {
+    return state === 'floor';
 }
 
 
-function isOnLadderAnyLadder(){
-    var ladders = document.querySelectorAll('.ladder'); 
-    var isOn = false;
-
-    function isOnLeft(ladder) {
-        return hugo.offsetLeft + hugo.clientWidth <  ladder.offsetLeft;
-    }
-    function isOnRight(ladder) {
-        return hugo.offsetLeft > ladder.offsetLeft + ladder.clientWidth;
-    }
-    function isOnLadder(ladder) {
-
-        var hugoBottom = hugo.offsetTop + hugo.clientHeight;
-        var ladderBottom = ladder.offsetTop + ladder.clientHeight;
-        console.log(hugoBottom, ladderBottom)
-        return (hugoBottom <= ladderBottom && hugoBottom > ladder.offsetTop)
-       
-    }
+function isOnLeft(ladder) {
+    return hugo.offsetLeft + hugo.clientWidth <  ladder.offsetLeft;
+}
+function isOnRight(ladder) {
+    return hugo.offsetLeft > ladder.offsetLeft + ladder.clientWidth;
+}
+function isOnSameLevel(ladder) {
+    var hugoBottom = hugo.offsetTop + hugo.clientHeight;
+    var ladderBottom = ladder.offsetTop + ladder.clientHeight;
+    return hugoBottom === ladderBottom;
+}
+function isInCollisionWithLadders(ladders) {
+    var inCollision = false
     ladders.forEach(function(ladder) {
-
-        // if (hugo.offsetTop + hugo.clientHeight !== ladder.offsetTop + ladder.clientHeight) {
-        //     return;
-        // }
-        if (isOnRight(ladder) || isOnLeft(ladder) || !isOnLadder(ladder)) {
-            return;
-        }
-
-        isOn = true;
+        if (isOnSameLevel(ladder) && !isOnRight(ladder) && !isOnLeft(ladder)) {
+            inCollision = true;
+        } 
     })
-    return isOn;
+    return inCollision;
+
+}
+function isAboveLadders(ladders) {
+    var isAbove = false;
+    ladders.forEach(function(ladder) {
+        var hugoBottom = hugo.offsetTop + hugo.clientHeight;
+        var ladderTop = ladder.offsetTop; // ladder.offsetTop + ladder.clientHeight;
+        if (hugoBottom === ladderTop) {
+            isAbove = true;
+        }
+    })
+    return isAbove;
+    // stoi nad drabina
+}
+function canMoveLeft() {
+    return hugo.offsetLeft > 0;
+}
+function canMoveRight() {
+    return hugo.offsetLeft + hugo.clientWidth < level.clientWidth;
+}
+function staysOnFloor(ladders) {
+    var stays = false;
+    ladders.forEach(function(ladder) {
+        if (isOnSameLevel(ladder)){
+            stays = true;
+        }
+    });
+    return stays;
 }
 
-function hugoOnTopLadder (){
-    if((hugo.clientTop - hugo.clientHeight) === ladder.clientTop)
-    
-    // ((hugoClientHeight - 100) || (hugoClientHeight - 200) || (hugoClientHeight - 300) || (hugoClientHeight - 300))){
-    //     console.log(hugoClientHeight, hugoBottom)
-        return;
+
+function availableMoves() {
+    var moves = [];
+    var ladders = document.querySelectorAll('.ladder'); 
+
+    if (isStateFloor()) {
+        console.log('floor');
+        if (canMoveLeft()) {
+            moves.push(CONTROLS.LEFT);
+            // L
+        }
+        if (canMoveRight()) {
+            moves.push(CONTROLS.RIGHT);
+            // R
+        }
+        if (isAboveLadders(ladders)) {
+            moves.push(CONTROLS.DOWN);
+            // D
+        }
+        if (isInCollisionWithLadders(ladders)) {
+            moves.push(CONTROLS.UP);
+            // U
+        }
+    }
+    if (isStateLadder()) {
+        console.log('ladder');
+        if (!staysOnFloor(ladders)) {
+            moves.push(CONTROLS.UP);
+            moves.push(CONTROLS.DOWN);
+            // U D
+        } 
+        if (staysOnFloor(ladders) && !isAboveLadders(ladders)) {
+            moves.push(CONTROLS.UP);
+            moves.push(CONTROLS.LEFT);
+            moves.push(CONTROLS.RIGHT);
+            // U R L 
+        }
+        if (staysOnFloor(ladders) && isAboveLadders(ladders)) {
+            moves.push(CONTROLS.DOWN);
+            moves.push(CONTROLS.LEFT);
+            moves.push(CONTROLS.RIGHT);
+            // D L R
+        }
+    }
+    return moves;
+}
+
+function anim(e) {
+    var moveSpeed = 1;
+    var avMoves = availableMoves();
+    function isAvailableMove(move){ 
+        // return true;
+        return avMoves.find(function(m) {
+            return m === move;
+        })
+    }
+    console.log(avMoves);
+
+    if (e.keyCode === CONTROLS.RIGHT && isAvailableMove(CONTROLS.RIGHT)) {
+        hugoLeft += moveSpeed;
+        hugo.style.left = hugoLeft + 'px';
+        state = 'floor';
+    }
+    if (e.keyCode == CONTROLS.LEFT && isAvailableMove(CONTROLS.LEFT)) {
+        hugoLeft -= moveSpeed;
+        hugo.style.left = hugoLeft + 'px';
+        state = 'floor';
     }
 
+    if (e.keyCode == CONTROLS.DOWN && isAvailableMove(CONTROLS.DOWN)) {
+        hugoTop += moveSpeed;
+        hugo.style.top = hugoTop + 'px';
+        state = 'ladder';
+    }
 
-    
-
-function isOnFloorBottom() {
-    // array.some na tablicy wezlow mozesz sprwadzic 
-    var floor5 = document.querySelector('.floor-5');
-    var floor5Bottom = floor5.clientHeight + floor5.offsetTop + 1;
-
-    // console.log(hugo.style.top, hugo.clientHeight, hugo.style.bottom)
-    
-    
-    return (hugo.offsetTop + hugo.clientHeight) === floor5Bottom;
-
+    if (e.keyCode == CONTROLS.UP && isAvailableMove(CONTROLS.UP)) {
+        hugoTop -= moveSpeed;
+        hugo.style.top = hugoTop + 'px';
+        state = 'ladder';
+    }
 }
 
-// function isOnFloor4() {
-    
-//     var floor4 = document.querySelector('.floor-4');
-//     var floor4Bottom = floor4.clientHeight + floor4.offsetTop + 1;
-
-
-//     return ((parseInt(hugo.style.top) + hugo.clientHeight) + 'px') === floor4Bottom;
-
-// }
-
-// function isOnFloor3() {
-//     // array.some na tablicy wezlow mozesz sprwadzic 
-//     var floor3 = document.querySelector('.floor-3');
-//     var floor3Bottom = floor3.clientHeight + floor3.offsetTop + 1 + 'px';
-
-
-//     return ((parseInt(hugo.style.top) + hugo.clientHeight) + 'px') === floor3Bottom;
-
-// }
-
-// function isOnFloor2() {
-//     // array.some na tablicy wezlow mozesz sprwadzic 
-//     var floor2 = document.querySelector('.floor-2');
-//     var floor2Bottom = floor2.clientHeight + floor2.offsetTop + 1 + 'px';
-
-
-//     return ((parseInt(hugo.style.top) + hugo.clientHeight) + 'px') === floor2Bottom;
-
-// }
-
-// function isOnFloor1() {
-//     // array.some na tablicy wezlow mozesz sprwadzic 
-//     var floor1 = document.querySelector('.floor-1');
-//     var floor1Bottom = floor1.clientHeight + floor1.offsetTop + 1 + 'px';
-
-
-//     return ((parseInt(hugo.style.top) + hugo.clientHeight) + 'px') === floor1Bottom;
-
-// }
-// function checkFloor(){
-//     if (isOnFloor5() || isOnFloor4() || isOnFloor3() || isOnFloor2() || isOnFloor1())  
-    
-    
-//     return true;
-
-// // document.onkeydown = anim; //skortowy zapis przypisania f-cji do eventu keydown - to samo moze zrobic addevent listener?
 document.addEventListener('keydown', anim);
-
-
-
-
