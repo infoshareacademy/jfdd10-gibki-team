@@ -108,6 +108,28 @@ function letsPlay() {
         }
     })
 
+    function hugoOnLadderUp(hero) {
+    var ladders = document.querySelectorAll('.ladder'); //nodeList
+    var heroPositionY = hero.getBoundingClientRect().bottom;
+    console.log(hero.getBoundingClientRect().bottom)
+    var heroPositionX = hero.getBoundingClientRect().x + hero.getBoundingClientRect().width/2;    
+        for (var i = 0 ; i < ladders.length ; i++) {
+            if ((Math.abs(heroPositionX - ladders[i].getBoundingClientRect().x - ladders[i].getBoundingClientRect().width/2) < 10) && (heroPositionY <= ladders[i].getBoundingClientRect().bottom) && (heroPositionY > ladders[i].getBoundingClientRect().top)) {
+                return true;    
+            }
+        }
+    }
+    function hugoOnLadderDown(hero) {
+        var ladders = document.querySelectorAll('.ladder'); //nodeList
+        var heroPositionY = hero.getBoundingClientRect().bottom;
+        console.log(hero.getBoundingClientRect().bottom)
+        var heroPositionX = hero.getBoundingClientRect().x + hero.getBoundingClientRect().width/2;    
+            for (var i = 0 ; i < ladders.length ; i++) {
+                if ((Math.abs(heroPositionX - ladders[i].getBoundingClientRect().x - ladders[i].getBoundingClientRect().width/2) < 10) && (heroPositionY < ladders[i].getBoundingClientRect().bottom) && (heroPositionY >= ladders[i].getBoundingClientRect().top)) {
+                    return true;    
+                }
+            }
+        }
     // Ruch Huga - obliczenia
     setInterval(function () {
         if (isLeftArrowPressed && rightOffset <= 474 && (bottomOffset === 0 || bottomOffset === 100 || bottomOffset === 200 || bottomOffset === 300 || bottomOffset === 400)) {
@@ -120,12 +142,12 @@ function letsPlay() {
                 rightOffset = rightOffset - velocity * dTime;
                 hugo.style.right = rightOffset + 'px';
             } else {
-                if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 440) {
+                if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 440 && hugoOnLadderUp(hugo)) {
                     velocity = 0.1;
                     bottomOffset = bottomOffset + velocity * dTime;
                     hugo.style.bottom = bottomOffset + 'px';
                 } else {
-                    if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 403) {
+                    if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 403 && hugoOnLadderDown(hugo)) {
                         velocity = 0.1;
                         bottomOffset = bottomOffset - velocity * dTime;
                         hugo.style.bottom = bottomOffset + 'px';
@@ -136,6 +158,7 @@ function letsPlay() {
             }
         }
         eatBanana(hugo)
+        console.log(bottomOffset)
     }, dTime)
 
 }
