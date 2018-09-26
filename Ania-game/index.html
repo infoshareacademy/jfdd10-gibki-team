@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=script, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+#level{
+    
+    background: yellowgreen;
+    position: relative;
+    
+}
+
+#hugo{
+    width: 30px;
+    height: 40px;
+    background: aqua;
+    position: absolute;
+    left: 0px;
+    top: 80px;
+    box-sizing: border-box;
+    
+}
+
+[class^="floor-"] {
+    height: 100px;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+}
+
+.ladder {
+    height: 100px;
+    width: 10px;
+    background-color: maroon;
+}
+
+
+.bluelevel{
+    background-color: blueviolet;
+}
+</style>
+<body>
+
+   <div id="level">
+       <div id="hugo"></div>
+   </div>
+
+   
+    <script src="move.js"></script>
+</body>
+</html>
