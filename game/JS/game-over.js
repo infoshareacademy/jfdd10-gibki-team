@@ -3,7 +3,7 @@ var timerId;
 
 // --------\/-------- LICZENIE CZASU --------\/-------- //
 function timeCounter(id) {
-    // zabezpieczenie, żeby timer nie odpalał się kilka razy:
+    // zabezpieczenie, żeby pause nie odpalał się kilka razy:
     if (id) {
         return id;
     }
@@ -12,7 +12,7 @@ function timeCounter(id) {
         // jeżeli skończy się czas wyświetlaj okienko z wynikiem:
         if (time <= 0) {
             clearInterval(intervalId);
-            endGame('Time is up');
+            endGame('You loose - time is up');
         }
         console.log(time);
         showTime();
@@ -22,61 +22,47 @@ function timeCounter(id) {
 // --------/\-------- LICZENIE CZASU --------/\-------- //
 
 // --------\/-------- PAUZOWANIE --------\/-------- //
-function pauseTime() {
+function pauseOn() {
     clearInterval(timerId);
     // wyśietlaj okienko z informacją o pauzie:
     endGame('Paused. Press <space> to play.');
 }
 
-function unPause() {
+function pauseOff() {
     //usuwaj oknienka z informacją o pauzie:
-    document.querySelectorAll('.endGame').forEach(function (node) {
+    document.querySelectorAll('.popup').forEach(function (node) {
         node.remove();
     });
 }
 
 var pauseCounter = 0;
-// --------/\-------- PAUZOWANIE --------/\-------- //
 
-// --------\/-------- AKCJE DLA KLAWISZY --------\/-------- //
-function timer() {
+function pause() {
     window.addEventListener('keydown', function (event) {
         switch (event.code) {
-            case "ArrowLeft":
-                timerId = timeCounter(timerId);
-                break;
-            case "ArrowRight":
-
-                break;
-            case "ArrowUp":
-
-                break;
-            case "ArrowDown":
-
-                break;
             case "Space":
                 pauseCounter += 1;
                 if (pauseCounter % 2 !== 0) {
-                    pauseTime();
+                    pauseOn();
                 } else {
                     timerId = timeCounter();
-                    unPause();
+                    pauseOff();
                     pauseCounter = 0;
                 }
                 break;
         };
     });
 };
-timer();
-// --------/\-------- AKCJE DLA KLAWISZY --------/\-------- //
+pause();
+// --------/\-------- PAUZOWANIE --------/\-------- //
 
 // --------\/-------- OKNO ZAKRYWAJĄCE GRĘ --------\/-------- //
 function endGame(reason) {
-    // tworzymy wyskakujące okienko na koniec gry:
+    // tworzymy wyskakujące okienko:
     var boardWrapper = document.querySelector('#boardWrapper');
     var endWindow = document.createElement('div');
     boardWrapper.appendChild(endWindow);
-    endWindow.classList.add('endGame');
+    endWindow.classList.add('popup');
     var endMessage = document.createElement('p');
     endWindow.appendChild(endMessage);
 
@@ -126,12 +112,35 @@ function showTime() {
 }
 // --------/\-------- WYŚWIETLANIE CZASU --------/\-------- //
 
+// --------\/-------- ODPALANIE GRY / EKRAN STARTOWY --------\/-------- //
+function startGame() {
+    // tworzymy okienko startowe:
+    var boardWrapper = document.querySelector('#boardWrapper');
+    var introWindow = document.createElement('div');
+    boardWrapper.appendChild(introWindow);
+    introWindow.classList.add('popup');
+    var introMessage = document.createElement('p');
+    introWindow.appendChild(introMessage);
+    introMessage.classList.add('normal');
+    introMessage.innerHTML = 'Welcome in ClimbApp game!<br><br>To move use: LeftKey, RightKey, UpKey, DownKey.<br><br>To pause game press Space.<br>';
 
-// --------\/-------- ODPALANIE GRY --------\/-------- //
-function startGame () {
-    
+    // tworzymy i osadzamy przycisk:
+    var button = document.createElement('button');
+    button.innerHTML = 'Play';
+    introMessage.appendChild(button);
+
+    // dodajemy event:
+    button.addEventListener('click', function () {
+        alert('letsPlay');
+        // letsPlay ();
+        document.querySelectorAll('.popup').forEach(function (node) {
+            node.remove();
+        });
+        timerId = timeCounter(timerId);
+    });
 }
-// --------/\-------- ODPALANIE GRY --------/\-------- //
+startGame();
+// --------/\-------- ODPALANIE GRY / EKRAN STARTOWY --------/\-------- //
 
 
 // --------\/-------- WYŁĄCZANIE GRY --------\/-------- //
