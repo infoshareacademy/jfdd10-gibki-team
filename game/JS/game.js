@@ -54,17 +54,7 @@ hugo.classList.add('hugoFront');
 var startDoors = document.querySelector('.startDoors');
 startDoors.appendChild(hugo);
 
-//Startowa pozycja Huga
-// var hugoRect = hugo.getBoundingClientRect();
-// console.log(hugoRect);
-// var hugoYBottomStart = hugoRect.bottom; //404
-// var hugoXCenterStart = hugoRect.x + hugoRect.width / 2; //381
-// var positionX = hugoXCenterStart;
-// console.log(hugoYBottomStart);
-// console.log(hugoXCenterStart);
-
 //Ruch Huga
-// var positionX = 0;
 var rightOffset = 0;
 var bottomOffset = 0;
 var velocity = 0;
