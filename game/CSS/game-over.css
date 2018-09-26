@@ -1,0 +1,47 @@
+.normal {
+    font-size: 20px;
+    font-family: Arial;
+    text-align: center;
+    font-weight: bolder;
+    color: green;
+}
+.halfTime {
+    color: rgb(255, 136, 0);
+}
+.stayFocus {
+    color: orangered;
+}
+.warning {
+    color: red;
+}
+.timeIsUp {
+    color: red;
+    font-size: 40px;
+    content: "GAME OVER - Time is up!";
+}
+.showTime {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+}
+.popup {
+    width: 500px;
+    height: 500px;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button {
+    margin-top: 20px;
+    line-height: 60px;
+    font-weight: bold;
+    padding: 0 40px;
+    background: salmon;
+    border: none;
+  }
+  button:hover {
+    background: lightsalmon;
+  }
