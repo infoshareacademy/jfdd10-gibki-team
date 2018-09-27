@@ -20,17 +20,19 @@
     content: "GAME OVER - Time is up!";
 }
 .showTime {
-    width: 300px;
+    width: 150px;
     height: 300px;
     display: flex;
     /* justify-content: center;
     align-items: center; */
 }
 .popup {
-    width: 500px;
-    height: 500px;
-    background: rgba(0, 0, 0, 0.6);
+    /* width: 500px;
+    height: 500px; */
+    background: rgba(0, 0, 0, 0.85);
     display: flex;
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
     justify-content: center;
     align-items: center;
 }
