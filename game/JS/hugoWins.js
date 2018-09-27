@@ -6,6 +6,8 @@ function hugoWins() {
     var endDoors = document.querySelector('.endDoors');
     
     if ((Math.abs(hugoPositionX - endDoors.getBoundingClientRect().x - endDoors.getBoundingClientRect().width/2) < 10) && (hugoPositionY === endDoors.getBoundingClientRect().bottom)) {
-        console.log('hugoWins');
+        return true;
     }
+    
+    return false;
 }
