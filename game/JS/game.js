@@ -71,7 +71,7 @@ var isLeftArrowPressed = false;
 var isRightArrowPressed = false;
 var isUpArrowPressed = false;
 var isDownArrowPressed = false;
-var dTime = 10;
+var dTime = 20;
 
 
 // Listening for user input - move: left, right, up, bottom
@@ -118,22 +118,22 @@ window.addEventListener('keyup', function () {
 
 // Ruch Huga - obliczenia
 setInterval(function () {
-    if (isLeftArrowPressed && rightOffset <= 474 && (bottomOffset === 0 || bottomOffset === 100 || bottomOffset === 200 || bottomOffset === 300 || bottomOffset === 400)) {
+    if (isLeftArrowPressed && rightOffset <= 474 && (hugovsfloor(hugo))) {
         velocity = 0.1;
         rightOffset = rightOffset + velocity * dTime;
         hugo.style.right = rightOffset + 'px';
     } else {
-        if (isRightArrowPressed && rightOffset >= 1 && (bottomOffset === 0 || bottomOffset === 100 || bottomOffset === 200 || bottomOffset === 300 || bottomOffset === 400)) {
+        if (isRightArrowPressed && rightOffset >= 1 && (hugovsfloor(hugo))) {
             velocity = 0.1;
             rightOffset = rightOffset - velocity * dTime;
             hugo.style.right = rightOffset + 'px';
         } else {
-            if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 440/*&& hugovsladders(hugo)*/) {
+            if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 440 && hugovsladderstop(hugo)) {
                 velocity = 0.1;
                 bottomOffset = bottomOffset + velocity * dTime;
                 hugo.style.bottom = bottomOffset + 'px';
             } else {
-                if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 403 /*&& hugovsladders(hugo)*/) {
+                if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 403 && hugovsladdersbot(hugo)) {
                     velocity = 0.1;
                     bottomOffset = bottomOffset - velocity * dTime;
                     hugo.style.bottom = bottomOffset + 'px';
@@ -144,6 +144,8 @@ setInterval(function () {
     }
 }
 eatBanana(hugo)
-hugovsladders(hugo)
+
 
 }, dTime)
+
+
