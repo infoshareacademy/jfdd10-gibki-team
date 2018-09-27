@@ -112,6 +112,9 @@ function letsPlay() {
 
 // Ruch Huga - obliczenia
 setInterval(function () {
+    if (pauseCounter === 1) {
+        return;
+    }
     if (isLeftArrowPressed && rightOffset <= 474 && (hugovsfloor(hugo))) {
         velocity = 0.1;
         rightOffset = rightOffset + velocity * dTime;
