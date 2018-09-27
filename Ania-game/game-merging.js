@@ -57,9 +57,9 @@ function letsPlay() {
     startDoors.appendChild(hugo);
 
     //Ruch Huga
-    var rightOffset = 0;
-    var bottomOffset = 0;
-    var velocity = 0;
+    // var rightOffset = 0;
+    // var bottomOffset = 0;
+    // var velocity = 0;
     var isLeftArrowPressed = false;
     var isRightArrowPressed = false;
     var isUpArrowPressed = false;
@@ -108,11 +108,18 @@ function letsPlay() {
         }
     })
 
+    var CONTROLS = {
+        LEFT: isLeftArrowPressed = true,
+        UP: iUpArrowPressed = true,
+        RIGHT: isRightArrowPressed = true,
+        DOWN: isDownArrowPressed = true
+    }
 
-    var ladder = document.querySelectorAll('.ladder')
+    var ladder = document.querySelectorAll('.ladder');
     var hugoLeft = grid.clientWidth - hugo.clientWidth;
     var hugoTop = grid.clientHeight - hugo.clientHeight;
     var floor = row;
+    var level = grid;
 
     hugo.style.left = hugoLeft + 'px'; //tu dodajemy px do stringa bo wartosc musi byc w pixelach
     hugo.style.top = hugoTop + 'px';
@@ -240,7 +247,7 @@ function letsPlay() {
             })
 
 
-            if (isLeftArrowPressed && CONTROLS.LEFT && isAvailableMove(CONTROLS.LEFT)) {
+            if (isLeftArrowPressed && isAvailableMove(CONTROLS.LEFT)) {
                 hugoLeft -= moveSpeed * 3.5;
                 hugo.style.left = hugoLeft + 'px';
                 state = 'floor';
@@ -265,8 +272,9 @@ function letsPlay() {
                     }
                 }
             }
+        }
             eatBanana(hugo)
-        }, dTime)
+    }, dTime)
 
 }
 
