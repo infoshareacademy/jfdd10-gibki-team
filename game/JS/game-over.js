@@ -69,7 +69,7 @@ function pause() {
     window.addEventListener('keydown', function (event) {
         switch (event.code) {
             case "Space":
-                if (time < 1) {
+                if (time < 1 || hugoWins()) {
                     return;
                 }
                 pauseCounter += 1;
