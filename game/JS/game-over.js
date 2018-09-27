@@ -18,7 +18,7 @@ var intervalsManager = (function () {
 // TODO: to na sam koniec:
 intervalsManager.clearAllIntervals()
 
-var time = 6000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
+var time = 30000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
 var timerId;
 
 // --------\/-------- LICZENIE CZASU --------\/-------- //
