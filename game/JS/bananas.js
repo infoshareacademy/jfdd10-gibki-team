@@ -11,4 +11,5 @@ function eatBanana(hero) {
             document.querySelector('.bananasCounter').innerText = eatenBananasCounter;
         }
     }
-}   
+}
+//empty comment   
