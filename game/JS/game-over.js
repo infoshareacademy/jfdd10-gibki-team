@@ -26,14 +26,14 @@ function pauseOn() {
     clearInterval(timerId);
     // wyśietlaj okienko z informacją o pauzie:
     endGame('Paused. Press <space> to play.');
-    document.querySelector('.grid').style.display = 'none';
+    document.querySelector('.grid').style.visibility = 'hidden';
 }
 
 function pauseOff() {
     //usuwaj oknienka z informacją o pauzie:
     document.querySelectorAll('.popup').forEach(function (node) {
         node.remove();
-        document.querySelector('.grid').style.display = 'flex';
+        document.querySelector('.grid').style.visibility = 'visible';
     });
 }
 
@@ -81,13 +81,13 @@ function showTime() {
         node.remove();
     });
     // utworzenie <div class="showTime"></div>:
-    var body = document.querySelector('body');
+    var infoPanel = document.querySelector('.infoPanel');
     var showTime = document.createElement('div');
-    body.appendChild(showTime);
+    infoPanel.appendChild(showTime);
     showTime.classList.add('showTime');
     // utworzenie <span></span> i ostylowanie sekund...
     var clockStyler = document.createElement('span');
-    showTime.appendChild(clockStyler);
+    // showTime.appendChild(clockStyler);
     var seconds = Math.floor((time / 1000));
     clockStyler.innerText = seconds;
     clockStyler.classList.add('normal');
