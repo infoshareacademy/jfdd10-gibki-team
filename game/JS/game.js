@@ -56,6 +56,7 @@ function letsPlay() {
     var startDoors = document.querySelector('.startDoors');
     startDoors.appendChild(hugo);
 
+
     //Ruch Huga
     var rightOffset = 0;
     var bottomOffset = 0;
@@ -108,34 +109,37 @@ function letsPlay() {
         }
     })
 
-    // Ruch Huga - obliczenia
-    setInterval(function () {
-        if (isLeftArrowPressed && rightOffset <= 474 && (bottomOffset === 0 || bottomOffset === 100 || bottomOffset === 200 || bottomOffset === 300 || bottomOffset === 400)) {
+
+// Ruch Huga - obliczenia
+setInterval(function () {
+    if (isLeftArrowPressed && rightOffset <= 474 && (hugovsfloor(hugo))) {
+        velocity = 0.1;
+        rightOffset = rightOffset + velocity * dTime;
+        hugo.style.right = rightOffset + 'px';
+    } else {
+        if (isRightArrowPressed && rightOffset >= 1 && (hugovsfloor(hugo))) {
             velocity = 0.1;
-            rightOffset = rightOffset + velocity * dTime;
+            rightOffset = rightOffset - velocity * dTime;
             hugo.style.right = rightOffset + 'px';
         } else {
-            if (isRightArrowPressed && rightOffset >= 1 && (bottomOffset === 0 || bottomOffset === 100 || bottomOffset === 200 || bottomOffset === 300 || bottomOffset === 400)) {
+            if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 440 && (hugovsladderstop(hugo))) {
                 velocity = 0.1;
-                rightOffset = rightOffset - velocity * dTime;
-                hugo.style.right = rightOffset + 'px';
+                bottomOffset = bottomOffset + velocity * dTime;
+                hugo.style.bottom = bottomOffset + 'px';
             } else {
-                if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 440) {
+                if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 403 && (hugovsladdersbot(hugo))) {
                     velocity = 0.1;
-                    bottomOffset = bottomOffset + velocity * dTime;
+                    bottomOffset = bottomOffset - velocity * dTime;
                     hugo.style.bottom = bottomOffset + 'px';
                 } else {
-                    if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 403) {
-                        velocity = 0.1;
-                        bottomOffset = bottomOffset - velocity * dTime;
-                        hugo.style.bottom = bottomOffset + 'px';
-                    } else {
-                        velocity = 0;
-                    }
+                    velocity = 0;
                 }
             }
         }
-        eatBanana(hugo)
-    }, dTime)
+    }
+    eatBanana(hugo)
+    hugoWins()
+}, dTime)
 
 }
+
