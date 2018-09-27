@@ -111,7 +111,6 @@ function letsPlay() {
     function hugoOnLadderUp(hero) {
     var ladders = document.querySelectorAll('.ladder'); //nodeList
     var heroPositionY = hero.getBoundingClientRect().bottom;
-    console.log(hero.getBoundingClientRect().bottom)
     var heroPositionX = hero.getBoundingClientRect().x + hero.getBoundingClientRect().width/2;    
         for (var i = 0 ; i < ladders.length ; i++) {
             if ((Math.abs(heroPositionX - ladders[i].getBoundingClientRect().x - ladders[i].getBoundingClientRect().width/2) < 10) && (heroPositionY <= ladders[i].getBoundingClientRect().bottom) && (heroPositionY > ladders[i].getBoundingClientRect().top)) {
@@ -122,7 +121,6 @@ function letsPlay() {
     function hugoOnLadderDown(hero) {
         var ladders = document.querySelectorAll('.ladder'); //nodeList
         var heroPositionY = hero.getBoundingClientRect().bottom;
-        console.log(hero.getBoundingClientRect().bottom)
         var heroPositionX = hero.getBoundingClientRect().x + hero.getBoundingClientRect().width/2;    
             for (var i = 0 ; i < ladders.length ; i++) {
                 if ((Math.abs(heroPositionX - ladders[i].getBoundingClientRect().x - ladders[i].getBoundingClientRect().width/2) < 10) && (heroPositionY < ladders[i].getBoundingClientRect().bottom) && (heroPositionY >= ladders[i].getBoundingClientRect().top)) {
@@ -158,7 +156,7 @@ function letsPlay() {
             }
         }
         eatBanana(hugo)
-        console.log(bottomOffset)
+        hugoWins()
     }, dTime)
 
 }
