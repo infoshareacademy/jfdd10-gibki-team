@@ -20,16 +20,20 @@ var mainBoard = document.getElementById('boardWrapper');
             if (i === 4 && j === 19) {
                 cell.classList.add('startDoors')
             }
+
+            if (i ===2 && j === 1) {
+            cell.classList.add('emptyCell1')
+            }
             cell.classList.add('emptyCell')
             
             row.appendChild(cell)
         }
        
-       if( i !== 0){
-
-           var randomNumber = Math.floor(Math.random()*20)
+       if(i > 0){
+            var randomFactor = i > 1 ? 20 : 19;
+           var randomNumber = (randomFactor === 19 ? 1 : 0) + Math.floor(Math.random()*randomFactor)
            row.children[randomNumber].classList.add('ladder')
-           randomNumber = Math.floor(Math.random()*20)
+           var randomNumber = (randomFactor === 19 ? 1 : 0) + Math.floor(Math.random()*randomFactor)
            row.children[randomNumber].classList.add('ladder')
            
         }
@@ -58,4 +62,4 @@ var mainBoard = document.getElementById('boardWrapper');
         }
     }
    
-}
+ }
