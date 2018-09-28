@@ -12,6 +12,7 @@ function waterRising() {
                 waterContainerHeight += 2;
                 waterContainer.style.height = waterContainerHeight + 'px';
             }
+            console.log(waterContainer.getBoundingClientRect().top)
         }, 200)
     }, 5000)
 }

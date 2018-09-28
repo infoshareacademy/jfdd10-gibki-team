@@ -5,7 +5,7 @@ function hugoDrawns(hero) {
     console.log(hero.getBoundingClientRect());
     console.log(water.getBoundingClientRect());
     
-    if (hero.getBoundingClientRect().top - 540 <= water.getBoundingClientRect().top) {
+    if (hero.getBoundingClientRect().top >= water.getBoundingClientRect().top) {
         youLoose();
     }
 }

@@ -57,8 +57,6 @@ function letsPlay() {
     var startDoors = document.querySelector('.startDoors');
     startDoors.appendChild(hugo);
 
-    hugoDrawns(hugo);
-
     //Ruch Huga
     var rightOffset = 0;
     var bottomOffset = 0;
@@ -114,6 +112,7 @@ function letsPlay() {
 
 // Ruch Huga - obliczenia
 setInterval(function () {
+    hugoDrawns(hugo);
     if (pauseCounter === 1) {
         return;
     }
