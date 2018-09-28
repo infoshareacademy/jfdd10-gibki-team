@@ -49,7 +49,7 @@ function letsPlay() {
         }
     }
     waterRising();
-
+    
     //wygenrowanie Huga (pozycja przodem) i ustawienie na pozycji startowej
     var hugo = document.createElement('div');
     hugo.classList.add('hugo');
@@ -57,6 +57,7 @@ function letsPlay() {
     var startDoors = document.querySelector('.startDoors');
     startDoors.appendChild(hugo);
 
+    hugoDrawns(hugo);
 
     //Ruch Huga
     var rightOffset = 0;
