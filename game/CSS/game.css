@@ -93,3 +93,12 @@
 .hugoBack {
     background: black;
 }
+.waterContainer {
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    left: -475px;
+    width: 500px;
+    height: 10px;
+    background-color: red;
+}

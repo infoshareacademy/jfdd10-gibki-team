@@ -48,6 +48,7 @@ function letsPlay() {
             row.appendChild(cell); //przypięcie pojedynczej komórki (cell) do wiersza (row) - cała pętla tworzy pojedynczy wiersz
         }
     }
+    waterRising();
 
     //wygenrowanie Huga (pozycja przodem) i ustawienie na pozycji startowej
     var hugo = document.createElement('div');
