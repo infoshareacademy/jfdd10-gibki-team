@@ -1,3 +1,4 @@
+var waterInterval;
 function waterRising() {
     var startDoors = document.querySelector('.startDoors');
     var waterContainer = document.createElement('div');
@@ -7,13 +8,12 @@ function waterRising() {
 
     setTimeout(function() {
         waterContainer.style.display = 'block';
-        waterContainer.style.background = 'red';
-        setInterval(function(){
+        waterContainer.style.background = 'url(Graphics/flooding.png)';
+        waterInterval = setInterval(function(){
             if (waterContainerHeight <= 500) {
                 waterContainerHeight += 2;
                 waterContainer.style.height = waterContainerHeight + 'px';
             }
-            console.log(waterContainer.getBoundingClientRect().top)
         }, 200)
     }, 5000)
 }
