@@ -40,7 +40,7 @@ function timeCounter(id) {
             youWon();
         }
         // TODO: do usunięcia console.log:
-        console.log(time);
+        // console.log(time);
         showTime();
     }, 1000);
     return intervalId;
@@ -170,7 +170,7 @@ function startGame() {
     // tworzymy okienko startowe:
     var message = popUp(
         'normal',
-        'Welcome in ClimbApp game!<br><br>To move use: LeftKey, RightKey, UpKey, DownKey.<br><br>To pause game press Space.<br>'
+        'Welcome in ClimbApp game!<br><br>To move use: LeftKey, RightKey, UpKey, DownKey.<br><br>To pause game press Space.<br><br>Trust in bananas to get Turbo Speed!<br>'
     );
 
     // tworzymy i osadzamy przycisk:
