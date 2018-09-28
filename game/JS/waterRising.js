@@ -7,6 +7,7 @@ function waterRising() {
 
     setTimeout(function() {
         waterContainer.style.display = 'block';
+        waterContainer.style.background = 'red';
         setInterval(function(){
             if (waterContainerHeight <= 500) {
                 waterContainerHeight += 2;
