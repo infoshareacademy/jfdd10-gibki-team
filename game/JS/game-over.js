@@ -1,4 +1,24 @@
-var time = 32000;  // <-- ustawienie czasu trwania gry w milisekundach!
+// TODO: to na sam początek wszystkiego:
+var intervalsManager = (function () {
+    var intervalIds = [];
+    return {
+        addInterval: function (fun, time) {
+            var id = setInterval(fun, time)
+            intervalIds.push(id);
+            return id;
+        },
+        clearAllIntervals: function () {
+            intervalIds.forEach(function (intervalId) {
+                clearInterval(intervalId)
+            })
+        }
+    }
+})()
+
+// TODO: to na sam koniec:
+intervalsManager.clearAllIntervals()
+
+var time = 30000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
 var timerId;
 
 // --------\/-------- LICZENIE CZASU --------\/-------- //
@@ -7,13 +27,19 @@ function timeCounter(id) {
     if (id) {
         return id;
     }
-    var intervalId = setInterval(function () {
+    var intervalId = intervalsManager.addInterval(function () {
         time = time - 1000;
-        // jeżeli skończy się czas wyświetlaj okienko z wynikiem:
+        // jeżeli skończy się czas wyświetlaj okienko info o przegranej:
         if (time <= 0) {
             clearInterval(intervalId);
-            endGame('You loose - time is up');
+            youLoose();
         }
+        // jeżeli dojdziemy do wyjścia wyświetlaj okienko z info o wygranej i wynikiem:
+        if (hugoWins() === true) {
+            clearInterval(intervalId);
+            youWon();
+        }
+        // TODO: do usunięcia console.log:
         console.log(time);
         showTime();
     }, 1000);
@@ -24,14 +50,16 @@ function timeCounter(id) {
 // --------\/-------- PAUZOWANIE --------\/-------- //
 function pauseOn() {
     clearInterval(timerId);
-    // wyśietlaj okienko z informacją o pauzie:
-    endGame('Paused. Press <space> to play.');
+    // wyświetlaj okienko z informacją o pauzie:
+    popUp('timeIsUp', 'Paused. Press Space to play.');
+    document.querySelector('.grid').style.visibility = 'hidden';
 }
 
 function pauseOff() {
     //usuwaj oknienka z informacją o pauzie:
     document.querySelectorAll('.popup').forEach(function (node) {
         node.remove();
+        document.querySelector('.grid').style.visibility = 'visible';
     });
 }
 
@@ -41,6 +69,9 @@ function pause() {
     window.addEventListener('keydown', function (event) {
         switch (event.code) {
             case "Space":
+                if (time < 1 || hugoWins()) {
+                    return;
+                }
                 pauseCounter += 1;
                 if (pauseCounter % 2 !== 0) {
                     pauseOn();
@@ -57,23 +88,43 @@ pause();
 // --------/\-------- PAUZOWANIE --------/\-------- //
 
 // --------\/-------- OKNO ZAKRYWAJĄCE GRĘ --------\/-------- //
-function endGame(reason) {
+function popUp(type, text) {
+    // sprawdzamy czy okienko już się nie wyświetla i jak się wyświetla to je usuwamy
+    // zanim wyświetlimy następne (zabezpieczenie przed utworzeniem dwóch okienek):
+    document.querySelectorAll('.popup').forEach(function (node) {
+        node.remove();
+    });
     // tworzymy wyskakujące okienko:
     var boardWrapper = document.querySelector('#boardWrapper');
-    var endWindow = document.createElement('div');
-    boardWrapper.appendChild(endWindow);
-    endWindow.classList.add('popup');
-    var endMessage = document.createElement('p');
-    endWindow.appendChild(endMessage);
+    var popupWindow = document.createElement('div');
+    boardWrapper.appendChild(popupWindow);
+    popupWindow.classList.add('popup');
+    var message = document.createElement('p');
+    popupWindow.appendChild(message);
+    message.classList.add(type);
+    message.innerHTML = text;
 
-    // w przypadku gdy gra kończy się przegraną (skończył się czas):
-    endMessage.classList.add('timeIsUp');
-    endMessage.innerText = reason;
-
-    // chcemy schować grida z grą:
-    // document.querySelector('.grid').style.display = 'none';           // <------ DO ODKOMENTOWANIA gdy używamy game.js
+    return message;
 }
 // --------/\-------- OKNO ZAKRYWAJĄCE GRĘ --------/\-------- //
+
+// --------\/-------- PRZEGRANA --------\/-------- //
+// w przypadku gdy gra kończy się przegraną (skończył się czas):
+function youLoose() {
+    var message = popUp('timeIsUp', 'You loose - time is up!');
+
+    return message;
+}
+// --------/\-------- PRZEGRANA --------/\-------- //
+
+// --------\/-------- WYGRANA --------\/-------- //
+// w przypadku gdy gra kończy się przegraną (skończył się czas):
+function youWon() {
+    var message = popUp('youWon', 'Congratulations! You Won');
+
+    return message;
+}
+// --------/\-------- WYGRANA --------/\-------- //
 
 // --------\/-------- WYŚWIETLANIE CZASU --------\/-------- //
 function showTime() {
@@ -82,13 +133,13 @@ function showTime() {
         node.remove();
     });
     // utworzenie <div class="showTime"></div>:
-    var body = document.querySelector('body');
+    var infoPanel = document.querySelector('.infoPanel');
     var showTime = document.createElement('div');
-    body.appendChild(showTime);
+    infoPanel.appendChild(showTime);
     showTime.classList.add('showTime');
     // utworzenie <span></span> i ostylowanie sekund...
     var clockStyler = document.createElement('span');
-    showTime.appendChild(clockStyler);
+    // showTime.appendChild(clockStyler);
     var seconds = Math.floor((time / 1000));
     clockStyler.innerText = seconds;
     clockStyler.classList.add('normal');
@@ -114,25 +165,24 @@ function showTime() {
 
 // --------\/-------- ODPALANIE GRY / EKRAN STARTOWY --------\/-------- //
 function startGame() {
+    // ukrywamy panel boczny zapisany na sztywno w html:
+    document.querySelector('.infoPanel').style.display = 'none';
     // tworzymy okienko startowe:
-    var boardWrapper = document.querySelector('#boardWrapper');
-    var introWindow = document.createElement('div');
-    boardWrapper.appendChild(introWindow);
-    introWindow.classList.add('popup');
-    var introMessage = document.createElement('p');
-    introWindow.appendChild(introMessage);
-    introMessage.classList.add('normal');
-    introMessage.innerHTML = 'Welcome in ClimbApp game!<br><br>To move use: LeftKey, RightKey, UpKey, DownKey.<br><br>To pause game press Space.<br>';
+    var message = popUp(
+        'normal',
+        'Welcome in ClimbApp game!<br><br>To move use: LeftKey, RightKey, UpKey, DownKey.<br><br>To pause game press Space.<br>'
+    );
 
     // tworzymy i osadzamy przycisk:
     var button = document.createElement('button');
     button.innerHTML = 'Play';
-    introMessage.appendChild(button);
+    message.appendChild(button);
 
     // dodajemy event:
     button.addEventListener('click', function () {
-        // alert('letsPlay');
-        letsPlay ();
+        document.querySelector('.infoPanel').style.display = 'flex';
+        // odpalenie gry:
+        letsPlay();
         document.querySelectorAll('.popup').forEach(function (node) {
             node.remove();
         });
@@ -141,8 +191,3 @@ function startGame() {
 }
 startGame();
 // --------/\-------- ODPALANIE GRY / EKRAN STARTOWY --------/\-------- //
-
-
-// --------\/-------- WYŁĄCZANIE GRY --------\/-------- //
-
-// --------/\-------- WYŁĄCZANIE GRY --------/\-------- //

@@ -43,6 +43,9 @@
     clear: both;
     max-height: 0;
   }
+  .header .menu .active {
+    background-color: red; 
+  }
   
   /* menu icon */
   

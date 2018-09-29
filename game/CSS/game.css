@@ -14,6 +14,7 @@
     height: 500px;
     margin-right: 50px;
     border: 1px solid black;
+    flex-direction: column;
 }
 .bananasCounterWrapper {
     border: 1px solid black;
