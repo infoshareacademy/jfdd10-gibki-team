@@ -48,14 +48,14 @@ function letsPlay() {
             row.appendChild(cell); //przypięcie pojedynczej komórki (cell) do wiersza (row) - cała pętla tworzy pojedynczy wiersz
         }
     }
-
+    waterRising();
+    
     //wygenrowanie Huga (pozycja przodem) i ustawienie na pozycji startowej
     var hugo = document.createElement('div');
     hugo.classList.add('hugo');
     hugo.classList.add('hugoFront');
     var startDoors = document.querySelector('.startDoors');
     startDoors.appendChild(hugo);
-
 
     //Ruch Huga
     var rightOffset = 0;
@@ -112,26 +112,27 @@ function letsPlay() {
 
 // Ruch Huga - obliczenia
 setInterval(function () {
+    hugoDrawns(hugo);
     if (pauseCounter === 1) {
         return;
     }
     if (isLeftArrowPressed && rightOffset <= 474 && (hugovsfloor(hugo))) {
-        velocity = 0.1;
+        isTurboOn() ? velocity = 0.15 : velocity = 0.1;
         rightOffset = rightOffset + velocity * dTime;
         hugo.style.right = rightOffset + 'px';
     } else {
         if (isRightArrowPressed && rightOffset >= 1 && (hugovsfloor(hugo))) {
-            velocity = 0.1;
+            isTurboOn() ? velocity = 0.15 : velocity = 0.1;
             rightOffset = rightOffset - velocity * dTime;
             hugo.style.right = rightOffset + 'px';
         } else {
             if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 440 && (hugovsladderstop(hugo))) {
-                velocity = 0.1;
+                isTurboOn() ? velocity = 0.15 : velocity = 0.1;
                 bottomOffset = bottomOffset + velocity * dTime;
                 hugo.style.bottom = bottomOffset + 'px';
             } else {
                 if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 403 && (hugovsladdersbot(hugo))) {
-                    velocity = 0.1;
+                    isTurboOn() ? velocity = 0.15 : velocity = 0.1;
                     bottomOffset = bottomOffset - velocity * dTime;
                     hugo.style.bottom = bottomOffset + 'px';
                 } else {

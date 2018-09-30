@@ -12,4 +12,7 @@ function eatBanana(hero) {
         }
     }
 }
-//empty comment   
+
+function isTurboOn() {
+    return eatenBananasCounter >= 6 ? true : false
+}
