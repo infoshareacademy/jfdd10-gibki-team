@@ -1,53 +1,12 @@
+
+
 function letsPlay() {
 
     //WYGENEROWANIE PLANSZY
 
     //główny kontener planszy
-    var boardContainer = document.querySelector('#boardWrapper');
-
-    //przykładowa plansza: _-empty cell,s-startDoors,e-endDoors,l-drabina,b-banana 
-    var boardData = [
-        'e___b___b_____b_____',
-        '_b____l_b________l__',
-        'b___l_________b_____',
-        'b_l_____b________l__',
-        '_b____l___b___l____s',//hugo startuje z pozycji s
-    ]
-
-    //wygenerowanie grida na elementy plaszy, nadanie mu klasy .grid i przypięcie do boardContainera
-    var grid = document.createElement('div');
-    grid.classList.add('grid');
-    boardContainer.appendChild(grid);
-
-    //wygenerowanie i przypięcie do grida wierszy wg schematu planszy
-    for (var j = 0; j < boardData.length; j += 1) {
-        var row = document.createElement('div');
-        row.classList.add('gridRow');
-
-        grid.appendChild(row); //przypięcie wygenerowanego wiersza z pętli poniżej do grida
-
-        var rowData = boardData[j];
-        var size = rowData.length;
-
-        //stworzenie komórek (cells) w obrębie wiersza (row) wg schematu planszy
-        for (var i = 0; i < size; i += 1) {
-            var cell = document.createElement('div');
-            cell.classList.add('emptyCell'); //nadanie komórce (cell) klasy domyślnej .emptyCell
-            if (rowData[i] === 's') {
-                cell.classList.add('startDoors');
-            }
-            if (rowData[i] === 'e') {
-                cell.classList.add('endDoors');
-            }
-            if (rowData[i] === 'l') {
-                cell.classList.add('ladder');
-            }
-            if (rowData[i] === 'b') {
-                cell.classList.add('banana');
-            }
-            row.appendChild(cell); //przypięcie pojedynczej komórki (cell) do wiersza (row) - cała pętla tworzy pojedynczy wiersz
-        }
-    }
+    // 
+    boardGenerator();
     waterRising();
     
     //wygenrowanie Huga (pozycja przodem) i ustawienie na pozycji startowej
