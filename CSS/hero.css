@@ -19,10 +19,7 @@ flex-direction: column;
 width: 100%;
 line-height: 1.2;
 }
-.hero_dscr {
-    background-color: rgba(207, 214, 218, 0.863);
-    overflow: hidden;
-}
+
 
 .heading-top{
 display: flex;
