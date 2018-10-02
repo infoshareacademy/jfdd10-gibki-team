@@ -58,11 +58,11 @@
 }
 .startDoors {
     position: relative;
-    background: red;
+    background: url(../Graphics/enter-door.png);
     height: 60px;
 }
 .endDoors {
-    background: green;
+    background: url(../Graphics/exit-door.png);
     height: 60px;
 }
 .ladder {
