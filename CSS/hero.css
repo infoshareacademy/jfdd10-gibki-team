@@ -18,7 +18,6 @@ width: 100%;
 line-height: 1.2;
 }
 
-
 .heading-top{
 display: flex;
 flex-direction: column;
@@ -69,6 +68,10 @@ color: #e49a22;
 line-height: 1.3;
 font-size: 20px;
 position: relative;
+}
+
+.read-more{
+    cursor: pointer;
 }
 
 .p-hero{
@@ -141,6 +144,7 @@ cta{
  
     .text-box{
         line-height: 1.5;   
+        height: 100vh;
     }
     
     .heading{
