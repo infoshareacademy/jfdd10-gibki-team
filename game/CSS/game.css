@@ -82,7 +82,13 @@
     z-index: 10000;
   }
 .hugoFront {
-    background: orange;
+    background-image: url(../Graphics/monkey.png);
+    background-position: center;
+    background-size: cover;
+    background-size: 25px 60px;
+    /* background-color: red; */
+    width: 25px;
+    height: 60px;
 }
 .hugoLeft {
     background: pink;
