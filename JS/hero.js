@@ -10,3 +10,8 @@ window.addEventListener('scroll',function(){
     right.style.marginRight = '-' + (heroOffset) + 'px';
     right.style.bottom = (0 - screenOffset*0.5) + 'px';
 })
+
+document.querySelector('.read-more').addEventListener('click', function () {
+    console.log('wat?')
+    document.querySelector('.toggle').style.display = 'block';
+})
