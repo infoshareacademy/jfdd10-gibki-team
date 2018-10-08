@@ -34,6 +34,13 @@ function timeCounter(id) {
             clearInterval(intervalId);
             youLoose();
         }
+        // jeżeli utoniesz wyświetlaj okienko z info o wygranej i wynikiem:
+        if (hugoDrawns()) {
+            
+            clearInterval(waterInterval);
+            clearInterval(intervalId);
+            youDrown();
+        }
         // jeżeli dojdziemy do wyjścia wyświetlaj okienko z info o wygranej i wynikiem:
         if (hugoWins() === true) {
             clearInterval(intervalId);
@@ -69,7 +76,7 @@ function pause() {
     window.addEventListener('keydown', function (event) {
         switch (event.code) {
             case "Space":
-                if (time < 1 || hugoWins()) {
+                if (time < 1 || hugoDrawns() || hugoWins()) {
                     return;
                 }
                 pauseCounter += 1;
@@ -115,6 +122,12 @@ function youLoose() {
 
     return message;
 }
+
+function youDrown() {
+    var message = popUp('timeIsUp', 'You loose - enjoy the swim!');
+
+    return message;
+}
 // --------/\-------- PRZEGRANA --------/\-------- //
 
 // --------\/-------- WYGRANA --------\/-------- //
@@ -154,8 +167,8 @@ function showTime() {
         clockStyler.classList.add('warning');
     }
     // wyświetlanie pozostałych sekund i kolorowanie w zależności od pozostałego czasu:
-    var prefix = document.createTextNode('Game ends in ');
-    var suffix = document.createTextNode(' seconds');
+    var prefix = document.createTextNode('');
+    var suffix = document.createTextNode(' seconds left');
 
     showTime.appendChild(prefix);
     showTime.appendChild(clockStyler);

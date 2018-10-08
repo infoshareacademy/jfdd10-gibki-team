@@ -1,4 +1,4 @@
-var waterInterval;
+
 function waterRising() {
     var startDoors = document.querySelector('.startDoors');
     var waterContainer = document.createElement('div');
