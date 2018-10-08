@@ -1,5 +1,5 @@
 (function () {
-    var menu = document.querySelectorAll('.menu li a');
+    var menu = document.querySelectorAll('.menu li a[href^="#"]');
 
     var targets = [];
 
