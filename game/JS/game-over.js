@@ -18,7 +18,7 @@ var intervalsManager = (function () {
 // TODO: to na sam koniec:
 intervalsManager.clearAllIntervals()
 
-var time = 60000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
+var time = 40000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
 var timerId;
 
 // --------\/-------- LICZENIE CZASU --------\/-------- //
@@ -31,11 +31,20 @@ function timeCounter(id) {
         time = time - 1000;
         // jeżeli skończy się czas wyświetlaj okienko info o przegranej:
         if (time <= 0) {
+            clearInterval(waterInterval);
             clearInterval(intervalId);
             youLoose();
         }
+        // jeżeli utoniesz wyświetlaj okienko z info o wygranej i wynikiem:
+        if (hugoDrawns()) {
+            
+            clearInterval(waterInterval);
+            clearInterval(intervalId);
+            youDrown();
+        }
         // jeżeli dojdziemy do wyjścia wyświetlaj okienko z info o wygranej i wynikiem:
         if (hugoWins() === true) {
+            clearInterval(waterInterval);
             clearInterval(intervalId);
             youWon();
         }
@@ -69,7 +78,7 @@ function pause() {
     window.addEventListener('keydown', function (event) {
         switch (event.code) {
             case "Space":
-                if (time < 1 || hugoWins()) {
+                if (time < 1 || hugoDrawns() || hugoWins()) {
                     return;
                 }
                 pauseCounter += 1;
@@ -115,6 +124,12 @@ function youLoose() {
 
     return message;
 }
+
+function youDrown() {
+    var message = popUp('timeIsUp', 'You loose - enjoy the swim!');
+
+    return message;
+}
 // --------/\-------- PRZEGRANA --------/\-------- //
 
 // --------\/-------- WYGRANA --------\/-------- //
@@ -144,18 +159,18 @@ function showTime() {
     clockStyler.innerText = seconds;
     clockStyler.classList.add('normal');
     // w zależności ile czasu zostało:
-    if (seconds <= 30) {
+    if (seconds <= 20) {
         clockStyler.classList.add('halfTime');
     }
-    if (seconds <= 20) {
+    if (seconds <= 10) {
         clockStyler.classList.add('stayFocus');
     }
-    if (seconds <= 10) {
+    if (seconds <= 5) {
         clockStyler.classList.add('warning');
     }
     // wyświetlanie pozostałych sekund i kolorowanie w zależności od pozostałego czasu:
-    var prefix = document.createTextNode('Game ends in ');
-    var suffix = document.createTextNode(' seconds');
+    var prefix = document.createTextNode('');
+    var suffix = document.createTextNode(' seconds left');
 
     showTime.appendChild(prefix);
     showTime.appendChild(clockStyler);

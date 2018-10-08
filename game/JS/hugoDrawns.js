@@ -4,7 +4,7 @@ function hugoDrawns(hero) {
     var water = document.querySelector('.waterContainer');
        
     if (hero.getBoundingClientRect().top >= water.getBoundingClientRect().top) {
-        youLoose();
-        clearInterval(waterInterval);
+        return true
     }
+    return false
 }
