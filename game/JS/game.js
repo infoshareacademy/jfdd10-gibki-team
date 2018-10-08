@@ -76,22 +76,22 @@ setInterval(function () {
         return;
     }
     if (isLeftArrowPressed && rightOffset <= 474 && (hugovsfloor(hugo))) {
-        isTurboOn() ? velocity = 0.15 : velocity = 0.1;
+        isTurboOn() ? velocity = 0.1 : velocity = 0.06;
         rightOffset = rightOffset + velocity * dTime;
         hugo.style.right = rightOffset + 'px';
     } else {
         if (isRightArrowPressed && rightOffset >= 1 && (hugovsfloor(hugo))) {
-            isTurboOn() ? velocity = 0.15 : velocity = 0.1;
+            isTurboOn() ? velocity = 0.1 : velocity = 0.06;
             rightOffset = rightOffset - velocity * dTime;
             hugo.style.right = rightOffset + 'px';
         } else {
             if (isUpArrowPressed && bottomOffset >= 0 && bottomOffset <= 440 && (hugovsladderstop(hugo))) {
-                isTurboOn() ? velocity = 0.15 : velocity = 0.1;
+                isTurboOn() ? velocity = 0.1 : velocity = 0.06;
                 bottomOffset = bottomOffset + velocity * dTime;
                 hugo.style.bottom = bottomOffset + 'px';
             } else {
                 if (isDownArrowPressed && bottomOffset >= 1 && bottomOffset <= 403 && (hugovsladdersbot(hugo))) {
-                    isTurboOn() ? velocity = 0.15 : velocity = 0.1;
+                    isTurboOn() ? velocity = 0.1 : velocity = 0.06;
                     bottomOffset = bottomOffset - velocity * dTime;
                     hugo.style.bottom = bottomOffset + 'px';
                 } else {

@@ -18,6 +18,6 @@ function waterRising() {
                 waterContainer.style.height = waterContainerHeight + 'px';
             }
         }, 200)
-    }, 5000)
+    }, 7000)
 }
 
