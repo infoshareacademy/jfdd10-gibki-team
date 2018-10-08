@@ -31,6 +31,7 @@ function timeCounter(id) {
         time = time - 1000;
         // jeżeli skończy się czas wyświetlaj okienko info o przegranej:
         if (time <= 0) {
+            clearInterval(waterInterval);
             clearInterval(intervalId);
             youLoose();
         }
@@ -43,6 +44,7 @@ function timeCounter(id) {
         }
         // jeżeli dojdziemy do wyjścia wyświetlaj okienko z info o wygranej i wynikiem:
         if (hugoWins() === true) {
+            clearInterval(waterInterval);
             clearInterval(intervalId);
             youWon();
         }
