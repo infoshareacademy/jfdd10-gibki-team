@@ -18,7 +18,7 @@ var intervalsManager = (function () {
 // TODO: to na sam koniec:
 intervalsManager.clearAllIntervals()
 
-var time = 60000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
+var time = 40000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
 var timerId;
 
 // --------\/-------- LICZENIE CZASU --------\/-------- //
@@ -144,13 +144,13 @@ function showTime() {
     clockStyler.innerText = seconds;
     clockStyler.classList.add('normal');
     // w zależności ile czasu zostało:
-    if (seconds <= 30) {
+    if (seconds <= 20) {
         clockStyler.classList.add('halfTime');
     }
-    if (seconds <= 20) {
+    if (seconds <= 10) {
         clockStyler.classList.add('stayFocus');
     }
-    if (seconds <= 10) {
+    if (seconds <= 5) {
         clockStyler.classList.add('warning');
     }
     // wyświetlanie pozostałych sekund i kolorowanie w zależności od pozostałego czasu:
