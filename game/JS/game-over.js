@@ -188,13 +188,21 @@ function startGame() {
         'Welcome in ClimbApp game!<br><br>To move use: LeftKey, RightKey, UpKey, DownKey.<br><br>To pause game press Space.<br><br>Trust in bananas to get Turbo Speed!<br>'
     );
 
-    // tworzymy i osadzamy przycisk:
-    var button = document.createElement('button');
-    button.innerHTML = 'Play';
-    message.appendChild(button);
+    // tworzymy i osadzamy przycisk Play:
+    var buttonPlay = document.createElement('button');
+    buttonPlay.innerHTML = 'Play';
+    message.appendChild(buttonPlay);
+    
+    // tworzymy i osadzamy przycisk Home:
+    var buttonHome = document.createElement('button');
+    var linkToHome = document.createElement('a');
+    linkToHome.innerText = 'Home';
+    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
+    buttonHome.appendChild(linkToHome);
+    message.appendChild(buttonHome);
 
-    // dodajemy event:
-    button.addEventListener('click', function () {
+    // dodajemy event dla Play:
+    buttonPlay.addEventListener('click', function () {
         document.querySelector('.infoPanel').style.display = 'flex';
         // odpalenie gry:
         letsPlay();
