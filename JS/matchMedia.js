@@ -8,7 +8,9 @@ function screenCheck() {
 
   document.getElementsByTagName('head')[0].appendChild(script);
 };
-screenCheck();
+// screenCheck();
+
+window.addEventListener('resize',screenCheck());
 
 var previousButton = document.querySelector('.team-prev-button');
 var nextButton = document.querySelector('.team-next-button');
