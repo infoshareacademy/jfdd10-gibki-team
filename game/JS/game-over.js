@@ -33,7 +33,7 @@ var intervalsManager = (function () {
 // TODO: to na sam koniec:
 intervalsManager.clearAllIntervals()
 
-var time = 50000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
+var time = 45000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
 var timerId;
 
 // --------\/-------- LICZENIE CZASU --------\/-------- //
@@ -78,7 +78,7 @@ function pauseOn() {
     var message = popUp('timeIsUp', 'Paused. Press Space to play.');
     document.querySelector('.grid').style.visibility = 'hidden';
     // ukrywamy panel boczny zapisany na sztywno w html:
-    document.querySelector('.infoPanel').style.visibility = 'hidden';
+    // document.querySelector('.infoPanel').style.visibility = 'hidden';
     // tworzymy i osadzamy przycisk Restart:
     createRestart_PlayagainButton(message, 'Restart')
     // tworzymy i osadzamy przycisk Home:
@@ -180,38 +180,20 @@ function youWon() {
 
 // --------\/-------- WYŚWIETLANIE CZASU --------\/-------- //
 function showTime() {
-    // czyszczenie starej informacji po zmianie czasu:
-    document.querySelectorAll('.showTime').forEach(function (node) {
-        node.remove();
-    });
-    // utworzenie <div class="showTime"></div>:
-    var infoPanel = document.querySelector('.infoPanel');
-    var showTime = document.createElement('div');
-    infoPanel.appendChild(showTime);
-    showTime.classList.add('showTime');
-    // utworzenie <span></span> i ostylowanie sekund...
-    var clockStyler = document.createElement('span');
-    // showTime.appendChild(clockStyler);
+    const showTimeSecondsContainer = document.querySelector(".showTimeSecondsContainer");
     var seconds = Math.floor((time / 1000));
-    clockStyler.innerText = seconds;
-    clockStyler.classList.add('normal');
+    showTimeSecondsContainer.innerText = seconds;
+    showTimeSecondsContainer.classList.add('normalText');
     // w zależności ile czasu zostało:
-    if (seconds <= 20) {
-        clockStyler.classList.add('halfTime');
+    if (seconds <= 25) {
+        showTimeSecondsContainer.classList.add('halfTime');
+    }
+    if (seconds <= 15) {
+        showTimeSecondsContainer.classList.add('stayFocus');
     }
     if (seconds <= 10) {
-        clockStyler.classList.add('stayFocus');
+        showTimeSecondsContainer.classList.add('warning');
     }
-    if (seconds <= 5) {
-        clockStyler.classList.add('warning');
-    }
-    // wyświetlanie pozostałych sekund i kolorowanie w zależności od pozostałego czasu:
-    var prefix = document.createTextNode('');
-    var suffix = document.createTextNode(' seconds left');
-
-    showTime.appendChild(prefix);
-    showTime.appendChild(clockStyler);
-    showTime.appendChild(suffix);
 }
 // --------/\-------- WYŚWIETLANIE CZASU --------/\-------- //
 

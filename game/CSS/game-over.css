@@ -8,26 +8,49 @@
 .normal {
     font-size: 24px;
 }
+.normalText {
+    color: green;
+    font-weight: bolder;
+}
 .halfTime {
     color: rgb(255, 136, 0);
+    font-weight: bolder;
 }
 .stayFocus {
     color: orangered;
+    font-weight: bolder;
 }
 .warning {
     color: red;
+    font-weight: bolder;
 }
 .showTime {
-    width: 150px;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 25px;
+}
+.showTimeText {
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+.showTimeSecondsContainer {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
 }
 .popup {
-    /* width: 500px;
-    height: 500px; */
-    /* background: rgba(0, 0, 0, 0.85); */
     display: flex;
     position: absolute;
     left: 0; top: 0; right: 0; bottom: 0;
@@ -42,7 +65,6 @@ button {
     line-height: 60px;
     font-size: 20px;
     font-weight: bold;
-    /* padding: 0 40px; */
     background: salmon;
     border: none;
     border-radius: 5px;
