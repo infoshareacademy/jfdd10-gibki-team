@@ -40,15 +40,25 @@
     align-items: center;
 }
 button {
-    display: block;
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    width: 120px;
     line-height: 60px;
+    font-size: 20px;
     font-weight: bold;
-    padding: 0 40px;
+    /* padding: 0 40px; */
     background: salmon;
     border: none;
     border-radius: 5px;
-  }
+    cursor: pointer;
+}
   button:hover {
     background: lightsalmon;
+  }
+  button a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    width: 120px;
   }

@@ -60,8 +60,15 @@ function timeCounter(id) {
 function pauseOn() {
     clearInterval(timerId);
     // wyświetlaj okienko z informacją o pauzie:
-    popUp('timeIsUp', 'Paused. Press Space to play.');
+    var message = popUp('timeIsUp', 'Paused. Press Space to play.');
     document.querySelector('.grid').style.visibility = 'hidden';
+    // tworzymy i osadzamy przycisk Home:
+    var buttonHome = document.createElement('button');
+    var linkToHome = document.createElement('a');
+    linkToHome.innerText = 'Home';
+    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
+    buttonHome.appendChild(linkToHome);
+    message.appendChild(buttonHome);
 }
 
 function pauseOff() {
