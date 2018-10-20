@@ -166,15 +166,31 @@ function youDrown() {
 
 // --------\/-------- WYGRANA --------\/-------- //
 // w przypadku gdy gra kończy się przegraną (skończył się czas):
+
 function youWon() {
-    var message = popUp('youWon', 'Congratulations! You Won');
-    document.querySelector('.grid').style.visibility = 'hidden';
-    document.querySelector('.infoPanel').style.visibility = 'hidden';
-    // tworzymy i osadzamy przycisk Play again:
-    createRestart_PlayagainButton(message, 'Play again')
-    // tworzymy i osadzamy przycisk Home:
-    createHomeButton(message);
-    return message;
+    const timeScore = (time / 1000) * 55;
+    const scoreIntervalDuration = 2000;
+    const timeScoreIntervalValue = timeScore/(time/scoreIntervalDuration)
+    var scoreValue = bananasScore;
+    var scoreValueContainer = document.querySelector('.scoreValueContainer');
+    
+    scoreInterval = setInterval(function () {
+        scoreValue += timeScoreIntervalValue;
+        scoreValueContainer.innerText = scoreValue;
+    }, (scoreIntervalDuration/time)*scoreIntervalDuration)
+    
+    setTimeout(function () {
+        clearInterval(scoreInterval);
+        var message = popUp('youWon', 'Congratulations! You Won');
+        document.querySelector('.grid').style.visibility = 'hidden';
+        document.querySelector('.infoPanel').style.visibility = 'hidden';
+        // tworzymy i osadzamy przycisk Play again:
+        createRestart_PlayagainButton(message, 'Play again')
+        // tworzymy i osadzamy przycisk Home:
+        createHomeButton(message);
+        return message;
+    }, scoreIntervalDuration)
+
 }
 // --------/\-------- WYGRANA --------/\-------- //
 

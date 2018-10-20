@@ -41,6 +41,34 @@
     font-family: 'Roboto', sans-serif;
     background: white;
 }
+.scoreContainer {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 25px;
+    margin-bottom: 0px;
+    background: white;
+}
+.scoreText {
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+.scoreValueContainer {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+}
 .infoBox {
     border: 1px solid black;
     display: flex;
