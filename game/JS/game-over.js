@@ -77,6 +77,8 @@ function pauseOn() {
     // wyświetlaj okienko z informacją o pauzie:
     var message = popUp('timeIsUp', 'Paused. Press Space to play.');
     document.querySelector('.grid').style.visibility = 'hidden';
+    // ukrywamy panel boczny zapisany na sztywno w html:
+    document.querySelector('.infoPanel').style.visibility = 'hidden';
     // tworzymy i osadzamy przycisk Restart:
     createRestart_PlayagainButton(message, 'Restart')
     // tworzymy i osadzamy przycisk Home:
@@ -88,6 +90,7 @@ function pauseOff() {
     document.querySelectorAll('.popup').forEach(function (node) {
         node.remove();
         document.querySelector('.grid').style.visibility = 'visible';
+        document.querySelector('.infoPanel').style.visibility = 'visible';
     });
 }
 
@@ -139,7 +142,9 @@ function popUp(type, text) {
 // --------\/-------- PRZEGRANA --------\/-------- //
 // w przypadku gdy gra kończy się przegraną (skończył się czas):
 function youLoose() {
-    var message = popUp('timeIsUp', 'You loose - time is up!');
+    var message = popUp('timeIsUp', 'Unlucky... Time is up!');
+    document.querySelector('.grid').style.visibility = 'hidden';
+    document.querySelector('.infoPanel').style.visibility = 'hidden';
     // tworzymy i osadzamy przycisk Play again:
     createRestart_PlayagainButton(message, 'Play again')
     // tworzymy i osadzamy przycisk Home:
@@ -148,7 +153,9 @@ function youLoose() {
 }
 
 function youDrown() {
-    var message = popUp('timeIsUp', 'You loose - enjoy the swim!');
+    var message = popUp('timeIsUp', 'Unlucky... Enjoy the swim!');
+    document.querySelector('.grid').style.visibility = 'hidden';
+    document.querySelector('.infoPanel').style.visibility = 'hidden';
     // tworzymy i osadzamy przycisk Play again:
     createRestart_PlayagainButton(message, 'Play again')
     // tworzymy i osadzamy przycisk Home:
@@ -161,6 +168,8 @@ function youDrown() {
 // w przypadku gdy gra kończy się przegraną (skończył się czas):
 function youWon() {
     var message = popUp('youWon', 'Congratulations! You Won');
+    document.querySelector('.grid').style.visibility = 'hidden';
+    document.querySelector('.infoPanel').style.visibility = 'hidden';
     // tworzymy i osadzamy przycisk Play again:
     createRestart_PlayagainButton(message, 'Play again')
     // tworzymy i osadzamy przycisk Home:
@@ -213,7 +222,7 @@ function startGame() {
     // tworzymy okienko startowe:
     var message = popUp(
         'normal',
-        'Welcome in ClimbApp game!<br><br>To move use: LeftKey, RightKey, UpKey, DownKey.<br><br>To pause game press Space.<br><br>Trust in bananas to get Turbo Speed!<br>'
+        'Welcome to the ClimbApp game<br><br>To move use: Left / Right / Up / Down arrows<br><br>Press Space to pause game<br><br>Trust in bananas to get Turbo Speed!<br><br>Be careful of rising water...<br>'
     );
 
     // tworzymy i osadzamy przycisk Play:

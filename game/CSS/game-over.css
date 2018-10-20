@@ -1,9 +1,12 @@
-.normal {
-    font-size: 20px;
-    font-family: Arial;
+.normal, .timeIsUp, .youWon {
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
-    font-weight: bolder;
-    color: green;
+    letter-spacing: 0.02em;
+    color: black;
+}
+.normal {
+    font-size: 24px;
 }
 .halfTime {
     color: rgb(255, 136, 0);
@@ -13,14 +16,6 @@
 }
 .warning {
     color: red;
-}
-.timeIsUp {
-    color: red;
-    font-size: 40px;
-}
-.youWon {
-    color: blue;
-    font-size: 40px;
 }
 .showTime {
     width: 150px;
@@ -32,7 +27,7 @@
 .popup {
     /* width: 500px;
     height: 500px; */
-    background: rgba(0, 0, 0, 0.85);
+    /* background: rgba(0, 0, 0, 0.85); */
     display: flex;
     position: absolute;
     left: 0; top: 0; right: 0; bottom: 0;
