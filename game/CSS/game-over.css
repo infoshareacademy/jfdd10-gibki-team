@@ -31,6 +31,7 @@
     flex-direction: column;
     border: 1px solid black;
     margin: 25px;
+    margin-bottom: 0px;
 }
 .showTimeText {
     height: 50px;

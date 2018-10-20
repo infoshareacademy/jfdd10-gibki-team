@@ -22,6 +22,7 @@
     width: 100px;
     height: 50px;
     margin: 25px;
+    margin-bottom: 0px
 }
 .bananasCounterIcon {
     background: url(../Graphics/banana-small.png) no-repeat center;
