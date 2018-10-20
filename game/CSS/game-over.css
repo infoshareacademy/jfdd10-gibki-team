@@ -5,6 +5,10 @@
     letter-spacing: 0.02em;
     color: black;
 }
+.end {
+    color: green;
+    font-weight: bolder;
+}
 .normal {
     font-size: 24px;
 }
