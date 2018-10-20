@@ -1,3 +1,18 @@
+createHomeButton = function (container) {
+    var buttonHome = document.createElement('button');
+    var linkToHome = document.createElement('a');
+    linkToHome.innerText = 'Home';
+    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
+    buttonHome.appendChild(linkToHome);
+    container.appendChild(buttonHome);
+}
+createRestart_PlayagainButton = function (container, title) {
+    var button = document.createElement('button');
+    button.innerHTML = title;
+    container.appendChild(button);
+    button.addEventListener('click', () => window.location.reload())
+}
+
 // TODO: to na sam początek wszystkiego:
 var intervalsManager = (function () {
     var intervalIds = [];
@@ -63,18 +78,9 @@ function pauseOn() {
     var message = popUp('timeIsUp', 'Paused. Press Space to play.');
     document.querySelector('.grid').style.visibility = 'hidden';
     // tworzymy i osadzamy przycisk Restart:
-    var buttonRestart = document.createElement('button');
-    buttonRestart.innerHTML = 'Restart';
-    message.appendChild(buttonRestart);
-    buttonRestart.addEventListener('click', () => window.location.reload())
-    
+    createRestart_PlayagainButton(message, 'Restart')
     // tworzymy i osadzamy przycisk Home:
-    var buttonHome = document.createElement('button');
-    var linkToHome = document.createElement('a');
-    linkToHome.innerText = 'Home';
-    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
-    buttonHome.appendChild(linkToHome);
-    message.appendChild(buttonHome);
+    createHomeButton(message);
 }
 
 function pauseOff() {
@@ -135,34 +141,18 @@ function popUp(type, text) {
 function youLoose() {
     var message = popUp('timeIsUp', 'You loose - time is up!');
     // tworzymy i osadzamy przycisk Play again:
-    var buttonPlayagain = document.createElement('button');
-    buttonPlayagain.innerHTML = 'Play again';
-    message.appendChild(buttonPlayagain);
-    buttonPlayagain.addEventListener('click', () => window.location.reload())
+    createRestart_PlayagainButton(message, 'Play again')
     // tworzymy i osadzamy przycisk Home:
-    var buttonHome = document.createElement('button');
-    var linkToHome = document.createElement('a');
-    linkToHome.innerText = 'Home';
-    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
-    buttonHome.appendChild(linkToHome);
-    message.appendChild(buttonHome);
+    createHomeButton(message);
     return message;
 }
 
 function youDrown() {
     var message = popUp('timeIsUp', 'You loose - enjoy the swim!');
     // tworzymy i osadzamy przycisk Play again:
-    var buttonPlayagain = document.createElement('button');
-    buttonPlayagain.innerHTML = 'Play again';
-    message.appendChild(buttonPlayagain);
-    buttonPlayagain.addEventListener('click', () => window.location.reload())
+    createRestart_PlayagainButton(message, 'Play again')
     // tworzymy i osadzamy przycisk Home:
-    var buttonHome = document.createElement('button');
-    var linkToHome = document.createElement('a');
-    linkToHome.innerText = 'Home';
-    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
-    buttonHome.appendChild(linkToHome);
-    message.appendChild(buttonHome);
+    createHomeButton(message);
     return message;
 }
 // --------/\-------- PRZEGRANA --------/\-------- //
@@ -172,17 +162,9 @@ function youDrown() {
 function youWon() {
     var message = popUp('youWon', 'Congratulations! You Won');
     // tworzymy i osadzamy przycisk Play again:
-    var buttonPlayagain = document.createElement('button');
-    buttonPlayagain.innerHTML = 'Play again';
-    message.appendChild(buttonPlayagain);
-    buttonPlayagain.addEventListener('click', () => window.location.reload())
+    createRestart_PlayagainButton(message, 'Play again')
     // tworzymy i osadzamy przycisk Home:
-    var buttonHome = document.createElement('button');
-    var linkToHome = document.createElement('a');
-    linkToHome.innerText = 'Home';
-    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
-    buttonHome.appendChild(linkToHome);
-    message.appendChild(buttonHome);
+    createHomeButton(message);
     return message;
 }
 // --------/\-------- WYGRANA --------/\-------- //
@@ -240,12 +222,7 @@ function startGame() {
     message.appendChild(buttonPlay);
 
     // tworzymy i osadzamy przycisk Home:
-    var buttonHome = document.createElement('button');
-    var linkToHome = document.createElement('a');
-    linkToHome.innerText = 'Home';
-    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
-    buttonHome.appendChild(linkToHome);
-    message.appendChild(buttonHome);
+    createHomeButton(message);
 
     // dodajemy event dla Play:
     buttonPlay.addEventListener('click', function () {
