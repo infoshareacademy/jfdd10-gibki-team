@@ -62,6 +62,12 @@ function pauseOn() {
     // wyświetlaj okienko z informacją o pauzie:
     var message = popUp('timeIsUp', 'Paused. Press Space to play.');
     document.querySelector('.grid').style.visibility = 'hidden';
+    // tworzymy i osadzamy przycisk Restart:
+    var buttonRestart = document.createElement('button');
+    buttonRestart.innerHTML = 'Restart';
+    message.appendChild(buttonRestart);
+    buttonRestart.addEventListener('click', () => window.location.reload())
+    
     // tworzymy i osadzamy przycisk Home:
     var buttonHome = document.createElement('button');
     var linkToHome = document.createElement('a');
