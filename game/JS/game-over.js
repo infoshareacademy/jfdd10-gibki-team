@@ -134,6 +134,11 @@ function popUp(type, text) {
 // w przypadku gdy gra kończy się przegraną (skończył się czas):
 function youLoose() {
     var message = popUp('timeIsUp', 'You loose - time is up!');
+    // tworzymy i osadzamy przycisk Play again:
+    var buttonPlayagain = document.createElement('button');
+    buttonPlayagain.innerHTML = 'Play again';
+    message.appendChild(buttonPlayagain);
+    buttonPlayagain.addEventListener('click', () => window.location.reload())
     // tworzymy i osadzamy przycisk Home:
     var buttonHome = document.createElement('button');
     var linkToHome = document.createElement('a');
@@ -146,6 +151,11 @@ function youLoose() {
 
 function youDrown() {
     var message = popUp('timeIsUp', 'You loose - enjoy the swim!');
+    // tworzymy i osadzamy przycisk Play again:
+    var buttonPlayagain = document.createElement('button');
+    buttonPlayagain.innerHTML = 'Play again';
+    message.appendChild(buttonPlayagain);
+    buttonPlayagain.addEventListener('click', () => window.location.reload())
     // tworzymy i osadzamy przycisk Home:
     var buttonHome = document.createElement('button');
     var linkToHome = document.createElement('a');
@@ -161,6 +171,11 @@ function youDrown() {
 // w przypadku gdy gra kończy się przegraną (skończył się czas):
 function youWon() {
     var message = popUp('youWon', 'Congratulations! You Won');
+    // tworzymy i osadzamy przycisk Play again:
+    var buttonPlayagain = document.createElement('button');
+    buttonPlayagain.innerHTML = 'Play again';
+    message.appendChild(buttonPlayagain);
+    buttonPlayagain.addEventListener('click', () => window.location.reload())
     // tworzymy i osadzamy przycisk Home:
     var buttonHome = document.createElement('button');
     var linkToHome = document.createElement('a');
