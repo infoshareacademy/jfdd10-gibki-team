@@ -78,7 +78,7 @@ function pauseOn() {
     var message = popUp('timeIsUp', 'Paused. Press Space to play.');
     document.querySelector('.grid').style.visibility = 'hidden';
     // ukrywamy panel boczny zapisany na sztywno w html:
-    // document.querySelector('.infoPanel').style.visibility = 'hidden';
+    document.querySelector('.infoPanel').style.visibility = 'hidden';
     // tworzymy i osadzamy przycisk Restart:
     createRestart_PlayagainButton(message, 'Restart')
     // tworzymy i osadzamy przycisk Home:

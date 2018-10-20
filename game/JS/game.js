@@ -8,7 +8,7 @@ function letsPlay() {
     // 
     boardGenerator();
     waterRising();
-    
+        
     //wygenrowanie Huga (pozycja przodem) i ustawienie na pozycji startowej
     var hugo = document.createElement('div');
     hugo.classList.add('hugo');

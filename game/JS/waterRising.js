@@ -7,6 +7,9 @@ function waterRising() {
     waterContainerHeight = 10;
 
     setTimeout(function() {
+        document.querySelector(".infoBox").innerText = "WATER RISING !!!"
+        document.querySelector(".infoBox").style.color = "red"
+        document.querySelector(".infoBox").style.fontWeight = "bolder"
         waterContainer.style.display = 'block';
         waterContainer.style.background = 'url(Graphics/flooding.png)';
         waterInterval = setInterval(function(){
@@ -19,5 +22,10 @@ function waterRising() {
             }
         }, 200)
     }, 7000)
+    setTimeout(function() {
+        document.querySelector(".infoBox").innerText = "?"
+        document.querySelector(".infoBox").style.color = "black"
+        document.querySelector(".infoBox").style.fontWeight = "normal"
+    }, 11000)
 }
 

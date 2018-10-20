@@ -9,10 +9,23 @@ function eatBanana(hero) {
             bananas[i].classList.remove('banana');
             eatenBananasCounter += 1;
             document.querySelector('.bananasCounter').innerText = eatenBananasCounter;
+            isTurboOnInfo();
         }
     }
 }
 
 function isTurboOn() {
     return eatenBananasCounter >= 6 ? true : false
+}
+function isTurboOnInfo() {
+    if (eatenBananasCounter === 6) {
+        document.querySelector(".infoBox").innerText = "TURBO SPEED !!!"
+        document.querySelector(".infoBox").style.color = "green"
+        document.querySelector(".infoBox").style.fontWeight = "bolder"
+        setTimeout(function() {
+            document.querySelector(".infoBox").innerText = "?"
+            document.querySelector(".infoBox").style.color = "black"
+            document.querySelector(".infoBox").style.fontWeight = "normal"
+        }, 4000)
+        }
 }
