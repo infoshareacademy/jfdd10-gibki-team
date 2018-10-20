@@ -18,7 +18,7 @@ var intervalsManager = (function () {
 // TODO: to na sam koniec:
 intervalsManager.clearAllIntervals()
 
-var time = 40000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
+var time = 50000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
 var timerId;
 
 // --------\/-------- LICZENIE CZASU --------\/-------- //
@@ -37,7 +37,7 @@ function timeCounter(id) {
         }
         // jeżeli utoniesz wyświetlaj okienko z info o wygranej i wynikiem:
         if (hugoDrawns()) {
-            
+
             clearInterval(waterInterval);
             clearInterval(intervalId);
             youDrown();
@@ -128,13 +128,25 @@ function popUp(type, text) {
 // w przypadku gdy gra kończy się przegraną (skończył się czas):
 function youLoose() {
     var message = popUp('timeIsUp', 'You loose - time is up!');
-
+    // tworzymy i osadzamy przycisk Home:
+    var buttonHome = document.createElement('button');
+    var linkToHome = document.createElement('a');
+    linkToHome.innerText = 'Home';
+    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
+    buttonHome.appendChild(linkToHome);
+    message.appendChild(buttonHome);
     return message;
 }
 
 function youDrown() {
     var message = popUp('timeIsUp', 'You loose - enjoy the swim!');
-
+    // tworzymy i osadzamy przycisk Home:
+    var buttonHome = document.createElement('button');
+    var linkToHome = document.createElement('a');
+    linkToHome.innerText = 'Home';
+    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
+    buttonHome.appendChild(linkToHome);
+    message.appendChild(buttonHome);
     return message;
 }
 // --------/\-------- PRZEGRANA --------/\-------- //
@@ -143,7 +155,13 @@ function youDrown() {
 // w przypadku gdy gra kończy się przegraną (skończył się czas):
 function youWon() {
     var message = popUp('youWon', 'Congratulations! You Won');
-
+    // tworzymy i osadzamy przycisk Home:
+    var buttonHome = document.createElement('button');
+    var linkToHome = document.createElement('a');
+    linkToHome.innerText = 'Home';
+    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
+    buttonHome.appendChild(linkToHome);
+    message.appendChild(buttonHome);
     return message;
 }
 // --------/\-------- WYGRANA --------/\-------- //
@@ -199,7 +217,7 @@ function startGame() {
     var buttonPlay = document.createElement('button');
     buttonPlay.innerHTML = 'Play';
     message.appendChild(buttonPlay);
-    
+
     // tworzymy i osadzamy przycisk Home:
     var buttonHome = document.createElement('button');
     var linkToHome = document.createElement('a');
