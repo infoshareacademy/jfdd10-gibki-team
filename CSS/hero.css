@@ -78,6 +78,8 @@
   border-radius: 10px;
   align-self: center;
   font-family: "Lobster", cursive;
+  outline: none;
+
 }
 
 .read {
@@ -123,7 +125,7 @@ ul {
   color: rgb(247, 253, 252);
 }
 
-.toggle {
+#more {
   display: none;
 }
 

@@ -11,22 +11,26 @@ window.addEventListener('scroll',function(){
     right.style.bottom = (0 - screenOffset*0.5) + 'px';
 })
 
-document.querySelector('.read-more').addEventListener('click', function toggleClasses() {
-    console.log('wat?')
-    let readMore = document.querySelector('.toggle');
-    if (readMore.style.display === 'none') {
-        readMore.style.display = 'block';}
-        else {
-            readMore.style.display = 'none'
-        }
-    
-})
 
+let i = 0;
 function toggleClasses(){
-    let readMore = document.querySelector('.toggle');
-    if (readMore.style.display === 'none') {
-        readMore.style.display = 'block';}
-        else {
-            readMore.style.display = 'none'
-        }
+    
+    if (!i){
+        document.getElementById("more").style.
+        display="inline";
+        document.getElementById("dots").style.
+        display="none";
+        document.getElementById("read").innerHTML=
+        "Read less";
+        i=1;
+    }
+    else{
+            document.getElementById("more").style.
+            display="none";
+            document.getElementById("dots").style.
+            display="inline";
+            document.getElementById("read").innerHTML=
+            "Read more";
+            i=0;
+    }
 }
