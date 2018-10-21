@@ -29,10 +29,11 @@
                 menu[index].classList.remove('active');
             }
 
-            if (document.body.clientHeight - window.innerHeight < scroll - 100) {
-                menu[3].classList.add('active');
+            if (document.body.clientHeight - window.innerHeight < scroll) {
+                console.log(menu)
+                menu[menu.length - 1].classList.add('active');
             } else {
-                menu[3].classList.remove('active');
+                menu[menu.length - 1].classList.remove('active');
             }
         })
     })

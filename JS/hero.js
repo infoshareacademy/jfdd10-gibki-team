@@ -11,7 +11,26 @@ window.addEventListener('scroll',function(){
     right.style.bottom = (0 - screenOffset*0.5) + 'px';
 })
 
-document.querySelector('.read-more').addEventListener('click', function () {
-    console.log('wat?')
-    document.querySelector('.toggle').style.display = 'block';
-})
+
+let i = 0;
+function toggleClasses(){
+    
+    if (!i){
+        document.getElementById("more").style.
+        display="inline";
+        document.getElementById("dots").style.
+        display="none";
+        document.getElementById("read").innerHTML=
+        "Read less";
+        i=1;
+    }
+    else{
+            document.getElementById("more").style.
+            display="none";
+            document.getElementById("dots").style.
+            display="inline";
+            document.getElementById("read").innerHTML=
+            "Read more";
+            i=0;
+    }
+}
