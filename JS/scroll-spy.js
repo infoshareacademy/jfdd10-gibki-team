@@ -7,11 +7,11 @@
         var href = item.getAttribute('href');
         var target = document.querySelector(href);
         targets.push(target);
-
+        
         item.addEventListener('click', function (event) {
             event.preventDefault();
             window.scroll({
-                top: target.offsetTop,
+                top: target.offsetTop - 60,
                 behavior: "smooth"
             })
         })
@@ -30,7 +30,6 @@
             }
 
             if (document.body.clientHeight - window.innerHeight < scroll) {
-                console.log(menu)
                 menu[menu.length - 1].classList.add('active');
             } else {
                 menu[menu.length - 1].classList.remove('active');
