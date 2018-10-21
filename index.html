@@ -136,10 +136,11 @@
 
             <form method="POST" action="https://formspree.io/climbapp123@gmail.com">
                 <input class="name" name="name" placeholder="Your name">
-                <input class="email" type="email" name="email" placeholder="Your email">
-                <input class="button" type="submit" value="Get early access!">
+                <input class="email" id='txtEmail' type="text" name="email" placeholder="Your email">
+                <input class="button" type="submit" name='submit' onclick="checkEmail()" value="Get early access!">
+                 
             </form>
-            <p class='infomail'>We will use your email, only to send you link to our game</p>
+            <p class='infomail'>We will use your email only once</p>
         </div>
     </div>
     <!-- ABOUT -->
@@ -250,6 +251,7 @@
     <!-- <script src="JS/matchMedia.js"></script> -->
     <script src="JS/navMenu.js"></script>
     <script src="JS/hero.js"></script>
+    <script src="JS/emailValidation.js"></script>
 
 </body>
 
