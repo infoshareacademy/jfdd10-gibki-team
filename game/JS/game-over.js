@@ -1,3 +1,18 @@
+createHomeButton = function (container) {
+    var buttonHome = document.createElement('button');
+    var linkToHome = document.createElement('a');
+    linkToHome.innerText = 'Home';
+    linkToHome.href = "http://gibki-team.jfdd10.is-academy.pl/";
+    buttonHome.appendChild(linkToHome);
+    container.appendChild(buttonHome);
+}
+createRestart_PlayagainButton = function (container, title) {
+    var button = document.createElement('button');
+    button.innerHTML = title;
+    container.appendChild(button);
+    button.addEventListener('click', () => window.location.reload())
+}
+
 // TODO: to na sam początek wszystkiego:
 var intervalsManager = (function () {
     var intervalIds = [];
@@ -18,7 +33,7 @@ var intervalsManager = (function () {
 // TODO: to na sam koniec:
 intervalsManager.clearAllIntervals()
 
-var time = 40000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
+var time = 45000;  // <-- FIXME: ustawienie czasu trwania gry w milisekundach!
 var timerId;
 
 // --------\/-------- LICZENIE CZASU --------\/-------- //
@@ -37,7 +52,7 @@ function timeCounter(id) {
         }
         // jeżeli utoniesz wyświetlaj okienko z info o wygranej i wynikiem:
         if (hugoDrawns()) {
-            
+
             clearInterval(waterInterval);
             clearInterval(intervalId);
             youDrown();
@@ -60,8 +75,14 @@ function timeCounter(id) {
 function pauseOn() {
     clearInterval(timerId);
     // wyświetlaj okienko z informacją o pauzie:
-    popUp('timeIsUp', 'Paused. Press Space to play.');
+    var message = popUp('timeIsUp', 'Paused. Press Space to play.');
     document.querySelector('.grid').style.visibility = 'hidden';
+    // ukrywamy panel boczny zapisany na sztywno w html:
+    document.querySelector('.infoPanel').style.visibility = 'hidden';
+    // tworzymy i osadzamy przycisk Restart:
+    createRestart_PlayagainButton(message, 'Restart')
+    // tworzymy i osadzamy przycisk Home:
+    createHomeButton(message);
 }
 
 function pauseOff() {
@@ -69,6 +90,7 @@ function pauseOff() {
     document.querySelectorAll('.popup').forEach(function (node) {
         node.remove();
         document.querySelector('.grid').style.visibility = 'visible';
+        document.querySelector('.infoPanel').style.visibility = 'visible';
     });
 }
 
@@ -120,61 +142,79 @@ function popUp(type, text) {
 // --------\/-------- PRZEGRANA --------\/-------- //
 // w przypadku gdy gra kończy się przegraną (skończył się czas):
 function youLoose() {
-    var message = popUp('timeIsUp', 'You loose - time is up!');
-
+    var message = popUp('timeIsUp', 'Unlucky... Time is up!');
+    document.querySelector('.grid').style.visibility = 'hidden';
+    document.querySelector('.infoPanel').style.visibility = 'hidden';
+    // tworzymy i osadzamy przycisk Play again:
+    createRestart_PlayagainButton(message, 'Play again')
+    // tworzymy i osadzamy przycisk Home:
+    createHomeButton(message);
     return message;
 }
 
 function youDrown() {
-    var message = popUp('timeIsUp', 'You loose - enjoy the swim!');
-
+    var message = popUp('timeIsUp', 'Unlucky... Enjoy the swim!');
+    document.querySelector('.grid').style.visibility = 'hidden';
+    document.querySelector('.infoPanel').style.visibility = 'hidden';
+    // tworzymy i osadzamy przycisk Play again:
+    createRestart_PlayagainButton(message, 'Play again')
+    // tworzymy i osadzamy przycisk Home:
+    createHomeButton(message);
     return message;
 }
 // --------/\-------- PRZEGRANA --------/\-------- //
 
 // --------\/-------- WYGRANA --------\/-------- //
 // w przypadku gdy gra kończy się przegraną (skończył się czas):
-function youWon() {
-    var message = popUp('youWon', 'Congratulations! You Won');
 
-    return message;
+function youWon() {
+    const timeScore = (time / 1000) * 55;
+    const scoreIntervalDuration = 2000;
+    const timeScoreIntervalValue = timeScore / (time / scoreIntervalDuration)
+    var scoreValue = bananasScore;
+    var scoreValueContainer = document.querySelector('.scoreValueContainer');
+
+    scoreInterval = setInterval(function () {
+        scoreValue += timeScoreIntervalValue;
+        scoreValueContainer.innerText = scoreValue;
+    }, (scoreIntervalDuration / time) * scoreIntervalDuration)
+
+    setTimeout(function () {
+        clearInterval(scoreInterval);
+        var message = popUp('youWon', 'Congratulations! You Won! Your score: ');
+        document.querySelector('.grid').style.visibility = 'hidden';
+        document.querySelector('.infoPanel').style.visibility = 'hidden';
+        var scoreValueMessage = document.createElement('span');
+        scoreValueMessage.classList.add('end');
+        scoreValueMessage.innerText = scoreValue;
+        // var scoreMessage = document.querySelector('.end');
+        message.appendChild(scoreValueMessage);
+        // tworzymy i osadzamy przycisk Play again:
+        createRestart_PlayagainButton(message, 'Play again')
+        // tworzymy i osadzamy przycisk Home:
+        createHomeButton(message);
+        return message;
+    }, scoreIntervalDuration)
+
 }
 // --------/\-------- WYGRANA --------/\-------- //
 
 // --------\/-------- WYŚWIETLANIE CZASU --------\/-------- //
 function showTime() {
-    // czyszczenie starej informacji po zmianie czasu:
-    document.querySelectorAll('.showTime').forEach(function (node) {
-        node.remove();
-    });
-    // utworzenie <div class="showTime"></div>:
-    var infoPanel = document.querySelector('.infoPanel');
-    var showTime = document.createElement('div');
-    infoPanel.appendChild(showTime);
-    showTime.classList.add('showTime');
-    // utworzenie <span></span> i ostylowanie sekund...
-    var clockStyler = document.createElement('span');
-    // showTime.appendChild(clockStyler);
+    const showTimeSecondsContainer = document.querySelector(".showTimeSecondsContainer");
     var seconds = Math.floor((time / 1000));
-    clockStyler.innerText = seconds;
-    clockStyler.classList.add('normal');
+    showTimeSecondsContainer.innerText = seconds;
+    showTimeSecondsContainer.classList.add('normalText');
     // w zależności ile czasu zostało:
-    if (seconds <= 20) {
-        clockStyler.classList.add('halfTime');
+    if (seconds <= 25) {
+        showTimeSecondsContainer.classList.add('halfTime');
+    }
+    if (seconds <= 15) {
+        showTimeSecondsContainer.classList.add('stayFocus');
     }
     if (seconds <= 10) {
-        clockStyler.classList.add('stayFocus');
+        showTimeSecondsContainer.classList.add('warning');
     }
-    if (seconds <= 5) {
-        clockStyler.classList.add('warning');
-    }
-    // wyświetlanie pozostałych sekund i kolorowanie w zależności od pozostałego czasu:
-    var prefix = document.createTextNode('');
-    var suffix = document.createTextNode(' seconds left');
-
-    showTime.appendChild(prefix);
-    showTime.appendChild(clockStyler);
-    showTime.appendChild(suffix);
 }
 // --------/\-------- WYŚWIETLANIE CZASU --------/\-------- //
 
@@ -185,16 +225,19 @@ function startGame() {
     // tworzymy okienko startowe:
     var message = popUp(
         'normal',
-        'Welcome in ClimbApp game!<br><br>To move use: LeftKey, RightKey, UpKey, DownKey.<br><br>To pause game press Space.<br><br>Trust in bananas to get Turbo Speed!<br>'
+        'Welcome to the ClimbApp game<br><br>To move use: Left / Right / Up / Down arrows<br><br>Press Space to pause game<br><br>Trust in bananas to get Turbo Speed!<br><br>Be careful of rising water...<br>'
     );
 
-    // tworzymy i osadzamy przycisk:
-    var button = document.createElement('button');
-    button.innerHTML = 'Play';
-    message.appendChild(button);
+    // tworzymy i osadzamy przycisk Play:
+    var buttonPlay = document.createElement('button');
+    buttonPlay.innerHTML = 'Play';
+    message.appendChild(buttonPlay);
 
-    // dodajemy event:
-    button.addEventListener('click', function () {
+    // tworzymy i osadzamy przycisk Home:
+    createHomeButton(message);
+
+    // dodajemy event dla Play:
+    buttonPlay.addEventListener('click', function () {
         document.querySelector('.infoPanel').style.display = 'flex';
         // odpalenie gry:
         letsPlay();

@@ -11,8 +11,6 @@ function hugoWins() {
 
     var verticalMatch = Math.abs(hugoPositionY - endDoors.getBoundingClientRect().bottom) < 10
 
-    console.log(horizontalMatch, verticalMatch)
-
     if (
         horizontalMatch && verticalMatch
     ) {
