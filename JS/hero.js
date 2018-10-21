@@ -11,7 +11,7 @@ window.addEventListener('scroll',function(){
     right.style.bottom = (0 - screenOffset*0.5) + 'px';
 })
 
-document.querySelector('.read-more').addEventListener('click', function () {
+document.querySelector('.read-more').addEventListener('click', function toggleClasses() {
     console.log('wat?')
     let readMore = document.querySelector('.toggle');
     if (readMore.style.display === 'none') {
@@ -21,3 +21,12 @@ document.querySelector('.read-more').addEventListener('click', function () {
         }
     
 })
+
+function toggleClasses(){
+    let readMore = document.querySelector('.toggle');
+    if (readMore.style.display === 'none') {
+        readMore.style.display = 'block';}
+        else {
+            readMore.style.display = 'none'
+        }
+}
