@@ -13,5 +13,11 @@ window.addEventListener('scroll',function(){
 
 document.querySelector('.read-more').addEventListener('click', function () {
     console.log('wat?')
-    document.querySelector('.toggle').style.display = 'block';
+    let readMore = document.querySelector('.toggle');
+    if (readMore.style.display === 'none') {
+        readMore.style.display = 'block';}
+        else {
+            readMore.style.display = 'none'
+        }
+    
 })
