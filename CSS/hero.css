@@ -77,12 +77,10 @@
   align-self: center;
   font-family: "Lobster", cursive;
   outline: none;
-
 }
 
 .read {
-  display: flex;
-  flex-direction: column;
+  text-align: center;
 }
 
 .p-hero {
@@ -155,7 +153,6 @@ ul {
 @media (min-width: 992px) {
   .text-box {
     line-height: 1.5;
-    height: 100vh;
   }
 
   .heading {
