@@ -29,7 +29,6 @@
         font-size: 20px;
         text-align: center;
         margin-bottom: 5px;
-        
     }
     
     .email {
@@ -38,7 +37,10 @@
         text-align: center;
         
     }
-        
+    
+    .warning::-webkit-input-placeholder {
+        color: red
+    }
     
         
         
