@@ -7,11 +7,11 @@
         var href = item.getAttribute('href');
         var target = document.querySelector(href);
         targets.push(target);
-
+        
         item.addEventListener('click', function (event) {
             event.preventDefault();
             window.scroll({
-                top: target.offsetTop,
+                top: target.offsetTop - 60,
                 behavior: "smooth"
             })
         })
@@ -29,10 +29,10 @@
                 menu[index].classList.remove('active');
             }
 
-            if (document.body.clientHeight - window.innerHeight < scroll - 100) {
-                menu[3].classList.add('active');
+            if (document.body.clientHeight - window.innerHeight < scroll) {
+                menu[menu.length - 1].classList.add('active');
             } else {
-                menu[3].classList.remove('active');
+                menu[menu.length - 1].classList.remove('active');
             }
         })
     })

@@ -4,15 +4,21 @@ var navigation = document.querySelector('.team-slider-nav');
 
 nextButton.addEventListener('click', function () {
    clearInterval(intervalId);
+   if (window.matchMedia("(max-width:576px)").matches) {
    activateNextSlide()
+   }
 });
 previousButton.addEventListener('click', function () {
    clearInterval(intervalId);
+   if (window.matchMedia("(max-width:576px)").matches) {
    activatePreviousSlide()
+   }
 });
 
 var intervalId = setInterval(function () {
-   activateNextSlide()
+  if (window.matchMedia("(max-width:576px)").matches) {
+    activateNextSlide()
+  }
 }, 2500);
 
 function activateNextSlide() {

@@ -1,5 +1,6 @@
 //put inside move setInterval
 var eatenBananasCounter = 0;
+var bananasScore = 0;
 function eatBanana(hero) {
     var heroPositionY = hero.getBoundingClientRect().bottom;
     var heroPositionX = hero.getBoundingClientRect().x + hero.getBoundingClientRect().width/2;
@@ -8,11 +9,26 @@ function eatBanana(hero) {
         if ((Math.abs(heroPositionX - bananas[i].getBoundingClientRect().x - bananas[i].getBoundingClientRect().width/2) < 10) && (Math.abs(heroPositionY - bananas[i].getBoundingClientRect().bottom)<4)) {
             bananas[i].classList.remove('banana');
             eatenBananasCounter += 1;
+            bananasScore = bananasScore + 100 + eatenBananasCounter * 10;
             document.querySelector('.bananasCounter').innerText = eatenBananasCounter;
+            document.querySelector('.scoreValueContainer').innerText = bananasScore;
+            isTurboOnInfo();
         }
     }
 }
 
 function isTurboOn() {
     return eatenBananasCounter >= 6 ? true : false
+}
+function isTurboOnInfo() {
+    if (eatenBananasCounter === 6) {
+        document.querySelector(".infoBox").innerText = "TURBO SPEED !!!"
+        document.querySelector(".infoBox").style.color = "green"
+        document.querySelector(".infoBox").style.fontWeight = "bolder"
+        setTimeout(function() {
+            document.querySelector(".infoBox").innerText = "?"
+            document.querySelector(".infoBox").style.color = "black"
+            document.querySelector(".infoBox").style.fontWeight = "normal"
+        }, 4000)
+        }
 }
